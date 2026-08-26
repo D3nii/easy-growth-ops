@@ -482,10 +482,11 @@ input:focus-visible,
 
 .rpt {
   font-family: var(--mono);
-  font-size: 0.72rem;
-  line-height: 1.5;
+  font-size: 0.875rem;
+  line-height: 1.55;
   letter-spacing: 0;
   color: #d1d2d3;
+  overflow-wrap: anywhere;
 }
 
 .rpt-gap {
@@ -827,6 +828,113 @@ input:focus-visible,
     flex-direction: row;
     justify-content: space-between;
     align-items: end;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  .nav {
+    padding: 0.85rem var(--pad);
+  }
+
+  .wordmark {
+    font-size: 0.92rem;
+  }
+
+  .nav-cta,
+  .btn {
+    min-height: 2.75rem;
+    padding: 0.7rem 1rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+  }
+
+  .kicker,
+  .index,
+  .meta-label,
+  .clock,
+  .form-note,
+  .foot-meta {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    line-height: 1.45;
+  }
+
+  .hero {
+    padding-top: 3.2rem;
+    padding-bottom: 2.6rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.15rem, 11vw, 2.7rem);
+    line-height: 1.08;
+    max-width: none;
+  }
+
+  .lede {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  .product-copy h3,
+  .day-list h3 {
+    font-size: 1.7rem;
+    line-height: 1.15;
+  }
+
+  .for blockquote p {
+    font-size: 1.35rem;
+    line-height: 1.35;
+  }
+
+  .thread {
+    padding: 1rem 0.85rem 1.1rem;
+  }
+
+  .msg {
+    font-size: 1rem;
+    line-height: 1.5;
+    gap: 0.65rem;
+  }
+
+  .rpt {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .msg-meta {
+    font-size: 1rem;
+  }
+
+  .msg-meta time {
+    font-size: 0.8125rem;
+  }
+
+  .clip-play {
+    font-size: 0.75rem;
+  }
+
+  .access-form label {
+    font-size: 0.78rem;
+  }
+
+  .access-form input {
+    font-size: 1.0625rem;
+    padding: 0.85rem 0;
+  }
+
+  .access-form .btn,
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .foot-meta {
+    flex-wrap: wrap;
+    gap: 0.7rem 1.2rem;
   }
 }
 
