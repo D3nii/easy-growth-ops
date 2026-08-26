@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600&family=Syne:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <script type="application/ld+json">
@@ -43,8 +43,8 @@
 
     <header class="nav">
       <a class="wordmark" href="#top">
-        <span class="mark" aria-hidden="true"></span>
-        easy growth ops
+        <span class="logo-mark" aria-hidden="true">EG</span>
+        Easy Growth Ops
       </a>
       <nav class="nav-links" aria-label="Primary">
         <a href="#roi">ROI</a>
@@ -113,37 +113,49 @@
             </ul>
           </div>
           <div class="product-stage" aria-hidden="true">
-            <div class="ledger">
-              <div class="ledger-top">
-                <span>ROI</span>
-                <div class="pills">
-                  <button type="button" data-range="7">7d</button>
-                  <button type="button" class="is-on" data-range="30">30d</button>
-                  <button type="button" data-range="90">90d</button>
+            <div class="os-window">
+              <div class="os-titlebar">
+                <div class="os-lights">
+                  <span class="os-light os-close"></span>
+                  <span class="os-light os-min"></span>
+                  <span class="os-light os-zoom"></span>
+                </div>
+                <p class="os-title">ROI</p>
+              </div>
+              <div class="os-body">
+                <div class="ledger">
+                  <div class="ledger-top">
+                    <span>Paid media</span>
+                    <div class="pills">
+                      <button type="button" data-range="7">7d</button>
+                      <button type="button" class="is-on" data-range="30">30d</button>
+                      <button type="button" data-range="90">90d</button>
+                    </div>
+                  </div>
+                  <p class="ledger-kicker">Last 30 days</p>
+                  <p class="roi-figure"><span data-roi>4.22</span><small>×</small></p>
+                  <svg class="spark" viewBox="0 0 360 72" fill="none">
+                    <path
+                      class="spark-line"
+                      d="M4 58 C 40 58, 52 50, 78 46 S 120 44, 150 30 S 200 18, 230 22 S 280 40, 320 12 S 340 16, 356 8"
+                    />
+                  </svg>
+                  <dl class="ledger-grid">
+                    <div>
+                      <dt>Spend</dt>
+                      <dd data-spend>$128,410</dd>
+                    </div>
+                    <div>
+                      <dt>Return</dt>
+                      <dd data-return>$541,900</dd>
+                    </div>
+                    <div>
+                      <dt>Period</dt>
+                      <dd data-period>30 days</dd>
+                    </div>
+                  </dl>
                 </div>
               </div>
-              <p class="ledger-kicker">Last 30 days · paid media</p>
-              <p class="roi-figure"><span data-roi>4.22</span><small>×</small></p>
-              <svg class="spark" viewBox="0 0 360 72" fill="none">
-                <path
-                  class="spark-line"
-                  d="M4 58 C 40 58, 52 50, 78 46 S 120 44, 150 30 S 200 18, 230 22 S 280 40, 320 12 S 340 16, 356 8"
-                />
-              </svg>
-              <dl class="ledger-grid">
-                <div>
-                  <dt>Spend</dt>
-                  <dd data-spend>$128,410</dd>
-                </div>
-                <div>
-                  <dt>Return</dt>
-                  <dd data-return>$541,900</dd>
-                </div>
-                <div>
-                  <dt>Period</dt>
-                  <dd data-period>30 days</dd>
-                </div>
-              </dl>
             </div>
           </div>
         </article>
@@ -165,26 +177,38 @@
             </ul>
           </div>
           <div class="product-stage" aria-hidden="true">
-            <div class="drops">
-              <div class="drops-channel">
-                <span class="hash">#</span>
-                <span>winning-ads</span>
-                <span class="time">08:02</span>
+            <div class="os-window">
+              <div class="os-titlebar">
+                <div class="os-lights">
+                  <span class="os-light os-close"></span>
+                  <span class="os-light os-min"></span>
+                  <span class="os-light os-zoom"></span>
+                </div>
+                <p class="os-title">Drops</p>
               </div>
-              <p class="drops-note">Today’s drop · 3 videos</p>
-              <div class="reels">
-                <figure class="reel reel-a">
-                  <span class="play"></span>
-                  <figcaption>Meta · 14s</figcaption>
-                </figure>
-                <figure class="reel reel-b">
-                  <span class="play"></span>
-                  <figcaption>TikTok · 21s</figcaption>
-                </figure>
-                <figure class="reel reel-c">
-                  <span class="play"></span>
-                  <figcaption>YT · 18s</figcaption>
-                </figure>
+              <div class="os-body">
+                <div class="drops">
+                  <div class="drops-channel">
+                    <span class="hash">#</span>
+                    <span>winning-ads</span>
+                    <span class="time">08:02</span>
+                  </div>
+                  <p class="drops-note">Today’s drop · 3 videos</p>
+                  <div class="reels">
+                    <figure class="reel reel-a">
+                      <span class="play"></span>
+                      <figcaption>Meta · 14s</figcaption>
+                    </figure>
+                    <figure class="reel reel-b">
+                      <span class="play"></span>
+                      <figcaption>TikTok · 21s</figcaption>
+                    </figure>
+                    <figure class="reel reel-c">
+                      <span class="play"></span>
+                      <figcaption>YT · 18s</figcaption>
+                    </figure>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -268,7 +292,10 @@
 
     <footer class="foot">
       <div>
-        <strong>Easy Growth Ops</strong>
+        <p class="foot-brand">
+          <span class="logo-mark" aria-hidden="true">EG</span>
+          <strong>Easy Growth Ops</strong>
+        </p>
         <p>Marketing tools for performance teams.</p>
       </div>
       <div class="foot-meta">
