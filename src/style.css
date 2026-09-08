@@ -351,7 +351,8 @@ input:focus-visible,
 #walkthrough,
 #shots,
 #reads,
-#reviews {
+#reviews,
+#proof {
   scroll-margin-top: 4.25rem;
 }
 
@@ -382,6 +383,47 @@ input:focus-visible,
 
 .stack-tight h2 {
   font-size: clamp(1.7rem, 4vw, 2.6rem);
+}
+
+.stack-under-hero {
+  padding-top: 0.2rem;
+  border-top: 0;
+}
+
+.proof-band {
+  padding: 1.6rem 0 2.2rem;
+  border-top: 1px solid var(--line);
+}
+
+main > .proof-band {
+  padding-left: var(--pad);
+  padding-right: var(--pad);
+}
+
+.proof-band p:last-child {
+  margin: 0.45rem 0 0;
+  max-width: 38rem;
+  font-family: var(--display);
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.35;
+}
+
+.bonus {
+  padding: 2.2rem var(--pad) 2.8rem;
+  border-top: 1px solid var(--line);
+}
+
+.bonus p {
+  max-width: 34rem;
+  margin: 0.45rem 0 0;
+  color: var(--ink-2);
+}
+
+.bonus .text-link {
+  display: inline-block;
+  margin-top: 0.9rem;
 }
 
 .tool-group + .tool-group {
@@ -510,9 +552,8 @@ input:focus-visible,
   text-decoration: none;
 }
 
-.product-copy .text-link {
-  display: inline-block;
-  margin-top: 1.4rem;
+.product-copy .btn {
+  margin-top: 1.7rem;
 }
 
 .product-copy p,
