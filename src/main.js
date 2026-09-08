@@ -1,29 +1,32 @@
+import { inject } from "@vercel/analytics";
 import "./style.css";
+
+inject();
+
+const BOOK_URL = "https://calendly.com/danyal-jamil/30min";
 
 const year = document.querySelector("#year");
 if (year) year.textContent = String(new Date().getFullYear());
 
-const form = document.querySelector("#access-form");
-const note = document.querySelector(".form-note");
-
-form?.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const data = new FormData(form);
-  const email = String(data.get("email") || "").trim();
-  const company = String(data.get("company") || "").trim();
-
-  if (!email.includes("@") || company.length < 2) {
-    if (note) note.textContent = "Add a work email and company name.";
-    return;
+document.querySelectorAll("[data-book]").forEach((el) => {
+  if (el instanceof HTMLAnchorElement && !el.getAttribute("href")) {
+    el.href = BOOK_URL;
   }
+});
 
-  const existing = JSON.parse(localStorage.getItem("ego-access") || "[]");
-  existing.push({ email, company, at: new Date().toISOString() });
-  localStorage.setItem("ego-access", JSON.stringify(existing));
+function loomId(url) {
+  const match = String(url).match(/loom\.com\/(?:share|embed)\/([a-zA-Z0-9]+)/);
+  return match?.[1] ?? "";
+}
 
-  form.classList.add("is-done");
-  form.querySelector("button").textContent = "Request received";
-  if (note) {
-    note.textContent = "Thanks. We’ll write back when a seat is open.";
-  }
+document.querySelectorAll("[data-loom]").forEach((slot) => {
+  const id = loomId(slot.getAttribute("data-loom") || "");
+  if (!id) return;
+
+  const frame = document.createElement("iframe");
+  frame.src = `https://www.loom.com/embed/${id}`;
+  frame.title = "Product walkthrough";
+  frame.allow = "autoplay; fullscreen; picture-in-picture";
+  frame.allowFullscreen = true;
+  slot.replaceChildren(frame);
 });
