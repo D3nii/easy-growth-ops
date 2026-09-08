@@ -947,6 +947,17 @@ main > .proof-band {
   overflow: hidden;
 }
 
+.shot-photo {
+  margin: 0;
+  width: 100%;
+}
+
+.shot-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .shot-frame .os-window {
   border: 0;
 }
@@ -968,7 +979,7 @@ main > .proof-band {
   }
 
   .shot-grid-bot {
-    grid-template-columns: minmax(0, 42rem);
+    grid-template-columns: minmax(0, 52rem);
   }
 }
 
