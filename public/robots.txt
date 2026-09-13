@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://easygrowthops.com/sitemap.xml
+Sitemap: https://easy-growth-ops.jamilglobal.com/sitemap.xml
