@@ -336,6 +336,7 @@ input:focus-visible,
 .walk,
 .shots,
 .quotes,
+.price,
 .foot {
   padding-left: var(--pad);
   padding-right: var(--pad);
@@ -352,7 +353,8 @@ input:focus-visible,
 #shots,
 #reads,
 #reviews,
-#proof {
+#proof,
+#price {
   scroll-margin-top: 4.25rem;
 }
 
@@ -894,7 +896,8 @@ main > .proof-band {
 
 .walk,
 .shots,
-.quotes {
+.quotes,
+.price {
   padding-top: 2.4rem;
   padding-bottom: 2.6rem;
   border-top: 1px solid var(--line);
@@ -966,6 +969,54 @@ main > .proof-band {
   margin-top: 0.7rem;
   color: var(--ink-2);
   font-size: 0.98rem;
+}
+
+.price .lede {
+  margin-top: 0;
+}
+
+.price-table {
+  list-style: none;
+  max-width: 36rem;
+  margin-top: 2rem;
+}
+
+.price-table li {
+  display: grid;
+  grid-template-columns: 6.2rem 1fr;
+  gap: 1rem 1.25rem;
+  padding: 1.15rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.price-table strong {
+  font-family: var(--display);
+  font-size: clamp(1.55rem, 3vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+.price-table h3 {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.25rem;
+}
+
+.price-table p,
+.price-note {
+  color: var(--ink-2);
+}
+
+.price-note {
+  max-width: 36rem;
+  margin-top: 0.9rem;
+}
+
+.price-table + .price-note {
+  margin-top: 1.7rem;
 }
 
 @media (min-width: 880px) {
@@ -1161,6 +1212,15 @@ main > .proof-band {
   .day-list h3 {
     font-size: 1.7rem;
     line-height: 1.15;
+  }
+
+  .price-table li {
+    grid-template-columns: 5.4rem 1fr;
+    gap: 0.75rem 1rem;
+  }
+
+  .price-table h3 {
+    font-size: 1rem;
   }
 
   .for blockquote p {
