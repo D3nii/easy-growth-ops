@@ -345,6 +345,7 @@ input:focus-visible,
 .shots,
 .quotes,
 .price,
+.use,
 .foot {
   padding-left: var(--pad);
   padding-right: var(--pad);
@@ -362,7 +363,8 @@ input:focus-visible,
 #reads,
 #reviews,
 #proof,
-#price {
+#price,
+#use {
   scroll-margin-top: 4.25rem;
 }
 
@@ -904,10 +906,29 @@ main > .proof-band {
 .walk,
 .shots,
 .quotes,
-.price {
+.price,
+.use {
   padding-top: 2.4rem;
   padding-bottom: 2.6rem;
   border-top: 1px solid var(--line);
+}
+
+.use-copy {
+  max-width: 38rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.use-copy p {
+  color: var(--ink-2);
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  line-height: 1.5;
+}
+
+.use-copy .use-by {
+  margin-top: 0.35rem;
+  font-weight: 500;
+  color: var(--ink);
 }
 
 .loom {
