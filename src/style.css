@@ -167,10 +167,10 @@ ol {
   display: flex;
   align-items: center;
   gap: 1.1rem;
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
 }
 
 .nav-links a[aria-current="page"] {
@@ -202,12 +202,20 @@ ol {
 .index,
 .meta-label,
 .clock,
-.form-note,
+.form-note {
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+  color: var(--mute);
+}
+
 .foot-meta {
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
   color: var(--mute);
 }
 
@@ -262,10 +270,10 @@ ol {
   background: var(--lime);
   color: var(--ink);
   padding: 0.85rem 1.2rem;
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
   text-decoration: none;
   cursor: pointer;
 }
@@ -286,10 +294,10 @@ input:focus-visible,
 }
 
 .text-link {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
   color: var(--mute);
 }
 
@@ -433,11 +441,10 @@ main > .proof-band {
 }
 
 .tool-group h3 {
-  font-family: var(--mono);
-  font-size: 0.7rem;
+  font-family: var(--sans);
+  font-size: 1.0625rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: -0.015em;
   color: var(--mute);
   margin: 0 0 0.75rem;
 }
@@ -927,10 +934,10 @@ main > .proof-band {
   margin: 0;
   padding: 1.5rem;
   color: #b7b0a4;
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
   text-align: center;
 }
 
@@ -1043,10 +1050,10 @@ main > .proof-band {
 .access-form label {
   display: grid;
   gap: 0.4rem;
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
   color: #b7b0a4;
 }
 
@@ -1177,8 +1184,8 @@ main > .proof-band {
   .btn {
     min-height: 2.75rem;
     padding: 0.7rem 1rem;
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
+    font-size: 1rem;
+    letter-spacing: -0.015em;
   }
 
   .kicker,
@@ -1186,10 +1193,11 @@ main > .proof-band {
   .meta-label,
   .clock,
   .form-note,
-  .foot-meta {
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-    line-height: 1.45;
+  .foot-meta,
+  .tool-group h3 {
+    font-size: 1.0625rem;
+    letter-spacing: -0.015em;
+    line-height: 1.4;
   }
 
   .hero {
@@ -1256,7 +1264,7 @@ main > .proof-band {
   }
 
   .access-form label {
-    font-size: 0.78rem;
+    font-size: 1rem;
   }
 
   .access-form input {
