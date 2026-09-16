@@ -346,6 +346,9 @@ input:focus-visible,
 .quotes,
 .price,
 .use,
+.define-block,
+.compare,
+.faq,
 .foot {
   padding-left: var(--pad);
   padding-right: var(--pad);
@@ -364,7 +367,10 @@ input:focus-visible,
 #reviews,
 #proof,
 #price,
-#use {
+#use,
+#what,
+#compare,
+#faq {
   scroll-margin-top: 4.25rem;
 }
 
@@ -837,6 +843,11 @@ main > .proof-band {
   padding-bottom: 4rem;
 }
 
+.shots + .day {
+  border-top: 1px solid var(--line);
+  padding-top: 2.4rem;
+}
+
 .day-list {
   display: grid;
   gap: 0;
@@ -907,10 +918,101 @@ main > .proof-band {
 .shots,
 .quotes,
 .price,
-.use {
+.use,
+.define-block,
+.compare,
+.faq {
   padding-top: 2.4rem;
   padding-bottom: 2.6rem;
   border-top: 1px solid var(--line);
+}
+
+.updated {
+  margin-top: 1.15rem;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--mute);
+}
+
+.formula {
+  max-width: 40rem;
+  margin: 0.2rem 0 0;
+  font-family: var(--display);
+  font-size: clamp(1.15rem, 2.1vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.35;
+}
+
+.define-copy,
+.compare-note {
+  max-width: 40rem;
+  color: var(--ink-2);
+}
+
+.define-copy p + p,
+.compare-note + .compare-note {
+  margin-top: 0.9rem;
+}
+
+.compare-wrap {
+  overflow-x: auto;
+  margin-top: 0.4rem;
+}
+
+.compare-table {
+  width: 100%;
+  min-width: 36rem;
+  border-collapse: collapse;
+}
+
+.compare-table th,
+.compare-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.95rem 1rem 0.95rem 0;
+  border-top: 1px solid var(--line);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.compare-table th {
+  font-family: var(--sans);
+  font-weight: 500;
+  color: var(--mute);
+  letter-spacing: -0.015em;
+}
+
+.compare-table td:first-child,
+.compare-table th:first-child {
+  font-weight: 500;
+  color: var(--ink);
+  padding-left: 0;
+}
+
+.faq-list {
+  list-style: none;
+  max-width: 42rem;
+}
+
+.faq-list li {
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.faq-list h3 {
+  font-family: var(--sans);
+  font-size: 1.12rem;
+  font-weight: 600;
+  letter-spacing: -0.028em;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+.faq-list p {
+  color: var(--ink-2);
 }
 
 .use-copy {
@@ -1238,9 +1340,15 @@ main > .proof-band {
   }
 
   .product-copy h3,
-  .day-list h3 {
+  .day-list h3,
+  .faq-list h3 {
     font-size: 1.7rem;
     line-height: 1.15;
+  }
+
+  .faq-list h3 {
+    font-size: 1.12rem;
+    line-height: 1.35;
   }
 
   .price-table li {
