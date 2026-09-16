@@ -7,7 +7,7 @@ Two products:
 1. **ROI** — see what actually paid back
 2. **Drops** — daily industry-winning videos sent to Slack
 
-Site: [EasyGrowthOps.com](https://easygrowthops.com)
+Site: [easy-growth-ops.jamilglobal.com](https://easy-growth-ops.jamilglobal.com/)
 
 ## Local
 
