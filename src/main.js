@@ -30,3 +30,11 @@ document.querySelectorAll("[data-loom]").forEach((slot) => {
   frame.allowFullscreen = true;
   slot.replaceChildren(frame);
 });
+
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  document.querySelectorAll(".loom video").forEach((video) => {
+    video.removeAttribute("autoplay");
+    video.pause();
+    video.controls = true;
+  });
+}

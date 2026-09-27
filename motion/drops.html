@@ -1,0 +1,888 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Drops — motion walkthrough</title>
+    <link rel="stylesheet" href="./stage.css" />
+    <style>
+      .words {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 5;
+      }
+      .word {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 468px;
+        text-align: center;
+        font-size: 150px;
+      }
+      .open-kicker {
+        left: 0;
+        right: 0;
+        top: 330px;
+        text-align: center;
+        z-index: 5;
+      }
+
+      .wall {
+        left: 960px;
+        top: 540px;
+        width: 0;
+        height: 0;
+        z-index: 1;
+      }
+      .ad {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 180px;
+        height: 320px;
+        margin: -160px 0 0 -90px;
+        border-radius: 14px;
+        overflow: hidden;
+        background: #2a2520;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      }
+      .ad-bg {
+        position: absolute;
+        inset: 0;
+      }
+      .ad-subj {
+        position: absolute;
+        left: 50%;
+        top: 92px;
+        width: 96px;
+        margin-left: -48px;
+      }
+      .ad-subj .head {
+        width: 56px;
+        height: 56px;
+        margin: 0 auto;
+        border-radius: 50%;
+      }
+      .ad-subj .body {
+        width: 110px;
+        height: 90px;
+        margin: 8px 0 0 -7px;
+        border-radius: 55px 55px 12px 12px;
+      }
+      .ad-subj.product .head {
+        width: 26px;
+        height: 18px;
+        border-radius: 4px 4px 0 0;
+      }
+      .ad-subj.product .body {
+        width: 70px;
+        height: 130px;
+        margin: 0 auto;
+        border-radius: 16px;
+      }
+      .ad-top {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        right: 10px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 10px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .ad-top .pfp {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.85);
+      }
+      .ad-cap {
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        bottom: 58px;
+        padding: 8px 9px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.94);
+        color: #141210;
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: 15px;
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+      }
+      .ad-cap i {
+        display: block;
+        height: 7px;
+        border-radius: 4px;
+        background: rgba(20, 18, 16, 0.75);
+      }
+      .ad-cap i + i {
+        margin-top: 6px;
+        width: 64%;
+      }
+      .ad-cta {
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        bottom: 14px;
+        height: 32px;
+        border-radius: 7px;
+        display: grid;
+        place-items: center;
+        font-size: 11px;
+        font-weight: 700;
+        color: #141210;
+      }
+      .ad-dur {
+        position: absolute;
+        right: 10px;
+        top: 34px;
+        padding: 2px 6px;
+        border-radius: 4px;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        font-size: 10px;
+        font-weight: 600;
+      }
+      .win-tag {
+        position: absolute;
+        left: 50%;
+        top: -38px;
+        transform: translateX(-50%);
+        padding: 5px 12px;
+        border-radius: 6px;
+        background: var(--lime);
+        color: var(--ink);
+        font-family: var(--mono);
+        font-size: 14px;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+      .winner {
+        z-index: 8;
+        overflow: visible;
+      }
+      .winner .clipper {
+        position: absolute;
+        inset: 0;
+        border-radius: 14px;
+        overflow: hidden;
+      }
+      .winner .ring {
+        position: absolute;
+        inset: -6px;
+        border: 4px solid var(--lime);
+        border-radius: 19px;
+      }
+      .winner .play {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 52px;
+        height: 52px;
+        margin: -26px 0 0 -26px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.55);
+      }
+      .winner .play::before {
+        content: "";
+        position: absolute;
+        left: 20px;
+        top: 15px;
+        border-top: 11px solid transparent;
+        border-bottom: 11px solid transparent;
+        border-left: 17px solid #fff;
+      }
+      .winners {
+        left: 0;
+        top: 0;
+        z-index: 8;
+      }
+
+      .wall-label {
+        left: 110px;
+        top: 150px;
+        z-index: 6;
+        padding: 26px 32px 28px;
+        border-radius: 16px;
+        background: rgba(22, 20, 16, 0.86);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(6px);
+      }
+      .wall-label .count {
+        margin-top: 8px;
+        font-size: 96px;
+      }
+      .wall-label .note {
+        margin-top: 6px;
+        font-size: 26px;
+        color: rgba(243, 238, 228, 0.7);
+      }
+      .dimmer {
+        inset: 0;
+        z-index: 2;
+        background: var(--stage);
+      }
+
+      .thread-win {
+        position: absolute;
+        left: 880px;
+        top: 130px;
+        width: 960px;
+        height: 800px;
+        z-index: 7;
+      }
+      .thread {
+        padding: 30px 40px;
+      }
+      .tmsg {
+        display: flex;
+        gap: 22px;
+      }
+      .tbody {
+        flex: 1;
+        font-size: 24px;
+        line-height: 36px;
+        color: var(--slack-text);
+      }
+      .tline {
+        white-space: nowrap;
+      }
+      .links span {
+        color: var(--slack-link);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .rule {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin: 22px 0 22px 74px;
+        color: #ababad;
+        font-size: 19px;
+      }
+      .rule::before,
+      .rule::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #35373b;
+      }
+      .slots {
+        display: flex;
+        gap: 14px;
+        margin-top: 14px;
+      }
+      .slot {
+        width: 180px;
+        height: 320px;
+        border-radius: 14px;
+        background: #25282d;
+      }
+
+      .morning {
+        left: 110px;
+        top: 250px;
+        z-index: 6;
+        width: 780px;
+      }
+      .clock {
+        margin-top: 10px;
+        font-size: 180px;
+        line-height: 1.1;
+        display: flex;
+      }
+      .clock .digit {
+        display: inline-block;
+        overflow: hidden;
+        height: 1.1em;
+      }
+      .clock .digit > span,
+      .clock .digit > span > span {
+        display: block;
+      }
+      .morning .am {
+        font-family: var(--mono);
+        font-size: 34px;
+        color: rgba(243, 238, 228, 0.6);
+        margin-top: 12px;
+      }
+      .morning .say {
+        margin-top: 40px;
+        font-size: 56px;
+      }
+
+      .struct {
+        left: 1000px;
+        top: 250px;
+        z-index: 9;
+        width: 820px;
+      }
+      .struct .beats {
+        margin-top: 16px;
+        font-size: 150px;
+      }
+      .struct p {
+        margin: 34px 0 0;
+        font-size: 36px;
+        line-height: 1.3;
+        color: rgba(243, 238, 228, 0.78);
+      }
+      .tl {
+        left: 413px;
+        top: 945px;
+        width: 414px;
+        height: 10px;
+        z-index: 9;
+        display: flex;
+        gap: 6px;
+      }
+      .tl i {
+        position: relative;
+        flex: 1;
+        border-radius: 5px;
+        background: rgba(243, 238, 228, 0.15);
+        overflow: hidden;
+      }
+      .tl i b {
+        position: absolute;
+        inset: 0;
+        background: var(--lime);
+        transform-origin: 0 50%;
+      }
+      .tl-labels {
+        left: 413px;
+        top: 972px;
+        width: 414px;
+        z-index: 9;
+        display: flex;
+        gap: 6px;
+        font-family: var(--mono);
+        font-size: 18px;
+      }
+      .tl-labels span {
+        flex: 1;
+      }
+
+      .wipe {
+        inset: 0;
+        background: var(--lime);
+        z-index: 45;
+      }
+      .end {
+        inset: 0;
+        z-index: 30;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: var(--stage);
+      }
+      .end .mark {
+        width: 104px;
+        height: 104px;
+        font-size: 38px;
+      }
+      .end h1 {
+        margin: 40px 0 0;
+        font-size: 96px;
+      }
+      .end .sub {
+        margin-top: 26px;
+        font-size: 40px;
+        color: rgba(243, 238, 228, 0.82);
+      }
+      .end .stack {
+        margin-top: 44px;
+        font-family: var(--mono);
+        font-size: 23px;
+        color: rgba(243, 238, 228, 0.55);
+      }
+      .end .url {
+        margin-top: 22px;
+        font-family: var(--mono);
+        font-size: 28px;
+        color: var(--lime);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stage"></div>
+    <script type="module">
+      import { run, h, css, seg, lerp, ease, rng, clamp } from "./engine.js";
+
+      const T = {
+        wall: 2.2,
+        stop: 3.9,
+        pick: 3.95,
+        row: 4.45,
+        thread: 5.15,
+        fly: 6.3,
+        struct: 9.85,
+        wipe: 12.0,
+        end: 13.95,
+      };
+
+      const PALETTES = [
+        ["#f4d9c6", "#e7a98a", "#7a3f2c", "#ffd84d"],
+        ["#cfe3f5", "#6fa3d8", "#1e3a5f", "#c8f04a"],
+        ["#e9f0d9", "#a8c47a", "#3b4a23", "#ffffff"],
+        ["#2b2a4a", "#6c5ce7", "#f3c7a6", "#ffd84d"],
+        ["#1c1410", "#6a5344", "#f3c7a6", "#c8f04a"],
+        ["#fbe3e8", "#f28ca3", "#7a2140", "#ffffff"],
+        ["#ffe9c2", "#ffb347", "#6b3a00", "#141210"],
+        ["#dff5ef", "#58c4a8", "#0f4a3c", "#ffffff"],
+        ["#232323", "#4b4b4b", "#e8e8e8", "#ff5f57"],
+      ];
+
+      const WINNERS = [
+        { cap: "Still waking up at 3am?", cta: "Learn more", dur: "0:51", pal: 3 },
+        { cap: "Nurses swear by this", cta: "Shop now", dur: "0:36", pal: 1 },
+        { cap: "Knee pain after 50?", cta: "Learn more", dur: "0:28", pal: 0 },
+        { cap: "Try it free for 30 days", cta: "Get offer", dur: "0:44", pal: 7 },
+      ];
+
+      const BEATS = [
+        { cap: "Still waking up at 3am?", label: "Hook" },
+        { cap: "★★★★★ 12,000+ reviews", label: "Proof" },
+        { cap: "Try it free for 30 days", label: "Offer" },
+      ];
+
+      function makeAd(parent, r, opts = {}) {
+        const pal = PALETTES[opts.pal ?? Math.floor(r() * PALETTES.length)];
+        const el = h("div", "ad", parent);
+        const inner = opts.clip ? h("div", "clipper", el) : el;
+        const bg = h("div", "ad-bg", inner);
+        const ang = Math.floor(140 + r() * 60);
+        bg.style.background = `linear-gradient(${ang}deg, ${pal[0]}, ${pal[1]})`;
+        const product = r() < 0.35;
+        const subj = h("div", "ad-subj" + (product ? " product" : ""), inner);
+        const hd = h("div", "head", subj);
+        const bd = h("div", "body", subj);
+        hd.style.background = pal[2];
+        bd.style.background = pal[2];
+        subj.style.opacity = product ? "0.9" : "0.75";
+        const top = h("div", "ad-top", inner);
+        h("span", "pfp", top);
+        h("span", "", top, "Sponsored");
+        const cap = h("div", "ad-cap", inner);
+        if (opts.cap) cap.textContent = opts.cap;
+        else {
+          h("i", "", cap);
+          h("i", "", cap);
+        }
+        const cta = h("div", "ad-cta", inner, opts.cta ?? "");
+        cta.style.background = pal[3];
+        if (opts.dur) h("div", "ad-dur", inner, opts.dur);
+        return { el, inner, cap, subj };
+      }
+
+      const COLS = 13;
+      const ROWS = 7;
+      const PX = 206;
+      const PY = 350;
+      const WALL_ROT = -11;
+      const WALL_S = 0.92;
+      const SCROLL = 3600;
+
+      function wallScroll(t) {
+        return SCROLL * ease.outCubic(clamp((t - T.wall + 0.25) / (T.stop - T.wall + 0.25)));
+      }
+
+      function wallLocal(col, row, t) {
+        const speed = 1 + (col % 3) * 0.14;
+        const H = ROWS * PY;
+        const raw = row * PY - wallScroll(t) * speed + col * 57;
+        const y = ((((raw + H / 2) % H) + H) % H) - H / 2;
+        return { x: (col - (COLS - 1) / 2) * PX, y };
+      }
+
+      function toStage({ x, y }, S = WALL_S) {
+        const a = (WALL_ROT * Math.PI) / 180;
+        return {
+          x: 960 + S * (x * Math.cos(a) - y * Math.sin(a)),
+          y: 540 + S * (x * Math.sin(a) + y * Math.cos(a)),
+        };
+      }
+
+      function offsetIn(el, root) {
+        let x = 0;
+        let y = 0;
+        let n = el;
+        while (n && n !== root) {
+          x += n.offsetLeft;
+          y += n.offsetTop;
+          n = n.offsetParent;
+        }
+        return { x, y, w: el.offsetWidth, h: el.offsetHeight };
+      }
+
+      function maskLine(parent, text, cls = "") {
+        const m = h("span", "mask " + cls, parent);
+        return h("span", "", m, text);
+      }
+
+      function build(stage) {
+        h("div", "vignette", stage);
+        const hudL = h("div", "hud hud-tl", stage);
+        h("span", "mark", hudL, "EG");
+        h("span", "", hudL, "Easy Growth Ops");
+        const hudR = h("div", "hud hud-tr", stage);
+        h("span", "dot", hudR);
+        h("span", "", hudR, "Drops — winning ads in Slack");
+
+        // Opening words
+        const openK = h("div", "open-kicker kicker", stage, "02 — DROPS");
+        const words = h("div", "words", stage);
+        const wordEls = ["Yesterday’s", "winners.", "In Slack.", "This morning."].map((w, i) => {
+          const wrap = h("div", "word display", words);
+          const s = maskLine(wrap, w);
+          if (i === 1 || i === 3) s.classList.add("lime");
+          return s;
+        });
+
+        // Wall of ads
+        const wall = h("div", "wall", stage);
+        const r = rng(42);
+        const cards = [];
+        for (let row = 0; row < ROWS; row++) {
+          for (let col = 0; col < COLS; col++) {
+            const ad = makeAd(wall, r);
+            cards.push({ ...ad, col, row });
+          }
+        }
+
+        // Pick four winners near fixed screen spots at the stopping frame.
+        const spots = [
+          { x: 640, y: 420 },
+          { x: 1110, y: 360 },
+          { x: 860, y: 720 },
+          { x: 1370, y: 660 },
+        ];
+        const taken = new Set();
+        const picks = spots.map((sp) => {
+          let best = null;
+          let bestD = Infinity;
+          cards.forEach((c, i) => {
+            if (taken.has(i)) return;
+            const p = toStage(wallLocal(c.col, c.row, T.stop + 1));
+            const d = (p.x - sp.x) ** 2 + (p.y - sp.y) ** 2;
+            if (d < bestD) {
+              bestD = d;
+              best = i;
+            }
+          });
+          taken.add(best);
+          return best;
+        });
+        picks.forEach((i) => (cards[i].el.style.visibility = "hidden"));
+
+        const dimmer = h("div", "dimmer", stage);
+        const wl = h("div", "wall-label", stage);
+        const wlK = h("div", "kicker", wl, "EVERY LIVE AD");
+        const wlCount = h("div", "count display", wl, "0");
+        const wlNote = h("div", "note", wl, "Unsorted. You go dig.");
+
+        const winners = h("div", "winners", stage);
+        const wins = WINNERS.map((w, i) => {
+          const ad = makeAd(winners, rng(100 + i), { ...w, clip: true });
+          ad.el.classList.add("winner");
+          const ring = h("div", "ring", ad.el);
+          const tag = h("div", "win-tag", ad.el, "WINNER");
+          const play = h("div", "play", ad.el);
+          return { ...ad, ring, tag, play, card: cards[picks[i]] };
+        });
+
+        // Slack thread
+        const tw = h("div", "win thread-win", stage);
+        const bar = h("div", "win-bar", tw);
+        const lights = h("div", "lights", bar);
+        h("i", "", lights);
+        h("i", "", lights);
+        h("i", "", lights);
+        h("div", "title", bar, "Thread · #creative");
+        const thread = h("div", "thread", tw);
+        const parentMsg = h("div", "tmsg", thread);
+        const pAv = h("div", "avatar", parentMsg, "EG");
+        const pb = h("div", "tbody", parentMsg);
+        const pm = h("div", "meta tline", pb);
+        h("span", "", pm, "Drops");
+        h("span", "app", pm, "APP");
+        h("time", "", pm, "8:02 AM");
+        const p1 = h("div", "tline", pb, "Search: Health");
+        const p2 = h("div", "tline", pb, "Date: 2026-08-25");
+        const rule = h("div", "rule", thread, "1 reply");
+        const reply = h("div", "tmsg", thread);
+        const rAv = h("div", "avatar", reply, "EG");
+        const rb = h("div", "tbody", reply);
+        const rm = h("div", "meta tline", rb);
+        h("span", "", rm, "Drops");
+        h("span", "app", rm, "APP");
+        h("time", "", rm, "8:02 AM");
+        const r1 = h("div", "tline", rb, "4 ads");
+        const r2 = h("div", "tline links", rb);
+        r2.innerHTML = "<span>LP link</span> | <span>Ad link</span>";
+        const slotsEl = h("div", "slots", rb);
+        const slots = WINNERS.map(() => h("div", "slot", slotsEl));
+
+        const morning = h("div", "morning", stage);
+        const mK = h("div", "kicker", morning, "THIS MORNING");
+        const clock = h("div", "clock display", morning);
+        const digits = ["0", "8", ":", "0", "2"].map((d, i) => {
+          const dg = h("span", "digit", clock);
+          const col = h("span", "", dg);
+          if (i === 4) {
+            ["9", "0", "1", "2"].forEach((n) => h("span", "", col, n));
+          } else if (i === 3) {
+            ["5", "0"].forEach((n) => h("span", "", col, n));
+          } else if (i === 1) {
+            ["7", "8"].forEach((n) => h("span", "", col, n));
+          } else {
+            h("span", "", col, d);
+          }
+          return col;
+        });
+        const am = h("div", "am", morning, "AM · before standup");
+        const say = h("div", "say display", morning);
+        const s1 = maskLine(say, "Four winners.");
+        const s2 = maskLine(say, "Already picked.", "lime");
+        s2.classList.add("lime");
+
+        // Structure
+        const struct = h("div", "struct", stage);
+        const stK = h("div", "kicker", struct, "WATCH THE STRUCTURE");
+        const beatsEl = h("div", "beats display", struct);
+        const beatEls = BEATS.map((b) => maskLine(beatsEl, b.label + "."));
+        const stP = h("p", "", struct, "Not a swipe to copy. A pattern to rewrite.");
+        const tl = h("div", "tl", stage);
+        const tlBars = BEATS.map(() => h("b", "", h("i", "", tl)));
+        const tlLabels = h("div", "tl-labels", stage);
+        const tlL = BEATS.map((b) => h("span", "", tlLabels, b.label.toUpperCase()));
+
+        // End
+        const end = h("div", "end", stage);
+        const endMark = h("div", "mark", end, "EG");
+        const endH = h("h1", "display", end);
+        const e1 = maskLine(endH, "Easy Growth Ops Drops");
+        const endSub = h("div", "sub", end);
+        const e2 = maskLine(endSub, "Yesterday’s winning ads. In Slack before standup.");
+        const e3 = h("div", "stack", end, "Meta · Google · TikTok  —  three or four a day");
+        const e4 = h("div", "url", end, "easy-growth-ops.jamilglobal.com/drops");
+        const wipe = h("div", "wipe", stage);
+
+        const slotPos = slots.map((s) => {
+          const o = offsetIn(s, stage);
+          return { x: o.x + 90, y: o.y + 160 };
+        });
+
+        return {
+          slotPos, stage, hudL, hudR, openK, wordEls, wall, cards, dimmer, wl, wlK, wlCount, wlNote, wins,
+          tw, pAv, rAv, pm, p1, p2, rule, rm, r1, r2, slots, morning, mK, digits, am, s1, s2,
+          struct, stK, beatEls, stP, tl, tlBars, tlLabels, tlL, end, endMark, e1, e2, e3, e4, wipe,
+        };
+      }
+
+      function place(el, x, y, rot, s, extra = {}) {
+        css(el, { transform: `translate(${x}px, ${y}px) rotate(${rot}deg) scale(${s})`, ...extra });
+      }
+
+      function render(t, a) {
+        // ---------- Opening words ----------
+        const W = [0.1, 0.55, 1.15, 1.65];
+        a.wordEls.forEach((w, i) => {
+          const k = seg(t, W[i], 0.5);
+          const nextAt = i < 2 ? W[2] - 0.3 : i === 2 ? W[3] - 0.3 : T.wall - 0.35;
+          const out = seg(t, nextAt, 0.35, ease.inExpo);
+          css(w, { transform: `translateY(${(1 - k) * 110 - out * 110}%)` });
+          const wrap = w.parentElement.parentElement;
+          const stackY = i === 0 ? -80 : i === 1 ? 80 : 0;
+          wrap.style.transform = `translateY(${i < 2 ? stackY : 0}px)`;
+          wrap.style.display = t < T.wall + 0.3 ? "block" : "none";
+        });
+        const okK = seg(t, 0.05, 0.5) * (1 - seg(t, 1.05, 0.3, ease.inExpo));
+        css(a.openK, { opacity: String(okK), transform: `translateY(${-140 + (1 - okK) * 10}px)` });
+
+        // ---------- Wall ----------
+        const wallOn = t > T.wall - 0.1 && t < T.thread + 0.8;
+        const wallIn = seg(t, T.wall - 0.1, 0.5);
+        const wallS = WALL_S * lerp(1.25, 1, wallIn);
+        css(a.wall, {
+          display: wallOn ? "block" : "none",
+          transform: `rotate(${WALL_ROT}deg) scale(${wallS})`,
+          opacity: String(wallIn),
+        });
+        const pickK = seg(t, T.pick, 0.5);
+        for (const c of a.cards) {
+          const p = wallLocal(c.col, c.row, t);
+          css(c.el, { transform: `translate(${p.x}px, ${p.y}px)` });
+        }
+        css(a.dimmer, {
+          display: wallOn ? "block" : "none",
+          opacity: String(pickK * 0.86 + seg(t, T.thread - 0.2, 0.6) * 0.14),
+        });
+
+        const wlIn = seg(t, T.wall + 0.15, 0.6);
+        const wlOut = seg(t, T.thread - 0.3, 0.4, ease.inExpo);
+        css(a.wl, {
+          display: t > T.wall && t < T.thread + 0.2 ? "block" : "none",
+          opacity: String(wlIn * (1 - wlOut)),
+          transform: `translateY(${(1 - wlIn) * 30}px)`,
+        });
+        const cnt = Math.round(12408 * ease.outCubic(clamp((t - T.wall - 0.1) / 1.5)));
+        const picked = t > T.pick + 0.15;
+        a.wlK.textContent = picked ? "YESTERDAY’S WINNERS" : "EVERY LIVE AD";
+        a.wlCount.textContent = picked ? "4" : cnt.toLocaleString("en-US");
+        a.wlCount.classList.toggle("lime", picked);
+        a.wlNote.textContent = picked ? "Already picked for you." : "Unsorted. You go dig.";
+        if (picked) {
+          const pop = seg(t, T.pick + 0.15, 0.4, ease.outBack);
+          a.wlCount.style.transform = `scale(${lerp(0.6, 1, pop)})`;
+          a.wlCount.style.transformOrigin = "0 50%";
+        } else a.wlCount.style.transform = "";
+
+        // ---------- Winners ----------
+        const rowK = seg(t, T.row, 0.75, ease.inOutExpo);
+        const flyK = (i) => seg(t, T.fly + i * 0.07, 0.75, ease.inOutExpo);
+        const tpos = a.slotPos;
+        const struct0 = seg(t, T.struct, 0.8, ease.inOutExpo);
+        a.wins.forEach((w, i) => {
+          const wp = toStage(wallLocal(w.card.col, w.card.row, t), wallS);
+          const rowPos = { x: 960 + (i - 1.5) * 250, y: 560 };
+          let x = lerp(wp.x, rowPos.x, rowK);
+          let y = lerp(wp.y, rowPos.y, rowK);
+          let rot = lerp(WALL_ROT, 0, rowK);
+          const pickPop = seg(t, T.pick + i * 0.06, 0.45, ease.outBack) - seg(t, T.pick + 0.25 + i * 0.06, 0.3);
+          let s = lerp(wallS, 1.12, rowK) * (1 + pickPop * 0.08);
+          const f = flyK(i);
+          const arc = Math.sin(f * Math.PI) * -60;
+          x = lerp(x, tpos[i].x, f);
+          y = lerp(y, tpos[i].y, f) + arc;
+          s = lerp(s, 1, f);
+          rot = lerp(rot, 0, f) + Math.sin(f * Math.PI) * (i % 2 ? 6 : -6);
+          if (i === 0) {
+            x = lerp(x, 620, struct0);
+            y = lerp(y, 540 - 30, struct0);
+            s = lerp(s, 2.3, struct0);
+          }
+          if (i > 0) x += seg(t, T.struct - 0.05, 0.6, ease.inOutExpo) * 1100;
+          place(w.el, x, y, rot, s, {
+            display: t > T.wall - 0.1 && t < T.wipe + 0.45 ? "block" : "none",
+            opacity: String(wallIn),
+            zIndex: i === 0 ? "9" : "8",
+          });
+          const ringK = seg(t, T.pick + i * 0.06, 0.4) * (1 - seg(t, T.fly + 0.1, 0.4));
+          css(w.ring, { opacity: String(ringK), transform: `scale(${lerp(1.15, 1, ringK)})` });
+          const tagK = seg(t, T.pick + 0.1 + i * 0.06, 0.45, ease.outBack) * (1 - seg(t, T.fly - 0.2, 0.3));
+          css(w.tag, { opacity: String(clamp(tagK)), transform: `translateX(-50%) translateY(${(1 - tagK) * 14}px)` });
+          const playK = seg(t, T.fly + 0.7 + i * 0.07, 0.4) * (1 - seg(t, T.struct, 0.3));
+          css(w.play, { opacity: String(playK * 0.95), transform: `scale(${lerp(0.5, 1, playK)})` });
+        });
+
+        // ---------- Thread ----------
+        const thIn = seg(t, T.thread, 0.8, ease.outExpo);
+        const thOut = seg(t, T.struct - 0.05, 0.6, ease.inOutExpo);
+        css(a.tw, {
+          display: t > T.thread - 0.05 && t < T.struct + 0.6 ? "block" : "none",
+          transform: `translateX(${(1 - thIn) * 1100 + thOut * 1100}px)`,
+        });
+        const lineIn = (el, st) => {
+          const k = seg(t, st, 0.5);
+          css(el, { opacity: String(k), transform: `translateY(${(1 - k) * 16}px)` });
+        };
+        const u = T.thread + 0.35;
+        [a.pm, a.p1, a.p2, a.rule, a.rm, a.r1, a.r2].forEach((el, i) => lineIn(el, u + i * 0.08));
+        lineIn(a.pAv, u);
+        lineIn(a.rAv, u + 0.32);
+        a.slots.forEach((s, i) => lineIn(s, u + 0.6 + i * 0.05));
+
+        const mIn = (i) => seg(t, T.thread + 0.2 + i * 0.1, 0.6);
+        const mOut = seg(t, T.struct - 0.1, 0.55, ease.inOutCubic);
+        css(a.morning, {
+          display: t > T.thread && t < T.struct + 0.5 ? "block" : "none",
+          opacity: String(1 - mOut),
+          transform: `translateX(${-mOut * 200}px)`,
+        });
+        css(a.mK, { opacity: String(mIn(0)) });
+        // Clock rolls 07:59 -> 08:02
+        const roll = (col, n, st, dur) => {
+          const k = seg(t, st, dur, ease.inOutCubic);
+          col.style.transform = `translateY(${-(k * (n - 1)) * 1.1}em)`;
+        };
+        const clockIn = mIn(1);
+        a.digits.forEach((d, i) => {
+          d.parentElement.style.opacity = String(clockIn);
+          d.parentElement.style.transform = `translateY(${(1 - clockIn) * 40}px)`;
+        });
+        a.digits.forEach((d) => (d.style.lineHeight = "1.1em"));
+        roll(a.digits[1], 2, T.thread + 0.5, 0.45);
+        roll(a.digits[3], 2, T.thread + 0.5, 0.45);
+        roll(a.digits[4], 4, T.thread + 0.5, 0.9);
+        css(a.am, { opacity: String(mIn(2)) });
+        css(a.s1, { transform: `translateY(${(1 - seg(t, T.fly + 0.2, 0.6)) * 110}%)` });
+        css(a.s2, { transform: `translateY(${(1 - seg(t, T.fly + 0.35, 0.6)) * 110}%)` });
+
+        // ---------- Structure ----------
+        const sp = T.struct + 0.55;
+        const beatDur = 0.62;
+        const showS = t > T.struct && t < T.wipe + 0.45;
+        css(a.struct, { display: showS ? "block" : "none" });
+        const sK = seg(t, T.struct + 0.35, 0.6);
+        css(a.stK, { opacity: String(sK) });
+        a.beatEls.forEach((b, i) => {
+          const k = seg(t, T.struct + 0.4 + i * 0.1, 0.7);
+          const active = t >= sp + i * beatDur && t < sp + (i + 1) * beatDur + (i === 2 ? 5 : 0);
+          css(b, {
+            transform: `translateY(${(1 - k) * 110}%)`,
+            color: active ? "#c8f04a" : "rgba(243,238,228,0.22)",
+          });
+        });
+        const pK = seg(t, T.struct + 0.7, 0.6);
+        css(a.stP, { opacity: String(pK), transform: `translateY(${(1 - pK) * 20}px)` });
+        const tlK = seg(t, T.struct + 0.45, 0.5);
+        css(a.tl, { display: showS ? "flex" : "none", opacity: String(tlK) });
+        css(a.tlLabels, { display: showS ? "flex" : "none", opacity: String(tlK) });
+        a.tlBars.forEach((b, i) => {
+          const k = clamp((t - sp - i * beatDur) / beatDur);
+          b.style.transform = `scaleX(${k})`;
+          a.tlL[i].style.color = k > 0 ? "#c8f04a" : "rgba(243,238,228,0.4)";
+        });
+        const hero = a.wins[0];
+        const beatIdx = Math.max(0, Math.min(2, Math.floor((t - sp) / beatDur)));
+        hero.cap.textContent = t > sp ? BEATS[beatIdx].cap : WINNERS[0].cap;
+        const kb = t > T.struct ? (t - T.struct) : 0;
+        hero.subj.style.transform = `scale(${1 + kb * 0.06}) translateY(${-kb * 4}px)`;
+        const capPop = t > sp ? seg(t, sp + beatIdx * beatDur, 0.3, ease.outBack) : 1;
+        hero.cap.style.transform = `scale(${lerp(0.85, 1, capPop)})`;
+
+        // HUD out during end
+        const hudK = 1 - seg(t, T.wipe, 0.3);
+        a.hudR.style.opacity = String(hudK);
+
+        // ---------- Wipe + end ----------
+        const wIn = seg(t, T.wipe, 0.38, ease.inOutExpo);
+        const wOut = seg(t, T.wipe + 0.45, 0.45, ease.inOutExpo);
+        css(a.wipe, {
+          transform: `translateX(${(wIn - 1) * 100 + wOut * 100}%)`,
+          display: t > T.wipe && t < T.wipe + 1 ? "block" : "none",
+        });
+        const e = T.wipe + 0.42;
+        css(a.end, { display: t > e ? "flex" : "none" });
+        const mk2 = seg(t, e + 0.1, 0.7, ease.outBack);
+        css(a.endMark, { transform: `scale(${mk2}) rotate(${(1 - mk2) * 90}deg)` });
+        css(a.e1, { transform: `translateY(${(1 - seg(t, e + 0.25, 0.8)) * 110}%)` });
+        css(a.e2, { transform: `translateY(${(1 - seg(t, e + 0.4, 0.8)) * 110}%)` });
+        const k3 = seg(t, e + 0.6, 0.7);
+        css(a.e3, { opacity: String(k3), transform: `translateY(${(1 - k3) * 20}px)` });
+        const k4 = seg(t, e + 0.75, 0.7);
+        css(a.e4, { opacity: String(k4), transform: `translateY(${(1 - k4) * 20}px)` });
+      }
+
+      run({ duration: T.end, fps: 60, build, render });
+    </script>
+  </body>
+</html>
