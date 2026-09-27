@@ -8,3 +8,4 @@ dist
 .vite
 .playwright-mcp
 .vercel
+motion/out

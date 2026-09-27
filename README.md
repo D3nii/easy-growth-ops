@@ -22,3 +22,15 @@ npm run dev
 npm run build
 npm run preview
 ```
+
+## Walkthrough videos
+
+`motion/roi.html` and `motion/drops.html` are code-driven motion pieces. Open
+them with `npm run dev` at `/motion/roi.html` to preview in real time (`?t=6.5`
+freezes a frame). To re-render the MP4s and posters in `public/walkthroughs/`:
+
+```bash
+npm run motion
+```
+
+Needs Chrome (`CHROME_PATH` to override) and ffmpeg.

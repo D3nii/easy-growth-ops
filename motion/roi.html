@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ROI — motion walkthrough</title>
+    <link rel="stylesheet" href="./stage.css" />
+    <style>
+      .tab {
+        width: 520px;
+        border-radius: 16px;
+        overflow: hidden;
+        background: #1c1915;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+        left: 0;
+        top: 0;
+      }
+      .tab .win-bar {
+        background: #2b2721;
+        height: 46px;
+      }
+      .tab .win-bar .title {
+        font-size: 17px;
+      }
+      .tab-body {
+        padding: 26px 30px 30px;
+      }
+      .tab-label {
+        font-family: var(--mono);
+        font-size: 18px;
+        color: #8f887c;
+      }
+      .tab-num {
+        margin-top: 6px;
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: 64px;
+        letter-spacing: -0.04em;
+        color: #fff;
+      }
+      .tab-spark {
+        margin-top: 14px;
+        display: block;
+      }
+      .sheet {
+        display: grid;
+        grid-template-columns: 70px repeat(3, 1fr);
+        font-family: var(--mono);
+        font-size: 16px;
+        color: #b9b2a6;
+      }
+      .sheet span {
+        padding: 9px 10px;
+        border-right: 1px solid rgba(255, 255, 255, 0.07);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      .sheet .hd {
+        color: #6f685d;
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .sheet .err {
+        color: #ff7b72;
+      }
+      .headline {
+        left: 0;
+        right: 0;
+        top: 360px;
+        text-align: center;
+        font-size: 128px;
+        z-index: 5;
+      }
+      .spin {
+        position: absolute;
+        right: 22px;
+        top: 13px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 2.5px solid rgba(255, 255, 255, 0.15);
+        border-top-color: #c8c1b6;
+      }
+
+      .col {
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .col-label {
+        font-family: var(--mono);
+        font-size: 22px;
+        color: var(--lime);
+        margin-bottom: 6px;
+      }
+      .chip {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 300px;
+        height: 76px;
+        border-radius: 14px;
+        background: #211d18;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .chip img {
+        max-height: 34px;
+        max-width: 190px;
+      }
+      .chip.ad {
+        justify-content: flex-start;
+        gap: 18px;
+        padding-left: 30px;
+        font-size: 26px;
+        font-weight: 600;
+        color: #fff;
+      }
+      .chip.ad img {
+        height: 30px;
+      }
+      .wires {
+        inset: 0;
+        z-index: 1;
+      }
+      .hub {
+        left: 890px;
+        top: 470px;
+        width: 140px;
+        height: 140px;
+        z-index: 3;
+        display: grid;
+        place-items: center;
+        background: var(--lime);
+        color: var(--ink);
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: 50px;
+        letter-spacing: -0.06em;
+      }
+      .formula {
+        left: 0;
+        right: 0;
+        top: 670px;
+        text-align: center;
+        font-family: var(--mono);
+        font-size: 30px;
+        color: var(--paper);
+        z-index: 3;
+      }
+      .formula b {
+        color: var(--lime);
+        font-weight: 500;
+      }
+
+      .cam {
+        inset: 0;
+        transform-origin: 960px 540px;
+      }
+      .update {
+        position: absolute;
+        left: 200px;
+        top: 110px;
+        width: 1520px;
+        height: 860px;
+      }
+      .msg {
+        display: flex;
+        gap: 22px;
+        padding: 34px 40px;
+      }
+      .msg-body {
+        flex: 1;
+        min-width: 0;
+        font-size: 23.5px;
+        line-height: 36px;
+        color: var(--slack-text);
+        letter-spacing: 0;
+      }
+      .line {
+        position: relative;
+        white-space: nowrap;
+      }
+      .line .scan {
+        position: absolute;
+        left: -10px;
+        top: 4px;
+        bottom: 4px;
+        width: 120px;
+        background: linear-gradient(90deg, transparent, rgba(200, 240, 74, 0.35), transparent);
+      }
+      .dash {
+        color: #9a9b9e;
+        letter-spacing: 0.05em;
+      }
+      .title-line {
+        margin: 6px 0 10px;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        color: #fff;
+      }
+      .ico {
+        width: 26px;
+        height: 26px;
+        flex-shrink: 0;
+      }
+      .total {
+        margin-top: 16px;
+        font-weight: 700;
+        color: #fff;
+      }
+      .tot {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        line-height: 40px;
+        font-size: 25px;
+        position: relative;
+      }
+      .tot b {
+        color: #fff;
+        font-weight: 700;
+      }
+      .tot {
+        width: fit-content;
+      }
+      .tot .hl {
+        position: absolute;
+        left: -12px;
+        right: -16px;
+        top: 1px;
+        bottom: 1px;
+        background: var(--lime);
+        border-radius: 4px;
+        transform-origin: 0 50%;
+        z-index: -1;
+      }
+      .tot-wrap {
+        position: relative;
+        z-index: 0;
+        display: inline-block;
+      }
+      .extra {
+        margin-top: 16px;
+      }
+      .extra b {
+        color: #fff;
+      }
+      .callout {
+        left: 1040px;
+        top: 350px;
+        z-index: 20;
+        width: 820px;
+      }
+      .callout .display {
+        font-size: 96px;
+      }
+      .callout p {
+        margin: 26px 0 0;
+        font-size: 34px;
+        color: rgba(243, 238, 228, 0.78);
+        line-height: 1.3;
+      }
+
+      .ring {
+        left: 1130px;
+        top: 170px;
+        width: 560px;
+        height: 560px;
+        z-index: 20;
+      }
+      .ring-num {
+        left: 1130px;
+        width: 560px;
+        top: 300px;
+        text-align: center;
+        z-index: 21;
+      }
+      .ring-num .display {
+        font-size: 250px;
+        color: var(--lime);
+      }
+      .ring-num .unit {
+        font-family: var(--mono);
+        font-size: 30px;
+        margin-top: 8px;
+        color: var(--paper);
+      }
+      .ticks {
+        left: 1130px;
+        width: 560px;
+        top: 790px;
+        display: flex;
+        justify-content: center;
+        gap: 34px;
+        z-index: 21;
+        font-family: var(--mono);
+        font-size: 28px;
+      }
+      .toast {
+        left: 150px;
+        top: 236px;
+        z-index: 22;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 18px 26px 18px 18px;
+        width: 700px;
+        border-radius: 16px;
+        background: #26292e;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+      }
+      .toast .avatar {
+        width: 58px;
+        height: 58px;
+      }
+      .toast-copy {
+        font-size: 22px;
+        color: var(--slack-text);
+        line-height: 1.35;
+      }
+      .toast-copy strong {
+        color: #fff;
+      }
+      .toast-copy .up {
+        color: var(--lime);
+        font-weight: 600;
+      }
+
+      .wipe {
+        inset: 0;
+        background: var(--lime);
+        z-index: 45;
+      }
+      .end {
+        inset: 0;
+        z-index: 30;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: var(--stage);
+      }
+      .end .mark {
+        width: 104px;
+        height: 104px;
+        font-size: 38px;
+      }
+      .end h1 {
+        margin: 40px 0 0;
+        font-size: 96px;
+      }
+      .end .sub {
+        margin-top: 26px;
+        font-size: 40px;
+        color: rgba(243, 238, 228, 0.82);
+      }
+      .end .stack {
+        margin-top: 44px;
+        font-family: var(--mono);
+        font-size: 23px;
+        color: rgba(243, 238, 228, 0.55);
+      }
+      .end .url {
+        margin-top: 22px;
+        font-family: var(--mono);
+        font-size: 28px;
+        color: var(--lime);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stage"></div>
+    <script type="module">
+      import { run, h, css, seg, env, lerp, ease, money, svg, clamp, rng } from "./engine.js";
+
+      const T = {
+        tabsOut: 2.35,
+        merge: 2.55,
+        morph: 4.85,
+        update: 5.3,
+        zoom: 8.25,
+        refresh: 10.25,
+        wipe: 12.05,
+        end: 14.2,
+      };
+
+      const ICONS = {
+        chart: `<svg viewBox="0 0 26 26"><rect x="2" y="2" width="22" height="22" rx="4" fill="#e8e8e8"/><rect x="6" y="13" width="3.5" height="8" fill="#e01e5a"/><rect x="11.2" y="7" width="3.5" height="14" fill="#2eb67d"/><rect x="16.4" y="10" width="3.5" height="11" fill="#36c5f0"/></svg>`,
+        bag: `<svg viewBox="0 0 26 26"><path d="M9 5h8l-2 4h-4z" fill="#c9a24a"/><circle cx="13" cy="16" r="8.5" fill="#e0b64f"/><text x="13" y="20.5" text-anchor="middle" font-size="12" font-weight="800" fill="#6b4e12" font-family="Outfit">$</text></svg>`,
+        down: `<svg viewBox="0 0 26 26"><rect x="1" y="1" width="24" height="24" rx="3" fill="#f2f2f2"/><path d="M4 7l6 6 4-3 8 9" stroke="#3a7bd5" stroke-width="2.4" fill="none"/></svg>`,
+        up: `<svg viewBox="0 0 26 26"><rect x="1" y="1" width="24" height="24" rx="3" fill="#f2f2f2"/><path d="M4 19l6-6 4 3 8-9" stroke="#e0364f" stroke-width="2.4" fill="none"/></svg>`,
+        rocket: `<svg viewBox="0 0 26 26"><path d="M20 3c-6 1-10 5-12 11l4 4c6-2 10-6 11-12z" fill="#d7dde4"/><circle cx="16" cy="10" r="2.3" fill="#3a7bd5"/><path d="M8 14l-4 1 3-5 4-1zM12 18l-1 4 5-3 1-4z" fill="#e0364f"/><path d="M6 17c-2 1-3 3-3 6 3 0 5-1 6-3z" fill="#f5a623"/></svg>`,
+      };
+
+      const ROWS = [
+        ["#001", 0, 0, "0%", 0, 0, 0],
+        ["#002", 713.57, 820, "14.91%", 106.42, 166.66, 36.42],
+        ["#003", 1511.41, 1980, "31%", 468.58, 201.81, 888.58],
+        ["#005", 358.86, 480, "33.75%", 121.13, 196.66, 91.13],
+        ["#006", 531.99, 650, "22.18%", 118, 266.66, 118],
+        ["#4040", 992.72, 1420, "43.04%", 427.27, 300, -242.72],
+      ];
+      const plain = (n) => (n < 0 ? "$-" + String(Math.abs(n)) : "$" + String(n));
+
+      function offsetIn(el, root) {
+        let x = 0;
+        let y = 0;
+        let n = el;
+        while (n && n !== root) {
+          x += n.offsetLeft;
+          y += n.offsetTop;
+          n = n.offsetParent;
+        }
+        return { x, y, w: el.offsetWidth, h: el.offsetHeight };
+      }
+
+      function maskLine(parent, text, cls = "") {
+        const m = h("span", "mask " + cls, parent);
+        return h("span", "", m, text);
+      }
+
+      function build(stage) {
+        h("div", "vignette", stage);
+        const hudL = h("div", "hud hud-tl", stage);
+        h("span", "mark", hudL, "EG");
+        h("span", "", hudL, "Easy Growth Ops");
+        const hudR = h("div", "hud hud-tr", stage);
+        h("span", "dot", hudR);
+        h("span", "", hudR, "ROI — pay-per-call P&L in Slack");
+
+        // Scene 1: tab chaos
+        const tabs = [];
+        const tabDefs = [
+          { title: "Ads Manager", label: "Amount spent · today", num: 1511.41, x: -520, y: -205, r: -7 },
+          { title: "Google Ads", label: "Cost · today", num: 992.72, x: 500, y: -250, r: 6 },
+          { title: "Call platform", label: "Payout · today", num: 1980, x: -470, y: 250, r: 5 },
+          { title: "payout-vs-spend.xlsx", sheet: true, x: 520, y: 235, r: -5 },
+        ];
+        const R = rng(7);
+        for (const d of tabDefs) {
+          const el = h("div", "tab", stage);
+          const bar = h("div", "win-bar", el);
+          const lights = h("div", "lights", bar);
+          h("i", "", lights);
+          h("i", "", lights);
+          h("i", "", lights);
+          h("div", "title", bar, d.title);
+          const spin = h("div", "spin", bar);
+          const body = h("div", "tab-body", el);
+          let num = null;
+          if (d.sheet) {
+            const sheet = h("div", "sheet", body);
+            const cells = [
+              ["", "A", "B", "C"],
+              ["1", "Account", "Spend", "Payout"],
+              ["2", "#003", "1511.41", "1980"],
+              ["3", "#4040", "992.72", "1420"],
+              ["4", "Profit", "=C2-B2", "#REF!"],
+            ];
+            cells.forEach((row, i) =>
+              row.forEach((c, j) => {
+                const s = h("span", i === 0 || j === 0 ? "hd" : "", sheet, c);
+                if (c === "#REF!") s.classList.add("err");
+              }),
+            );
+          } else {
+            h("div", "tab-label", body, d.label);
+            num = h("div", "tab-num", body, money(d.num));
+            const pts = Array.from({ length: 16 }, (_, i) => `${i * 30},${40 - R() * 34}`).join(" ");
+            svg(
+              `<svg width="460" height="46" viewBox="0 0 460 46"><polyline points="${pts}" fill="none" stroke="#6f685d" stroke-width="3"/></svg>`,
+              "tab-spark",
+              body,
+            );
+          }
+          tabs.push({ el, d, num, spin });
+        }
+
+        const headline = h("div", "headline display", stage);
+        const hl = [
+          maskLine(headline, "Three tabs."),
+          maskLine(headline, "One spreadsheet."),
+          maskLine(headline, "Is it profitable?", "lime"),
+        ];
+        hl[2].classList.add("lime");
+
+        // Scene 2: merge
+        const wires = svg(`<svg class="wires" width="1920" height="1080" viewBox="0 0 1920 1080"></svg>`, "wires", stage);
+        const left = h("div", "col", stage);
+        const right = h("div", "col", stage);
+        h("div", "col-label", left, "SPEND");
+        h("div", "col-label", right, "PAYOUT");
+        const adDefs = [
+          ["meta.svg", "Meta Ads"],
+          ["google.svg", "Google Ads"],
+          ["tiktok.svg", "TikTok Ads"],
+        ];
+        const callDefs = ["ringba.svg", "callgrid.svg", "trackdrive.png", "retreaver.svg", "phonexa.svg"];
+        const chipsL = adDefs.map(([f, name]) => {
+          const c = h("div", "chip ad logo-chip", left);
+          const img = h("img", "", c);
+          img.src = "../public/tools/" + f;
+          h("span", "", c, name);
+          return c;
+        });
+        const chipsR = callDefs.map((f) => {
+          const c = h("div", "chip logo-chip", right);
+          const img = h("img", "", c);
+          img.src = "../public/tools/" + f;
+          return c;
+        });
+        css(left, { left: "150px", top: "330px" });
+        css(right, { left: "1470px", top: "220px" });
+
+        const hub = h("div", "hub", stage, "EG");
+        const formula = h("div", "formula", stage);
+        formula.innerHTML = "payout − spend − fees = <b>profit</b>";
+
+        // Scene 3: the update
+        const cam = h("div", "cam", stage);
+        const morph = h("div", "", stage);
+        const win = h("div", "win update", cam);
+        const bar = h("div", "win-bar", win);
+        const lights = h("div", "lights", bar);
+        h("i", "", lights);
+        h("i", "", lights);
+        h("i", "", lights);
+        h("div", "title", bar, "# ppc-profit");
+        const msg = h("div", "msg", win);
+        h("div", "avatar", msg, "EG");
+        const body = h("div", "msg-body", msg);
+        const meta = h("div", "meta line", body);
+        h("span", "", meta, "ROI");
+        h("span", "app", meta, "APP");
+        h("time", "", meta, "7:30 PM");
+        const dash = h("div", "line dash", body, "------------------------------");
+        const title = h("div", "line title-line", body);
+        svg(ICONS.chart, "ico", title);
+        h("span", "", title, "7:30 PM Update");
+        const rows = ROWS.map(([id, sp, rev, roas, pr, cpa, bud]) => {
+          const l = h(
+            "div",
+            "line",
+            body,
+            `AdAccount${id} - Spend: ${plain(sp)} | Revenue: ${plain(rev)} | ROAS: ${roas} | Profit: ${plain(pr)} | CPA: ${plain(cpa)} | Budget remaining: ${plain(bud)}`,
+          );
+          h("span", "scan", l);
+          return l;
+        });
+        const total = h("div", "line total", body, "TOTAL");
+        const totWrap = h("div", "tot-wrap", body);
+        const totDefs = [
+          ["bag", "Revenue", 5380, (v) => "$" + Math.round(v)],
+          ["down", "Spend", 4108.57, (v) => "$" + v.toFixed(2)],
+          ["up", "Profit", 1172.51, (v) => "$" + v.toFixed(2)],
+          ["rocket", "ROAS", 30.94, (v) => v.toFixed(2) + "%"],
+        ];
+        const tots = totDefs.map(([ico, label, value, fmt]) => {
+          const l = h("div", "tot line", totWrap);
+          const hlBar = h("span", "hl", l);
+          svg(ICONS[ico], "ico", l);
+          const txt = h("span", "", l);
+          const b = h("b", "", txt, label);
+          const v = h("span", "", txt, "");
+          return { l, v, b, hlBar, value, fmt, label };
+        });
+        const extra = h("div", "extra", body);
+        const extras = [
+          ["RPC", "$21.39"],
+          ["CPC", "$13.64"],
+          ["CPA", "$222.06"],
+          ["Net Profit", "$1582.01 (live: 13)"],
+        ].map(([k, v]) => {
+          const l = h("div", "line", extra);
+          h("b", "", l, k);
+          h("span", "", l, ": " + v);
+          return l;
+        });
+
+        const callout = h("div", "callout", stage);
+        const coK = h("div", "kicker", callout, "TOTAL · 7:30 PM");
+        const coH = h("div", "display", callout);
+        const co1 = maskLine(coH, "Profit.");
+        const co2 = maskLine(coH, "Not a guess.", "lime");
+        co2.classList.add("lime");
+        const coP = h("p", "", callout, "Every account, then the totals. Right where the team already talks.");
+
+        // Scene 4: refresh
+        const ring = svg(
+          `<svg viewBox="0 0 560 560"><circle cx="280" cy="280" r="250" fill="none" stroke="rgba(243,238,228,0.12)" stroke-width="10"/>
+           <circle class="arc" cx="280" cy="280" r="250" fill="none" stroke="#c8f04a" stroke-width="10" stroke-linecap="round" transform="rotate(-90 280 280)" stroke-dasharray="1571" stroke-dashoffset="1571"/>
+           ${Array.from({ length: 60 }, (_, i) => {
+             const a = (i / 60) * Math.PI * 2;
+             const r1 = i % 15 === 0 ? 212 : 224;
+             return `<line x1="${280 + Math.sin(a) * r1}" y1="${280 - Math.cos(a) * r1}" x2="${280 + Math.sin(a) * 232}" y2="${280 - Math.cos(a) * 232}" stroke="rgba(243,238,228,${i % 15 === 0 ? 0.6 : 0.18})" stroke-width="${i % 15 === 0 ? 4 : 2}"/>`;
+           }).join("")}</svg>`,
+          "ring",
+          stage,
+        );
+        const arc = ring.querySelector(".arc");
+        const ringNum = h("div", "ring-num", stage);
+        const ringBig = h("div", "display", ringNum, "15");
+        h("div", "unit", ringNum, "minutes. every update.");
+        const ticks = h("div", "ticks", stage);
+        const tickEls = ["7:15", "7:30", "7:45", "8:00"].map((t) => h("span", "", ticks, t));
+
+        const toast = h("div", "toast", stage);
+        h("div", "avatar", toast, "EG");
+        const tc = h("div", "toast-copy", toast);
+        tc.innerHTML = `<strong>ROI</strong> · 7:45 PM Update<br/>Profit <span class="up">$1,247.90</span> · ROAS 31.6%`;
+
+        // Scene 5: end card
+        const end = h("div", "end", stage);
+        h("div", "mark", end, "EG");
+        const endH = h("h1", "display", end);
+        const e1 = maskLine(endH, "Easy Growth Ops ROI");
+        const endSub = h("div", "sub", end);
+        const e2 = maskLine(endSub, "Call payout next to ad spend. In Slack.");
+        const e3 = h("div", "stack", end, "Meta · Google · TikTok  ×  Ringba · CallGrid · TrackDrive · Retreaver · Phonexa");
+        const e4 = h("div", "url", end, "easy-growth-ops.jamilglobal.com/roi");
+        const endMark = end.querySelector(".mark");
+        const wipe = h("div", "wipe", stage);
+
+        return {
+          hudL, hudR, stage, tabs, headline, hl, wires, left, right, chipsL, chipsR, hub, formula,
+          cam, morph, win, meta, dash, title, rows, total, tots, extras, extra, totWrap,
+          callout, coK, co1, co2, coP, ring, arc, ringNum, ringBig, ticks, tickEls, toast,
+          end, endMark, e1, e2, e3, e4, wipe, paths: null,
+        };
+      }
+
+      function layoutWires(a) {
+        if (a.paths) return;
+        const hubC = { x: 960, y: 540 };
+        const paths = [];
+        const add = (chip, side) => {
+          const o = offsetIn(chip, a.stage);
+          const x = side < 0 ? o.x + o.w : o.x;
+          const y = o.y + o.h / 2;
+          const hx = hubC.x + side * 70;
+          const d = `M${x},${y} C${x - side * 260},${y} ${hx + side * 220},${hubC.y} ${hx},${hubC.y}`;
+          const p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+          p.setAttribute("d", d);
+          p.setAttribute("fill", "none");
+          p.setAttribute("stroke", "#c8f04a");
+          p.setAttribute("stroke-width", "2.5");
+          a.wires.appendChild(p);
+          const len = p.getTotalLength();
+          p.style.strokeDasharray = String(len);
+          const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+          dot.setAttribute("r", "7");
+          dot.setAttribute("fill", "#c8f04a");
+          a.wires.appendChild(dot);
+          paths.push({ p, len, dot });
+        };
+        a.chipsL.forEach((c) => add(c, -1));
+        a.chipsR.forEach((c) => add(c, 1));
+        a.paths = paths;
+      }
+
+      function render(t, a) {
+        // ---------- Scene 1: tabs ----------
+        const outK = seg(t, T.tabsOut, 0.45, ease.inExpo);
+        a.tabs.forEach((tab, i) => {
+          const inK = seg(t, 0.05 + i * 0.12, 0.7, ease.outBack);
+          const drift = Math.sin(t * 1.3 + i * 1.7) * 10;
+          const x = lerp(tab.d.x * 1.25, tab.d.x, seg(t, 0.05 + i * 0.12, 0.9)) * (1 - outK);
+          const y = (tab.d.y + drift) * (1 - outK);
+          const s = lerp(0.6, 1, inK) * lerp(1, 0.15, outK);
+          css(tab.el, {
+            transform: `translate(${960 - 260 + x}px, ${540 - 150 + y}px) rotate(${tab.d.r * (1 - outK) + outK * 40 * (i % 2 ? 1 : -1)}deg) scale(${s})`,
+            opacity: String(clamp(inK * 1.4) * (1 - outK)),
+            filter: `blur(${outK * 6}px) brightness(${lerp(1, 0.55, seg(t, 0.4, 0.6))})`,
+            display: t > T.tabsOut + 0.5 ? "none" : "block",
+          });
+          if (tab.num) {
+            const settled = t > 1.9;
+            const jitter = Math.floor(t * 18 + i * 3);
+            const n = settled ? tab.d.num : tab.d.num * (0.6 + ((jitter * 9301 + 49297) % 233280) / 233280 * 0.6);
+            tab.num.textContent = money(n);
+          }
+          tab.spin.style.transform = `rotate(${t * 520 + i * 80}deg)`;
+        });
+        a.hl.forEach((line, i) => {
+          const k = seg(t, 0.35 + i * 0.5, 0.65);
+          const out = seg(t, T.tabsOut - 0.05 + i * 0.05, 0.4, ease.inExpo);
+          css(line, { transform: `translateY(${(1 - k) * 110 - out * 110}%)` });
+        });
+        css(a.headline, { display: t > T.merge + 0.3 ? "none" : "block" });
+
+        // ---------- Scene 2: merge ----------
+        layoutWires(a);
+        const mIn = (i) => seg(t, T.merge + 0.08 * i, 0.7);
+        const mOut = seg(t, T.morph - 0.1, 0.45, ease.inExpo);
+        const showMerge = t > T.merge - 0.1 && t < T.morph + 0.6;
+        [a.left, a.right].forEach((col, side) => {
+          const dir = side ? 1 : -1;
+          css(col, {
+            display: showMerge ? "flex" : "none",
+            transform: `translateX(${dir * mOut * 520}px)`,
+            opacity: String(1 - mOut),
+          });
+        });
+        [...a.chipsL, ...a.chipsR].forEach((chip, i) => {
+          const isL = i < a.chipsL.length;
+          const k = mIn(isL ? i : i - a.chipsL.length);
+          css(chip, {
+            transform: `translateX(${(1 - k) * (isL ? -380 : 380)}px)`,
+            opacity: String(k),
+          });
+        });
+        a.left.firstChild.style.opacity = String(mIn(0));
+        a.right.firstChild.style.opacity = String(mIn(0));
+        css(a.wires, { display: showMerge ? "block" : "none", opacity: String(1 - mOut) });
+        a.paths.forEach(({ p, len, dot }, i) => {
+          const k = seg(t, T.merge + 0.35 + i * 0.05, 0.8, ease.inOutCubic);
+          p.style.strokeDashoffset = String(len * (1 - k));
+          p.style.opacity = String(0.55);
+          const flowT = t - (T.merge + 1.0 + i * 0.07);
+          const f = flowT > 0 ? (flowT * 0.9) % 1 : -1;
+          if (f >= 0 && t < T.morph) {
+            const pt = p.getPointAtLength(len * ease.inOutCubic(f));
+            dot.setAttribute("cx", pt.x);
+            dot.setAttribute("cy", pt.y);
+            dot.style.opacity = String(Math.sin(f * Math.PI));
+          } else {
+            dot.style.opacity = "0";
+          }
+        });
+        const hubK = seg(t, T.merge + 0.6, 0.6, ease.outBack);
+        const pulse = t > T.merge + 1.2 ? 1 + Math.max(0, Math.sin((t - T.merge - 1.2) * 5.5)) * 0.05 : 1;
+        css(a.hub, {
+          display: t > T.merge && t < T.morph ? "grid" : "none",
+          transform: `scale(${hubK * pulse}) rotate(${(1 - hubK) * -90}deg)`,
+        });
+        const fK = seg(t, T.merge + 1.1, 0.6);
+        css(a.formula, {
+          display: showMerge ? "block" : "none",
+          opacity: String(fK * (1 - mOut)),
+          transform: `translateY(${(1 - fK) * 30}px)`,
+        });
+
+        // Morph: hub square grows into the Slack window
+        const mk = seg(t, T.morph, 0.55, ease.inOutExpo);
+        const winL = 200;
+        const winT = 110;
+        const winW = 1520;
+        const winH = 860;
+        css(a.morph, {
+          display: t >= T.morph && t < T.update + 0.35 ? "block" : "none",
+          left: lerp(890, winL, mk) + "px",
+          top: lerp(470, winT, mk) + "px",
+          width: lerp(140, winW, mk) + "px",
+          height: lerp(140, winH, mk) + "px",
+          borderRadius: lerp(0, 18, mk) + "px",
+          background: `rgb(${lerp(200, 26, mk)}, ${lerp(240, 29, mk)}, ${lerp(74, 33, mk)})`,
+          zIndex: "4",
+          opacity: String(1 - seg(t, T.update + 0.1, 0.25)),
+        });
+
+        // ---------- Scene 3: update ----------
+        const showUpd = t >= T.update - 0.05 && t < T.wipe + 0.45;
+        const winIn = seg(t, T.update - 0.05, 0.3, ease.outCubic);
+        css(a.win, { opacity: String(winIn) });
+        css(a.cam, { display: showUpd ? "block" : "none" });
+
+        const lineIn = (el, start, dy = 22) => {
+          const k = seg(t, start, 0.55);
+          css(el, { opacity: String(k), transform: `translateY(${(1 - k) * dy}px)` });
+          return k;
+        };
+        const u = T.update + 0.2;
+        lineIn(a.meta, u);
+        lineIn(a.dash, u + 0.08);
+        lineIn(a.title, u + 0.16);
+        a.rows.forEach((row, i) => {
+          const st = u + 0.3 + i * 0.1;
+          lineIn(row, st);
+          const scanK = seg(t, st, 0.9, ease.inOutCubic);
+          css(row.lastChild, {
+            transform: `translateX(${scanK * 1400}px)`,
+            opacity: String(scanK > 0 && scanK < 1 ? 1 : 0),
+          });
+        });
+        lineIn(a.total, u + 1.05);
+        a.tots.forEach((tt, i) => {
+          const st = u + 1.15 + i * 0.1;
+          lineIn(tt.l, st);
+          const c = seg(t, st, 1.3, ease.outQuint);
+          tt.v.textContent = (tt.label === "ROAS" ? " : " : ": ") + tt.fmt(tt.value * c);
+        });
+        a.extras.forEach((el, i) => lineIn(el, u + 1.6 + i * 0.08));
+
+        // Camera: slow push, then zoom onto totals
+        const push = seg(t, T.update, 3, ease.outCubic);
+        const zk = seg(t, T.zoom, 0.9, ease.inOutExpo);
+        const zOut = seg(t, T.refresh, 0.9, ease.inOutExpo);
+        const tw = offsetIn(a.totWrap, a.stage);
+        const fx = tw.x + 170;
+        const fy = tw.y + tw.h / 2;
+        const zs = 1.75;
+        const baseS = lerp(0.93, 1, push);
+        let s = lerp(baseS, zs, zk);
+        let tx = lerp(0, 560 - 960 - (fx - 960) * zs, zk);
+        let ty = lerp(0, 540 - 540 - (fy - 540) * zs, zk);
+        const s4 = 0.6;
+        const tx4 = -420;
+        const ty4 = 20;
+        s = lerp(s, s4, zOut);
+        tx = lerp(tx, tx4, zOut);
+        ty = lerp(ty, ty4, zOut);
+        css(a.cam, { transform: `translate(${tx}px, ${ty}px) scale(${s})` });
+
+        const dimK = seg(t, T.zoom + 0.2, 0.6) * (1 - zOut);
+        const hudK = 1 - seg(t, T.zoom, 0.4) * (1 - seg(t, T.refresh + 0.3, 0.5));
+        a.hudL.style.opacity = String(hudK);
+        a.hudR.style.opacity = String(hudK);
+        [a.meta, a.dash, a.title, ...a.rows, a.extra].forEach((el) => {
+          el.style.filter = `opacity(${1 - dimK * 0.8})`;
+        });
+        const hlK = seg(t, T.zoom + 0.7, 0.5, ease.inOutCubic);
+        a.tots.forEach((tt, i) => {
+          const isProfit = tt.label === "Profit";
+          if (isProfit) {
+            css(tt.hlBar, { transform: `scaleX(${hlK * (1 - zOut)})` });
+            const ink = hlK * (1 - zOut) > 0.3;
+            tt.l.style.color = ink ? "#141210" : "";
+            tt.b.style.color = ink ? "#141210" : "";
+          } else {
+            css(tt.hlBar, { transform: "scaleX(0)" });
+            tt.l.style.filter = `opacity(${1 - dimK * 0.55})`;
+          }
+        });
+
+        // Callout
+        const coIn = (i) => seg(t, T.zoom + 0.55 + i * 0.12, 0.7);
+        const coOut = seg(t, T.refresh - 0.35, 0.55, ease.inOutCubic);
+        css(a.callout, { display: t > T.zoom && t < T.refresh + 0.3 ? "block" : "none" });
+        css(a.coK, { opacity: String(coIn(0) * (1 - coOut)) });
+        css(a.co1, { transform: `translateY(${(1 - coIn(1)) * 110 - coOut * 110}%)` });
+        css(a.co2, { transform: `translateY(${(1 - coIn(2)) * 110 - coOut * 110}%)` });
+        css(a.coP, { opacity: String(coIn(3) * (1 - coOut)), transform: `translateY(${(1 - coIn(3)) * 20}px)` });
+
+        // ---------- Scene 4: refresh ----------
+        const r = T.refresh + 0.4;
+        const showR = t > r - 0.1 && t < T.wipe + 0.45;
+        const ringK = seg(t, r, 0.8, ease.outBack);
+        css(a.ring, {
+          display: showR ? "block" : "none",
+          transform: `scale(${lerp(0.7, 1, ringK)}) rotate(${(1 - ringK) * -40}deg)`,
+          opacity: String(clamp(ringK)),
+        });
+        const sweep = seg(t, r + 0.1, 0.8, ease.inOutCubic);
+        a.arc.style.strokeDashoffset = String(1571 * (1 - sweep));
+        const nK = seg(t, r + 0.1, 0.7);
+        css(a.ringNum, {
+          display: showR ? "block" : "none",
+          opacity: String(nK),
+          transform: `translateY(${(1 - nK) * 40}px)`,
+        });
+        const beat = seg(t, r + 0.9, 0.35, ease.outBack) - seg(t, r + 1.1, 0.4);
+        a.ringBig.style.transform = `scale(${1 + beat * 0.08})`;
+        css(a.ticks, { display: showR ? "flex" : "none" });
+        a.tickEls.forEach((el, i) => {
+          const k = seg(t, r + 0.2 + i * 0.28, 0.4);
+          const lit = t > r + 0.3 + i * 0.28 && (i === 2 ? t > r + 0.9 : true);
+          css(el, {
+            opacity: String(k * (i === 3 ? 0.35 : 1)),
+            color: i === 2 && lit ? "#c8f04a" : "rgba(243,238,228,0.6)",
+            transform: `translateY(${(1 - k) * 16}px)`,
+          });
+        });
+        const toK = seg(t, r + 0.95, 0.6, ease.outBack);
+        css(a.toast, {
+          display: t > r + 0.9 && t < T.wipe + 0.45 ? "flex" : "none",
+          transform: `translateY(${(1 - toK) * -60}px) scale(${lerp(0.9, 1, toK)})`,
+          opacity: String(clamp(toK)),
+        });
+
+        // ---------- Scene 5: wipe + end card ----------
+        const wIn = seg(t, T.wipe, 0.38, ease.inOutExpo);
+        const wOut = seg(t, T.wipe + 0.45, 0.45, ease.inOutExpo);
+        css(a.wipe, {
+          transform: `translateX(${(wIn - 1) * 100 + wOut * 100}%)`,
+          display: t > T.wipe && t < T.wipe + 1 ? "block" : "none",
+        });
+        const e = T.wipe + 0.42;
+        css(a.end, { display: t > e ? "flex" : "none" });
+        const mk2 = seg(t, e + 0.1, 0.7, ease.outBack);
+        css(a.endMark, { transform: `scale(${mk2}) rotate(${(1 - mk2) * 90}deg)` });
+        css(a.e1, { transform: `translateY(${(1 - seg(t, e + 0.25, 0.8)) * 110}%)` });
+        css(a.e2, { transform: `translateY(${(1 - seg(t, e + 0.4, 0.8)) * 110}%)` });
+        const k3 = seg(t, e + 0.6, 0.7);
+        css(a.e3, { opacity: String(k3), transform: `translateY(${(1 - k3) * 20}px)` });
+        const k4 = seg(t, e + 0.75, 0.7);
+        css(a.e4, { opacity: String(k4), transform: `translateY(${(1 - k4) * 20}px)` });
+      }
+
+      run({ duration: T.end, fps: 60, build, render });
+    </script>
+  </body>
+</html>
