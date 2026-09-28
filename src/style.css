@@ -1437,3 +1437,7 @@ main > .proof-band {
     stroke-dashoffset: 0;
   }
 }
+
+.nav-cta {
+  white-space: nowrap;
+}
