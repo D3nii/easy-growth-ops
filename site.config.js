@@ -132,6 +132,35 @@ export const PAGES = [
     },
   },
   {
+    name: "redtrack-alternative-pay-per-call",
+    path: "/compare/redtrack-alternative-pay-per-call/",
+    file: "compare/redtrack-alternative-pay-per-call/index.html",
+    changefreq: "monthly",
+    priority: "0.7",
+    layout: "content",
+    schema: "Article",
+    software: true,
+    published: "2026-10-08",
+    title: "RedTrack Alternative for Pay-Per-Call Buyers (2026) | ROI",
+    h1: "RedTrack Alternative for Pay-Per-Call: When You Need Profit in Slack, Not Another Tracker",
+    description:
+      "RedTrack is an attribution tracker; ROI is a read-only Slack P&L for pay-per-call buyers. Who should stay on RedTrack, dated pricing, and how to use both.",
+    breadcrumb: "RedTrack alternative for pay-per-call",
+    ogImage: "redtrack-alternative-pay-per-call",
+    ogImageAlt: "RedTrack alternative for pay-per-call: profit visibility in Slack vs click-ID attribution in a tracker.",
+    guide: {
+      section: "Comparisons",
+      summary:
+        "Attribution vs profit visibility: who should stay on RedTrack, what ROI does instead, a side-by-side table, dated pricing, and how to run both.",
+    },
+    llms: {
+      section: "Guides",
+      title: "RedTrack alternative for pay-per-call",
+      summary:
+        "ROI vs RedTrack for pay-per-call buyers: click-ID attribution and CAPI (RedTrack) vs a read-only Slack P&L per ad account (ROI), with RedTrack spend-sync tiers and prices as of 8 October 2026.",
+    },
+  },
+  {
     name: "privacy",
     path: "/privacy/",
     file: "privacy/index.html",
