@@ -1553,3 +1553,322 @@ main > .proof-band {
     padding-right: 0.8rem;
   }
 }
+
+/* ---------- Content pages (layouts/content.html) ---------- */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.breadcrumbs {
+  padding: 1.1rem var(--pad) 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--mute);
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  list-style: none;
+}
+
+.breadcrumbs li + li::before {
+  content: "/";
+  margin-right: 0.35rem;
+  color: var(--line);
+}
+
+.breadcrumbs a {
+  color: var(--mute);
+  text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+.breadcrumbs [aria-current="page"] {
+  color: var(--ink);
+}
+
+.content-hero {
+  padding-top: 2.6rem;
+}
+
+@media (min-width: 880px) {
+  .page-hero.content-hero {
+    padding-top: 3.4rem;
+  }
+}
+
+.content-hero h1 {
+  max-width: 22ch;
+}
+
+.byline {
+  margin-top: 1.4rem;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.byline a {
+  color: var(--ink);
+}
+
+.byline + .updated {
+  margin-top: 0.25rem;
+}
+
+.article > section:not(.access),
+.article > .key-facts {
+  max-width: calc(46rem + 2 * var(--pad));
+  padding: 2.2rem var(--pad) 0.4rem;
+}
+
+.article > section:not(.access) {
+  border-top: 1px solid var(--line);
+  margin-top: 1.6rem;
+}
+
+.article h2 {
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+  margin-bottom: 1rem;
+}
+
+.article h3 {
+  font-family: var(--sans);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.028em;
+  line-height: 1.3;
+  margin: 1.8rem 0 0.6rem;
+}
+
+.article p,
+.article li {
+  color: var(--ink-2);
+}
+
+.article section > p + p,
+.article section > ul + p,
+.article section > p + ul,
+.article section > ol + p,
+.article section > p + ol,
+.article .callout + p,
+.article section > p + .callout {
+  margin-top: 0.9rem;
+}
+
+.article section > ul,
+.article section > ol,
+.key-facts ul {
+  display: grid;
+  gap: 0.6rem;
+  padding-left: 1.2rem;
+}
+
+.article section > ul,
+.key-facts ul {
+  list-style: square;
+}
+
+.article li::marker {
+  color: var(--lime-dim);
+}
+
+.article ol > li::marker {
+  color: var(--mute);
+  font-weight: 600;
+}
+
+.article strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.article code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  background: var(--paper-2);
+  padding: 0.05em 0.3em;
+}
+
+.article .formula {
+  margin: 1rem 0;
+  padding: 1rem 1.2rem;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.key-facts {
+  margin-top: 0.4rem;
+}
+
+.key-facts ul {
+  padding: 1.2rem 1.4rem 1.2rem 2.4rem;
+  background: var(--paper-2);
+  border-left: 3px solid var(--lime);
+}
+
+.key-facts li {
+  color: var(--ink);
+}
+
+.callout {
+  margin: 1.2rem 0;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--lime);
+  background: color-mix(in srgb, var(--paper-2) 60%, transparent);
+}
+
+.callout-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--mute) !important;
+  margin-bottom: 0.35rem;
+}
+
+.article .compare-wrap {
+  margin: 1.2rem 0 0.4rem;
+}
+
+.article .compare-table td,
+.article .compare-table th {
+  font-size: 0.98rem;
+}
+
+.article-figure {
+  margin: 1.4rem 0 0;
+}
+
+.article-figure figcaption {
+  margin-top: 0.7rem;
+  color: var(--mute);
+  font-size: 0.95rem;
+}
+
+.pull-quote {
+  margin: 1.8rem 0 0;
+  padding-left: 1.2rem;
+  border-left: 3px solid var(--lime);
+}
+
+.pull-quote p {
+  font-family: var(--display);
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.pull-quote footer {
+  margin-top: 0.6rem;
+  color: var(--mute);
+  font-weight: 500;
+}
+
+.article .faq-list {
+  display: block;
+  padding-left: 0;
+  list-style: none;
+}
+
+.article .faq-list li {
+  padding: 1rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.article .faq-list h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.12rem;
+}
+
+.sources ul {
+  font-size: 0.95rem;
+}
+
+.source-note {
+  margin-top: 0.9rem;
+  font-size: 0.95rem;
+  color: var(--mute) !important;
+}
+
+.article .access {
+  margin-top: 3rem;
+}
+
+.access-alt {
+  margin-top: 1.2rem;
+  color: #b7b0a4 !important;
+}
+
+.access-alt a {
+  color: var(--paper);
+}
+
+/* Guides hub */
+.guides {
+  padding: 1.4rem var(--pad) 3rem;
+  border-top: 1px solid var(--line);
+}
+
+.guide-list {
+  display: grid;
+  gap: 1rem;
+  list-style: none;
+  max-width: 52rem;
+}
+
+.guide-card {
+  display: grid;
+  gap: 0.45rem;
+  padding: 1.4rem 1.5rem;
+  border: 1px solid var(--line);
+  text-decoration: none;
+  background: color-mix(in srgb, var(--paper-2) 40%, transparent);
+  transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
+}
+
+.guide-card:hover {
+  border-color: var(--ink);
+  background: var(--paper-2);
+}
+
+.guide-card:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.guide-section {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.guide-title {
+  font-family: var(--display);
+  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+
+.guide-summary {
+  color: var(--ink-2);
+}

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Rendered by scripts/content-layout.js. Double-brace slots are filled from the page entry in site.config.js. -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{title}}</title>
+    <meta name="description" content="{{description}}" />
+    <link rel="canonical" href="__SITE_URL__{{path}}" />
+    <meta property="og:type" content="{{og_type}}" />
+    <meta property="og:site_name" content="Easy Growth Ops" />
+    <meta property="og:title" content="{{title}}" />
+    <meta property="og:description" content="{{description}}" />
+    <meta property="og:url" content="__SITE_URL__{{path}}" />
+    <meta property="og:image" content="__SITE_URL__/og/{{og_image}}.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="{{og_image_alt}}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="__SITE_URL__/og/{{og_image}}.png" />
+    <meta name="twitter:image:alt" content="{{og_image_alt}}" />
+    <meta name="author" content="Danyal Jamil" />
+    <meta name="theme-color" content="#F3EEE4" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600&family=Syne:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json">
+{{jsonld}}
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="spine" aria-hidden="true"></div>
+
+    <header class="nav">
+      <a class="wordmark" href="/">
+        <span class="logo-mark" aria-hidden="true">EG</span>
+        Easy Growth Ops
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/roi/">ROI</a>
+        <a href="/drops/">Drops</a>
+        <a
+          class="nav-cta"
+          href="https://calendly.com/danyal-jamil/30min"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-cta="{{name}}_nav_book" data-cta-type="booking" data-product="roi"
+          >Book a call</a
+        >
+      </nav>
+    </header>
+
+    <main id="main" class="content-page">
+{{breadcrumbs}}
+{{content}}
+    </main>
+
+    <footer class="foot">
+      <div>
+        <p class="foot-brand">
+          <span class="logo-mark" aria-hidden="true">EG</span>
+          <strong>Easy Growth Ops</strong>
+        </p>
+        <p>Marketing tools for performance teams.</p>
+        <p class="foot-by">A project by <a href="https://jamilglobal.com">jamilglobal.com</a></p>
+        <p class="foot-legal">
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="mailto:__CONTACT_EMAIL__" data-cta="foot_email" data-cta-type="contact" data-product="none">__CONTACT_EMAIL__</a>
+        </p>
+      </div>
+      <div class="foot-meta">
+        <a href="/">Home</a>
+        <a href="/roi/">ROI</a>
+        <a href="/drops/">Drops</a>
+        <a href="/guides/">Guides</a>
+        <a href="https://calendly.com/danyal-jamil/30min" target="_blank" rel="noopener noreferrer" data-cta="{{name}}_foot_book" data-cta-type="booking" data-product="roi">Book a meeting</a>
+        <span>© <span id="year">2026</span></span>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
