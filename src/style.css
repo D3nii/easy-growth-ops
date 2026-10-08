@@ -282,6 +282,36 @@ ol {
   background: var(--lime-dim);
 }
 
+/* Secondary action next to the lime primary (e.g. Drops trial next to ROI). */
+.btn-secondary {
+  background: transparent;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--ink);
+}
+
+.btn-secondary:hover {
+  background: var(--paper-2);
+}
+
+.access .btn-secondary {
+  color: var(--paper);
+  box-shadow: inset 0 0 0 1px #6d675c;
+}
+
+.access .btn-secondary:hover {
+  background: transparent;
+  color: var(--lime);
+  box-shadow: inset 0 0 0 1px var(--lime);
+}
+
+.access .lede + .lede {
+  margin-top: 0.9rem;
+}
+
+.access .hero-actions .btn {
+  margin-top: 0;
+}
+
 .btn:focus-visible,
 .nav-cta:focus-visible,
 input:focus-visible,
