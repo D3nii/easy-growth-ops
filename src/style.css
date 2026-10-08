@@ -1360,6 +1360,20 @@ main > .proof-band {
   font-weight: 600;
 }
 
+/* Unfilled legal placeholders, e.g. [PAYMENT PROVIDER]. Loud on purpose so draft copy is never mistaken for final. */
+.legal mark.placeholder {
+  padding: 0.05em 0.35em;
+  border: 1px dashed #b4541a;
+  border-radius: 3px;
+  background: #ffd98a;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.86em;
+  font-weight: 500;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
 @media (min-width: 880px) {
   .hero {
     padding-top: 6.2rem;
