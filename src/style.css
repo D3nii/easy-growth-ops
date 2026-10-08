@@ -1289,6 +1289,77 @@ main > .proof-band {
   text-decoration: none;
 }
 
+.foot-legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
+  margin-top: 0.55rem;
+  font-size: 0.95rem;
+}
+
+.foot-legal a {
+  color: var(--mute);
+  text-decoration: none;
+}
+
+.foot-legal a:hover,
+.foot-meta a:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+/* Privacy / terms */
+.legal {
+  max-width: calc(44rem + 2 * var(--pad));
+  padding: 0.6rem var(--pad) 4rem;
+  border-top: 1px solid var(--line);
+}
+
+.legal section {
+  padding-top: 2.2rem;
+}
+
+.legal h2 {
+  font-size: clamp(1.45rem, 2.6vw, 1.9rem);
+  margin-bottom: 0.9rem;
+}
+
+.legal h3 {
+  font-family: var(--sans);
+  font-size: 1.12rem;
+  font-weight: 600;
+  letter-spacing: -0.028em;
+  line-height: 1.3;
+  margin: 1.4rem 0 0.5rem;
+}
+
+.legal p,
+.legal li {
+  color: var(--ink-2);
+}
+
+.legal p + p,
+.legal ul + p,
+.legal p + ul {
+  margin-top: 0.8rem;
+}
+
+.legal ul {
+  display: grid;
+  gap: 0.55rem;
+  padding-left: 1.15rem;
+  list-style: square;
+}
+
+.legal li::marker {
+  color: var(--lime-dim);
+}
+
+.legal strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
 @media (min-width: 880px) {
   .hero {
     padding-top: 6.2rem;

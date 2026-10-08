@@ -38,4 +38,6 @@ export const PAGES = [
   { name: "main", path: "/", file: "index.html", changefreq: "weekly", priority: "1.0" },
   { name: "roi", path: "/roi/", file: "roi/index.html", changefreq: "weekly", priority: "0.9" },
   { name: "drops", path: "/drops/", file: "drops/index.html", changefreq: "weekly", priority: "0.8" },
+  { name: "privacy", path: "/privacy/", file: "privacy/index.html", changefreq: "yearly", priority: "0.3" },
+  { name: "terms", path: "/terms/", file: "terms/index.html", changefreq: "yearly", priority: "0.3" },
 ];
