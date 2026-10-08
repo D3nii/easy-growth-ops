@@ -111,6 +111,13 @@
           sub: "When you need spend vs call payout per ad account, and when you should stay on RedTrack.",
           chips: [["Attribution", false], ["Profit visibility", true]],
         },
+        "aca-pay-per-call": {
+          kicker: "Vertical guide",
+          kicker2: "ACA pay-per-call",
+          title: "ACA open enrollment, <em>profit</em> first.",
+          sub: "How ACA calls pay, the open enrollment calendar, and call payout next to Meta, Google, and TikTok spend.",
+          chips: [["Meta", false], ["Google", false], ["TikTok", false], ["Profit", true]],
+        },
       };
       const key = new URLSearchParams(location.search).get("page") || "home";
       const p = PAGES[key] || PAGES.home;

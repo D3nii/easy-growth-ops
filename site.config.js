@@ -189,6 +189,34 @@ export const PAGES = [
     },
   },
   {
+    name: "aca-pay-per-call",
+    path: "/verticals/aca-pay-per-call/",
+    file: "verticals/aca-pay-per-call/index.html",
+    changefreq: "monthly",
+    priority: "0.7",
+    layout: "content",
+    schema: "Article",
+    published: "2026-10-08",
+    title: "ACA Pay-Per-Call for Media Buyers: OEP Profit Guide (2026)",
+    h1: "ACA Pay-Per-Call on Meta and Google: A Media Buyer’s P&L Guide for Open Enrollment",
+    description:
+      "ACA pay-per-call for media buyers: how calls pay, the 2027 open enrollment calendar, Meta, Google, and TikTok rules for insurance ads, and intraday profit.",
+    breadcrumb: "ACA pay-per-call",
+    ogImage: "aca-pay-per-call",
+    ogImageAlt: "ACA pay-per-call for media buyers: how ACA calls pay, the open enrollment calendar, and call payout next to Meta, Google, and TikTok spend.",
+    guide: {
+      section: "Verticals",
+      summary:
+        "How ACA calls pay, the 2027 open enrollment calendar (as of 8 October 2026), Meta, Google, and TikTok ad rules for insurance, and how to watch profit intraday.",
+    },
+    llms: {
+      section: "Guides",
+      title: "ACA pay-per-call for media buyers",
+      summary:
+        "ACA pay-per-call from the media buyer's side: ad → call platform → licensed buyer → payout per billable call; HealthCare.gov open enrollment for 2027 coverage (1 Nov 2026–15 Jan 2027, 15 Dec cutoff for 1 Jan coverage, per HealthCare.gov and CMS as of 8 October 2026); Meta Special Ad Category, Google call-only ad retirement, TikTok financial services policy, CMS marketing guidance for agents; and the ACA P&L.",
+    },
+  },
+  {
     name: "privacy",
     path: "/privacy/",
     file: "privacy/index.html",
