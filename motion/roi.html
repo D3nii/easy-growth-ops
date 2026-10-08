@@ -274,19 +274,25 @@
       .ring-num {
         left: 1130px;
         width: 560px;
-        top: 300px;
+        top: 338px;
         text-align: center;
         z-index: 21;
       }
       .ring-num .display {
-        font-size: 250px;
+        font-size: 82px;
+        white-space: nowrap;
         color: var(--lime);
       }
       .ring-num .unit {
         font-family: var(--mono);
         font-size: 30px;
-        margin-top: 8px;
         color: var(--paper);
+      }
+      .ring-num .display + .unit {
+        margin-top: 8px;
+      }
+      .ring-num .unit.pre {
+        margin-bottom: 4px;
       }
       .ticks {
         left: 1130px;
@@ -604,8 +610,10 @@
         );
         const arc = ring.querySelector(".arc");
         const ringNum = h("div", "ring-num", stage);
-        const ringBig = h("div", "display", ringNum, "15");
-        h("div", "unit", ringNum, "minutes. every update.");
+        h("div", "unit pre", ringNum, "every");
+        const ringBig = h("div", "display", ringNum, "15–30");
+        h("div", "unit", ringNum, "minutes,");
+        h("div", "unit", ringNum, "depending on setup.");
         const ticks = h("div", "ticks", stage);
         const tickEls = ["7:15", "7:30", "7:45", "8:00"].map((t) => h("span", "", ticks, t));
 
@@ -622,7 +630,7 @@
         const endSub = h("div", "sub", end);
         const e2 = maskLine(endSub, "Call payout next to ad spend. In Slack.");
         const e3 = h("div", "stack", end, "Meta · Google · TikTok  ×  Ringba · CallGrid · TrackDrive · Retreaver · Phonexa");
-        const e4 = h("div", "url", end, "easy-growth-ops.jamilglobal.com/roi");
+        const e4 = h("div", "url", end, "geteasygrowthops.co/roi");
         const endMark = end.querySelector(".mark");
         const wipe = h("div", "wipe", stage);
 
