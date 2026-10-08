@@ -1,0 +1,459 @@
+<!doctype html>
+<!--
+  Content page. <head>, nav, breadcrumbs, footer, byline, and JSON-LD come from
+  layouts/content.html (scripts/content-layout.js). Metadata is the
+  "ringba-facebook-ads-profit-report" entry in site.config.js.
+  FAQPage and HowTo JSON-LD are built from [data-faq] and ol[data-howto] below.
+-->
+<html lang="en">
+  <body>
+      <article class="article">
+        <header class="page-hero content-hero">
+          <p class="kicker">
+            <span>Integrations</span>
+            <span class="dot" aria-hidden="true"></span>
+            <span>Ringba + Meta Ads</span>
+          </p>
+          <h1>Ringba + Facebook Ads Profit Report: See Call Payout Next to Meta&nbsp;Spend</h1>
+          <p class="lede answer">
+            Ringba tracks call revenue and payout and can send calls back to Meta
+            as conversions. Its documented reports don't put Meta ad spend next to that payout. To see profit, join Meta spend (Ads Manager export or
+            Marketing API) with Ringba revenue or payout for the same window, then
+            subtract call-platform fees. ROI does this in Slack every 15 minutes,
+            with read-only access.
+          </p>
+          <!--@byline-->
+        </header>
+
+        <section class="key-facts" aria-labelledby="key-facts">
+          <h2 id="key-facts" class="visually-hidden">Key facts</h2>
+          <ul>
+            <li>Ringba’s Summary and Call Details reports show Revenue, Payout, and Profit on the <em>call</em> side. They do not include Meta Ads spend.</li>
+            <li>Ringba’s Facebook Offline Events integration pushes conversions <em>to</em> Meta. Ringba’s docs don’t describe it pulling spend <em>from</em> Meta (checked 8 October 2026).</li>
+            <li>Net profit = call payout − Meta spend − Google spend − TikTok spend − call-platform fees.</li>
+            <li>You can build that report in Sheets, with Make/n8n, or have ROI post it to Slack every 15 minutes.</li>
+          </ul>
+        </section>
+
+        <section id="short-answer">
+          <h2>The short answer</h2>
+          <p>
+            If you buy Meta traffic into Ringba, you already have two truthful
+            systems that don’t talk to each other. Ads Manager knows spend. Ringba
+            knows call revenue and payout. Neither screen is a P&amp;L of the
+            other. The report you actually want is the join: spend next to payout
+            for the same time window, minus the call platform’s own fees, so you
+            can tell whether an ad account is making money.
+          </p>
+          <p>
+            That join is what this page walks through: what Ringba already
+            reports, what its Facebook integration does, the formula, and three
+            ways to build the report. One of those ways is
+            <a href="/roi/">Easy Growth Ops ROI</a>, which posts the P&amp;L to
+            Slack every 15 minutes.
+          </p>
+        </section>
+
+        <section id="what-ringba-reports">
+          <h2>What Ringba reports, and what it doesn’t</h2>
+          <p>
+            Ringba’s reporting is built for the call side of the stack. That is
+            useful. It is not a Meta Ads profit report.
+          </p>
+
+          <h3>Ringba Summary and Call Details: Revenue, Payout, Profit</h3>
+          <p>
+            Ringba’s Summary report and Call Details report both expose
+            <strong>Revenue</strong>, <strong>Payout</strong>, and
+            <strong>Profit</strong> columns (as of 8 October 2026; see Ringba’s
+            <a href="https://support.ringba.com/hc/en-us/articles/17993834757783-Summary-Report" target="_blank" rel="noopener noreferrer">Summary Report</a>
+            and
+            <a href="https://support.ringba.com/hc/en-us/articles/26894023126551-Call-Details-Report-Column-Dictionary" target="_blank" rel="noopener noreferrer">Call Details Report Column Dictionary</a>).
+            In Ringba’s own words:
+          </p>
+          <ul>
+            <li><strong>Revenue</strong> is “the gross amount of money earned from calls generated.”</li>
+            <li><strong>Payout</strong> is “the amount of money to be paid to your publisher” when the call meets the campaign’s payout criteria.</li>
+            <li><strong>Profit</strong> is “the net amount of money earned from the call after expenses.”</li>
+          </ul>
+          <aside class="callout">
+            <p class="callout-label">Terminology</p>
+            <p>
+              Which of those fields is <em>your</em> income depends on where you
+              sit in the Ringba account. If you own the account and route calls
+              to buyers, Revenue is usually your income line and Payout is what
+              you owe publishers. If you publish into someone else’s account,
+              Payout is usually what you get paid. None of the three subtracts
+              Meta Ads spend, so Ringba’s Profit is a call-side number, not a
+              Meta P&amp;L.
+            </p>
+          </aside>
+          <p>
+            When you set up
+            <a href="/roi/">ROI</a>, we configure which Ringba field to treat as
+            “call payout” for your shop: Revenue or Payout, whichever matches how
+            you get paid. That choice is made once, at setup.
+          </p>
+
+          <h3>Ringba’s Facebook integration: it sends conversions to Meta</h3>
+          <p>
+            Ringba’s Facebook Offline Events integration for Call-Only Ads pushes
+            converted calls into Meta through the
+            Conversions API so Ads Manager can attribute and optimize. Ringba’s
+            own docs describe the flow as “push data about conversions that
+            happened in Ringba into Facebook Ads” (as of 8 October 2026;
+            <a href="https://support.ringba.com/hc/en-us/articles/17998414341527-Facebook-Offline-Events-Integration-Call-Only-Ads" target="_blank" rel="noopener noreferrer">Facebook Offline Events Integration – Call-Only Ads</a>).
+          </p>
+          <p>
+            That is the opposite direction of a profit report: data flows from
+            Ringba to Meta, and Ringba’s docs don’t describe Meta spend flowing
+            back into Ringba’s reports. You can, and usually
+            should, run the Facebook CAPI integration <em>and</em> a separate
+            profit report. They do different jobs: one feeds Meta’s bidding, the
+            other tells you whether the account is profitable.
+          </p>
+        </section>
+
+        <section id="formula">
+          <h2>The profit formula for Meta + Ringba</h2>
+          <p>
+            The formula Easy Growth Ops publishes for pay-per-call net profit is:
+          </p>
+          <p class="formula">
+            Net profit = call payout − Meta spend − Google spend − TikTok spend − call-platform fees.
+          </p>
+          <p>
+            For a Meta-only shop the Google and TikTok terms are zero, but the
+            shape of the P&amp;L stays the same once you add other platforms.
+            “Call payout” is the Ringba Revenue or Payout field you chose at
+            setup. “Call-platform fees” means Ringba’s own fees. In ROI’s Slack
+            readout, ROAS is return on ad spend, CPC is cost per call (not cost
+            per click), and CPA is cost per acquisition.
+          </p>
+          <!-- FUTURE: link to /guides/pay-per-call-profit-formula/ (Brief #3) once that page is live. -->
+        </section>
+
+        <section id="three-ways">
+          <h2>Three ways to build a Ringba + Facebook profit report</h2>
+          <p>
+            Same math, three levels of automation. Pick based on how often you
+            need the number and who maintains the join.
+          </p>
+
+          <div class="compare-wrap">
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th scope="col">Method</th>
+                  <th scope="col">What you get</th>
+                  <th scope="col">Who maintains it</th>
+                  <th scope="col">Best when</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Manual Sheets</th>
+                  <td>CSV from Ads Manager + CSV from Ringba, joined by day</td>
+                  <td>You, every reporting cycle</td>
+                  <td>You check profit once a day or less</td>
+                </tr>
+                <tr>
+                  <th scope="row">DIY Make / n8n</th>
+                  <td>APIs into Sheets or Slack on a schedule</td>
+                  <td>Whoever built the flow</td>
+                  <td>You have someone who can own the workflow</td>
+                </tr>
+                <tr>
+                  <th scope="row"><a href="/roi/">ROI</a></th>
+                  <td>Slack P&amp;L every 15 minutes, setup done for you</td>
+                  <td>Easy Growth Ops</td>
+                  <td>The team needs the number without opening a dashboard</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            None of these is click-level attribution. If you need calls tied
+            back to the ad and keyword, that is a tracker’s job: the ROI page
+            itself notes that RedTrack is stronger at click-ID attribution and
+            sending call conversions back to Meta and Google, and ClickFlare
+            lists Ringba among its call-tracking integrations for attributing
+            calls to the ad, keyword, and campaign (as of 8 October 2026;
+            <a href="https://www.clickflare.com/integrations/ringba" target="_blank" rel="noopener noreferrer">ClickFlare integrations</a>).
+            A profit report can sit alongside a tracker.
+          </p>
+          <!-- FUTURE: link /guides/pay-per-call-profit-tracking/ (Brief #5) for the full methods comparison,
+               and /compare/redtrack-alternative-pay-per-call/ (Brief #2) for the RedTrack angle. -->
+
+          <h3>Manual: Ads Manager export + Ringba CSV in Sheets</h3>
+          <ol id="howto" data-howto="Build a Ringba + Facebook profit report in a spreadsheet">
+            <li>
+              <strong>Export Meta spend.</strong> In Ads Manager, set the date
+              range and breakdown you want (usually by day and by ad account),
+              then export a CSV that includes spend. Or pull the same numbers
+              from Meta’s Ads Insights API, which returns
+              <code>spend</code> at the ad-account level by default (as of
+              8 October 2026;
+              <a href="https://developers.facebook.com/docs/marketing-api/reference/ad-account/insights/" target="_blank" rel="noopener noreferrer">Ad Account Insights</a>).
+            </li>
+            <li>
+              <strong>Export Ringba revenue or payout.</strong> In Ringba’s
+              Reporting screen, set the same date range, open the Summary or Call
+              Details report, and export the CSV. Keep the Revenue column, the
+              Payout column, or both, depending on how you get paid. Ringba
+              documents CSV export on the Summary report page.
+            </li>
+            <li>
+              <strong>Align the windows.</strong> Put both exports into one
+              sheet. Match rows by day (or by whatever grain you exported). Watch
+              for mismatches: Ads Manager and Ringba can be set to different
+              time zones, so the same “day” can cover different hours. Take spend
+              from Meta and calls and payout from Ringba; don’t mix in the
+              conversions Meta reports under its own attribution window. If
+              totals don’t line up, fix the windows before you trust the profit
+              column.
+            </li>
+            <li>
+              <strong>Compute the formula.</strong> For each row:
+              <code>call_payout − meta_spend − ringba_fees</code>. Sum the day,
+              then the week. Keep a separate column for fees so you can see what
+              they cost.
+            </li>
+            <li>
+              <strong>Read ROAS and cost per call off the same sheet.</strong>
+              ROAS = call payout ÷ Meta spend. Cost per call = Meta spend ÷
+              paid calls (Ringba’s Summary report counts calls that met the
+              payout requirements in its Paid column).
+            </li>
+          </ol>
+          <p>
+            The trade-off is time. Every export, paste, and window check happens
+            again tomorrow. If you only need the number once a day, the sheet is
+            fine. If you need it while a burst is running, it isn’t.
+          </p>
+
+          <h3>DIY automation: Make / n8n + Meta Marketing API + Ringba API</h3>
+          <p>
+            The same join can run on a schedule. Pull Meta spend from the Ads
+            Insights API. Pull call logs from Ringba’s API
+            (<a href="https://developers.ringba.com/" target="_blank" rel="noopener noreferrer">developers.ringba.com</a>,
+            as of 8 October 2026). Write the result to Sheets, or post it to
+            Slack. Make.com and n8n both handle that pattern.
+          </p>
+          <p>
+            Plan for rate limits. Ringba’s call-log export endpoint is limited to
+            5 requests per minute, 20 per hour, and 200 per day per user per
+            account (as of 8 October 2026;
+            <a href="https://support.ringba.com/hc/en-us/articles/23785949612695-Why-am-I-being-rate-limited" target="_blank" rel="noopener noreferrer">Why am I being rate limited?</a>).
+            Meta’s Insights API has its own limits. The cost of this option is
+            not the tools; it is the person who keeps the workflow alive when an
+            API changes.
+          </p>
+
+          <h3>Done-for-you: ROI posts the P&amp;L to Slack every 15 minutes</h3>
+          <p>
+            <a href="/roi/">ROI</a> is the Slack P&amp;L for pay-per-call buyers.
+            It reads Meta Ads spend, Google Ads spend, and TikTok Ads spend,
+            places call payout beside that spend from one call platform
+            (Ringba, CallGrid, TrackDrive, Retreaver, or Phonexa), and posts net
+            profit, ROAS, CPC (cost per call), CPA, and per-account totals to
+            Slack every 15 minutes. Access is read-only: we never bid, pause, or
+            scale ads, and you can revoke access. Setup is done for you; the
+            first Slack update arrives the same week.
+          </p>
+          <p>
+            Proof from the ROI page: “LeadVIPS, a pay-per-call team buying on
+            Meta and Google, went from 3 hours of daily reporting to zero.”
+          </p>
+          <p>
+            Founding price for the first 50 shops: $200 the first month (setup
+            included), then $100 a month. Ten ad accounts are included. Each
+            extra account is $25 a month. After 50 shops, new shops pay $150 a
+            month.
+            <a class="text-link" href="/roi/#price" data-cta="ringba_fb_pricing" data-cta-type="pricing" data-product="roi">See ROI pricing</a>.
+          </p>
+        </section>
+
+        <section id="slack-pnl">
+          <h2>What the Slack P&amp;L looks like</h2>
+          <p>
+            The update is a short Slack message: each ad account, then the
+            totals. Spend, call payout (labelled Revenue here), ROAS, profit,
+            CPC (cost per call), and CPA sit in the same readout. Names in the
+            screenshot are replaced.
+          </p>
+          <figure class="article-figure">
+            <div class="shot-frame shot-photo">
+              <img
+                src="/shots/roi-bot-redacted.png"
+                width="938"
+                height="407"
+                alt="Slack message from ROI showing spend, call revenue, ROAS, profit, and CPA per ad account, then totals including CPC. Account and bot names are replaced."
+                loading="lazy"
+              />
+            </div>
+            <figcaption>
+              A Slack update from ROI. Every ad account, then the totals.
+              Account and bot names replaced for publication.
+            </figcaption>
+          </figure>
+          <blockquote class="pull-quote">
+            <p>
+              “I’ve run almost $10 million in ad spend over the past three years.
+              I can’t keep accounts open all day and sit there refreshing. …
+              Google’s UI is late. The API is not.”
+            </p>
+            <footer>— Danyal Jamil, media buyer</footer>
+          </blockquote>
+        </section>
+
+        <section id="google-tiktok">
+          <h2>Adding Google and TikTok spend to the same report</h2>
+          <p>
+            The formula already has a slot for Google Ads and TikTok Ads spend.
+            Once Meta + Ringba is working, those platforms drop into the same
+            P&amp;L without changing the shape of the report. ROI reads all three
+            ad platforms next to one call platform.
+          </p>
+          <!-- FUTURE: link to /integrations/ringba-google-ads-profit/ (Brief #7) once that page is live. -->
+          <p>
+            If you also want yesterday’s winning Meta, Google, and TikTok ads in
+            Slack before standup, that is
+            <a href="/drops/">Drops</a>: $79 a month after a 14-day free trial,
+            or $150 a month together with ROI.
+          </p>
+        </section>
+
+        <section class="faq" id="faq" data-faq>
+          <h2>FAQ</h2>
+          <ul class="faq-list">
+            <li class="faq-item">
+              <h3>Does Ringba show my Facebook ad spend?</h3>
+              <div class="faq-a">
+                <p>
+                  Not in the reports Ringba documents. Its Summary and Call
+                  Details reports show call-side Revenue, Payout, and Profit, and
+                  its Facebook Offline Events integration sends conversions to
+                  Meta (per Ringba’s docs, checked 8 October 2026). Meta Ads
+                  spend lives in Ads Manager, so a profit report has to join the
+                  two.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>How do I see profit from Facebook ads when my calls run through Ringba?</h3>
+              <div class="faq-a">
+                <p>
+                  Join Meta spend with Ringba Revenue or Payout for the same time
+                  window, then subtract Ringba fees. You can do that in a sheet,
+                  with a Make or n8n flow, or with ROI posting the P&amp;L to
+                  Slack every 15 minutes.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>How do I calculate ROAS for Ringba calls from Facebook?</h3>
+              <div class="faq-a">
+                <p>
+                  ROAS = call payout ÷ Meta spend. Call payout is the Ringba
+                  Revenue or Payout field you treat as income. Net profit still
+                  subtracts call-platform fees on top of that.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Should I use Ringba’s Facebook CAPI integration and a profit report?</h3>
+              <div class="faq-a">
+                <p>
+                  Yes. They do different jobs. CAPI feeds conversions back to Meta
+                  for bidding and reporting. A profit report puts Meta spend next
+                  to Ringba payout so you can see whether the account is making
+                  money.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>How often should I check profit on Meta call campaigns?</h3>
+              <div class="faq-a">
+                <p>
+                  Often enough that you can pause a burst or scale a winner
+                  without waiting for end of day. ROI refreshes every 15 minutes.
+                  A daily sheet is enough if you don’t need to act mid-flight.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Can I do this in Google Sheets?</h3>
+              <div class="faq-a">
+                <p>
+                  Yes. Export Ads Manager and Ringba to CSV, or pull both through
+                  their APIs into a sheet. The trade-off is maintenance: you own
+                  the join, the time zones, and the fee column. See the manual
+                  steps above.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Which Ringba field does ROI use as call payout?</h3>
+              <div class="faq-a">
+                <p>
+                  Either Revenue or Payout. We configure it per customer at setup,
+                  based on how you get paid in that Ringba account.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>What does ROI cost?</h3>
+              <div class="faq-a">
+                <p>
+                  For the first 50 shops: $200 the first month including setup,
+                  then $100 a month. Ten ad accounts included. Each extra ad
+                  account is $25 a month. After 50, new shops pay $150 a month.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="sources" id="sources">
+          <h2>Sources</h2>
+          <p>Third-party pages checked on 8 October 2026. Re-check before relying on them.</p>
+          <ul>
+            <li><a href="https://support.ringba.com/hc/en-us/articles/17993834757783-Summary-Report" target="_blank" rel="noopener noreferrer">Ringba: Summary Report</a></li>
+            <li><a href="https://support.ringba.com/hc/en-us/articles/26894023126551-Call-Details-Report-Column-Dictionary" target="_blank" rel="noopener noreferrer">Ringba: Call Details Report Column Dictionary</a></li>
+            <li><a href="https://support.ringba.com/hc/en-us/articles/17998414341527-Facebook-Offline-Events-Integration-Call-Only-Ads" target="_blank" rel="noopener noreferrer">Ringba: Facebook Offline Events Integration – Call-Only Ads</a></li>
+            <li><a href="https://support.ringba.com/hc/en-us/articles/23785949612695-Why-am-I-being-rate-limited" target="_blank" rel="noopener noreferrer">Ringba: Why am I being rate limited?</a></li>
+            <li><a href="https://developers.ringba.com/" target="_blank" rel="noopener noreferrer">Ringba API documentation</a></li>
+            <li><a href="https://developers.facebook.com/docs/marketing-api/reference/ad-account/insights/" target="_blank" rel="noopener noreferrer">Meta for Developers: Ad Account Insights</a></li>
+            <li><a href="https://www.clickflare.com/integrations/ringba" target="_blank" rel="noopener noreferrer">ClickFlare: CRM and call tracking integrations</a></li>
+          </ul>
+          <p class="source-note">Easy Growth Ops is not affiliated with Ringba, Meta, or ClickFlare.</p>
+        </section>
+
+        <section class="access" id="book">
+          <div class="access-inner">
+            <p class="index">30 minutes</p>
+            <h2>Book a meeting.</h2>
+            <p class="lede">
+              We’ll look at your stack. You share read-only access. First Slack
+              update the same week.
+            </p>
+            <a
+              class="btn"
+              href="https://calendly.com/danyal-jamil/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta="ringba_fb_closing_book" data-cta-type="booking" data-product="roi"
+              >Book a meeting</a
+            >
+            <p class="access-alt">
+              Or read the full product page:
+              <a href="/roi/" data-cta="ringba_fb_closing_roi" data-cta-type="product" data-product="roi">ROI</a>.
+              <!-- FUTURE: also link /guides/pay-per-call-profit-tracking/ (Brief #5) and /compare/redtrack-alternative-pay-per-call/ (Brief #2). -->
+            </p>
+          </div>
+        </section>
+      </article>
+  </body>
+</html>
