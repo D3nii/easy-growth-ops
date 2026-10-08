@@ -1,0 +1,41 @@
+<!doctype html>
+<!--
+  Guides hub. <head>, nav, breadcrumbs, footer, and JSON-LD come from layouts/content.html
+  (scripts/content-layout.js); metadata is the "guides" entry in site.config.js.
+  The card list (the @guides placeholder) is generated from every PAGES entry with a `guide` field.
+-->
+<html lang="en">
+  <body>
+      <section class="page-hero content-hero">
+        <p class="kicker">
+          <span>Guides</span>
+          <span class="dot" aria-hidden="true"></span>
+          <span>Pay-per-call profit</span>
+        </p>
+        <h1>Guides for pay-per-call media buyers.</h1>
+        <p class="lede">
+          How to see call payout next to Meta, Google, and TikTok ad spend,
+          platform by platform. Written by a media buyer, for shops already
+          buying or selling inbound calls.
+        </p>
+        <!--@byline-->
+      </section>
+
+      <section class="guides" aria-labelledby="guides-all">
+        <h2 id="guides-all" class="visually-hidden">All guides</h2>
+        <!--@guides-->
+        <!-- FUTURE GUIDES: each new page in site.config.js with a `guide` entry appears here automatically
+             (#2 RedTrack alternative, #3 profit formula, #4 ACA, #5 profit tracking methods,
+              #6 ClickFlare alternative, #7 Ringba + Google Ads, #8 final expense, #9 TrackDrive). -->
+      </section>
+
+      <aside class="bonus guides-cta">
+        <p class="index">ROI</p>
+        <p>
+          Want the numbers without building the report? ROI posts call payout
+          next to Meta, Google, and TikTok spend in Slack every 15 minutes.
+        </p>
+        <a class="text-link" href="/roi/" data-cta="guides_roi" data-cta-type="product" data-product="roi">See ROI</a>
+      </aside>
+  </body>
+</html>
