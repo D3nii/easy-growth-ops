@@ -7,7 +7,16 @@ Two products:
 1. **ROI** — see what actually paid back
 2. **Drops** — daily industry-winning videos sent to Slack
 
-Site: [easy-growth-ops.jamilglobal.com](https://easy-growth-ops.jamilglobal.com/)
+Site: [www.geteasygrowthops.co](https://www.geteasygrowthops.co/)
+(`easy-growth-ops.jamilglobal.com` 301s to it via `vercel.json`; Vercel's domain settings 308 the bare
+`geteasygrowthops.co` to www).
+
+## Config
+
+[`site.config.js`](site.config.js) holds `SITE_URL` (the canonical origin) and `PAGES` (Vite build
+inputs + sitemap entries). HTML pages use `__SITE_URL__` / `__SITE_DOMAIN__` tokens that
+`scripts/vite-site-plugin.js` replaces in dev and build. The same plugin writes `sitemap.xml` and
+`robots.txt` from `SITE_URL`.
 
 ## Local
 

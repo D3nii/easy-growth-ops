@@ -1,4 +1,12 @@
 {
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "easy-growth-ops.jamilglobal.com" }],
+      "destination": "https://www.geteasygrowthops.co/:path*",
+      "statusCode": 301
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
