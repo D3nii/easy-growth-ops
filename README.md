@@ -13,10 +13,17 @@ Site: [www.geteasygrowthops.co](https://www.geteasygrowthops.co/)
 
 ## Config
 
-[`site.config.js`](site.config.js) holds `SITE_URL` (the canonical origin) and `PAGES` (Vite build
-inputs + sitemap entries). HTML pages use `__SITE_URL__` / `__SITE_DOMAIN__` tokens that
-`scripts/vite-site-plugin.js` replaces in dev and build. The same plugin writes `sitemap.xml` and
-`robots.txt` from `SITE_URL`.
+Site-wide settings live in [`site.config.js`](site.config.js):
+
+- `SITE_URL`: canonical origin used by every canonical, `og:url`, `og:image`, JSON-LD URL, `sitemap.xml`, and `robots.txt`
+- `GA4_MEASUREMENT_ID`: empty by default, so gtag.js never loads. Set it here or as `VITE_GA4_MEASUREMENT_ID` in Vercel
+- `CONTACT_EMAIL`: footer and legal pages
+- `PAGES`: every page (Vite build inputs + sitemap entries)
+
+HTML pages use tokens (`__SITE_URL__`, `__SITE_DOMAIN__`, `__CONTACT_EMAIL__`, `__UPDATED_ISO__`,
+`__UPDATED_HUMAN__`) that `scripts/vite-site-plugin.js` replaces in dev and build. The same plugin
+writes `sitemap.xml` and `robots.txt`; each page's `lastmod` and "Updated" date come from the last
+git commit that touched that page.
 
 ## Local
 
@@ -43,3 +50,13 @@ npm run motion
 ```
 
 Needs Chrome (`CHROME_PATH` to override) and ffmpeg.
+
+## Social preview images
+
+`public/og/{home,roi,drops}.png` (1200×630) are rendered from `scripts/og/template.html`:
+
+```bash
+npm run og
+```
+
+Needs Chrome (`CHROME_PATH` to override). Edit the copy in the template's `PAGES` object, re-run, and commit the PNGs.

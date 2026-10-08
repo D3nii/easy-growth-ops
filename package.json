@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "motion": "node motion/render.mjs roi drops"
+    "motion": "node motion/render.mjs roi drops",
+    "og": "node scripts/og-images.mjs"
   },
   "devDependencies": {
     "@fontsource/ibm-plex-mono": "^5.3.0",

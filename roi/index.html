@@ -17,7 +17,14 @@
       content="Spend from Meta, Google, and TikTok. Payout from Ringba, CallGrid, TrackDrive, Retreaver, or Phonexa. Net profit in Slack every 15 minutes."
     />
     <meta property="og:url" content="__SITE_URL__/roi/" />
+    <meta property="og:image" content="__SITE_URL__/og/roi.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Easy Growth Ops ROI: call payout next to Meta, Google, and TikTok ad spend, posted to Slack as net profit every 15 minutes." />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="__SITE_URL__/og/roi.png" />
+    <meta name="twitter:image:alt" content="Easy Growth Ops ROI: call payout next to Meta, Google, and TikTok ad spend, posted to Slack as net profit every 15 minutes." />
     <meta name="author" content="Danyal Jamil" />
     <meta name="theme-color" content="#F3EEE4" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -77,7 +84,7 @@
             "@id": "__SITE_URL__/roi/#page",
             "url": "__SITE_URL__/roi/",
             "name": "Call payout + Meta and Google ad spend in Slack — ROI",
-            "dateModified": "2026-09-28",
+            "dateModified": "__UPDATED_ISO__",
             "isPartOf": { "@id": "__SITE_URL__/#org" },
             "about": { "@id": "__SITE_URL__/roi/#app" },
             "mainEntity": { "@id": "__SITE_URL__/roi/#faq" }
@@ -158,7 +165,8 @@
           href="https://calendly.com/danyal-jamil/30min"
           target="_blank"
           rel="noopener noreferrer"
-          >Free trial</a
+          data-cta="roi_nav_book" data-cta-type="booking" data-product="roi"
+          >Book a call</a
         >
       </nav>
     </header>
@@ -179,13 +187,14 @@
           from Ringba, CallGrid, TrackDrive, Retreaver, or Phonexa. It does
           not bid. It does not replace the call platform you already run.
         </p>
-        <p class="updated">Updated 28 September 2026</p>
+        <p class="updated">Updated __UPDATED_HUMAN__</p>
         <div class="hero-actions">
           <a
             class="btn"
             href="https://calendly.com/danyal-jamil/30min"
             target="_blank"
             rel="noopener noreferrer"
+            data-cta="roi_hero_book" data-cta-type="booking" data-product="roi"
             >Book a meeting</a
           >
           <a class="text-link" href="#compare">ROI vs RedTrack vs Make</a>
@@ -258,35 +267,6 @@
           </ul>
         </div>
 
-        <div class="tool-group">
-          <h3>Call tracking</h3>
-          <ul class="tool-grid">
-            <li>
-              <a class="tool" href="https://www.callrail.com" target="_blank" rel="noopener noreferrer">
-                <img src="/tools/callrail.svg" alt="" width="36" height="36" />
-                <span>CallRail</span>
-              </a>
-            </li>
-            <li>
-              <a class="tool" href="https://www.ctm.com" target="_blank" rel="noopener noreferrer">
-                <img src="/tools/ctm.svg" alt="" width="220" height="66" />
-                <span>CTM</span>
-              </a>
-            </li>
-            <li>
-              <a class="tool" href="https://www.invoca.com" target="_blank" rel="noopener noreferrer">
-                <img src="/tools/invoca.svg" alt="" width="127" height="39" />
-                <span>Invoca</span>
-              </a>
-            </li>
-            <li>
-              <a class="tool" href="https://www.whatconverts.com" target="_blank" rel="noopener noreferrer">
-                <img src="/tools/whatconverts.svg" alt="" width="239" height="30" />
-                <span>WhatConverts</span>
-              </a>
-            </li>
-          </ul>
-        </div>
       </section>
 
       <aside class="proof-band" id="proof">
@@ -565,6 +545,7 @@
             href="https://calendly.com/danyal-jamil/30min"
             target="_blank"
             rel="noopener noreferrer"
+            data-cta="roi_closing_book" data-cta-type="booking" data-product="roi"
             >Book a meeting</a
           >
         </div>
@@ -577,7 +558,7 @@
           before standup. That’s Drops: $79 a month on its own, free for 14
           days, or $150 a month together with ROI.
         </p>
-        <a class="text-link" href="/drops/">See Drops</a>
+        <a class="text-link" href="/drops/" data-cta="roi_bonus_drops" data-cta-type="product" data-product="drops">See Drops</a>
       </aside>
     </main>
 
@@ -589,11 +570,16 @@
         </p>
         <p>Marketing tools for performance teams.</p>
         <p class="foot-by">A project by <a href="https://jamilglobal.com">jamilglobal.com</a></p>
+        <p class="foot-legal">
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="mailto:__CONTACT_EMAIL__" data-cta="foot_email" data-cta-type="contact" data-product="none">__CONTACT_EMAIL__</a>
+        </p>
       </div>
       <div class="foot-meta">
         <a href="/">Home</a>
         <a href="/drops/">Drops</a>
-        <a href="https://calendly.com/danyal-jamil/30min" target="_blank" rel="noopener noreferrer">Book a meeting</a>
+        <a href="https://calendly.com/danyal-jamil/30min" target="_blank" rel="noopener noreferrer" data-cta="roi_foot_book" data-cta-type="booking" data-product="roi">Book a meeting</a>
         <span>© <span id="year">2026</span></span>
       </div>
     </footer>

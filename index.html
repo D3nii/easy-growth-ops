@@ -17,7 +17,14 @@
       content="ROI: call payout next to Meta, Google, and TikTok spend in Slack. Drops: yesterday’s winning ads before standup."
     />
     <meta property="og:url" content="__SITE_URL__/" />
+    <meta property="og:image" content="__SITE_URL__/og/home.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Easy Growth Ops: ROI posts pay-per-call profit to Slack every 15 minutes; Drops sends yesterday’s winning ads each morning." />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="__SITE_URL__/og/home.png" />
+    <meta name="twitter:image:alt" content="Easy Growth Ops: ROI posts pay-per-call profit to Slack every 15 minutes; Drops sends yesterday’s winning ads each morning." />
     <meta name="author" content="Danyal Jamil" />
     <meta name="theme-color" content="#F3EEE4" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -61,7 +68,7 @@
             "@id": "__SITE_URL__/#page",
             "url": "__SITE_URL__/",
             "name": "Easy Growth Ops",
-            "dateModified": "2026-09-28",
+            "dateModified": "__UPDATED_ISO__",
             "isPartOf": { "@id": "__SITE_URL__/#org" },
             "mainEntity": { "@id": "__SITE_URL__/#faq" }
           },
@@ -141,7 +148,8 @@
           href="https://calendly.com/danyal-jamil/30min"
           target="_blank"
           rel="noopener noreferrer"
-          >Free trial</a
+          data-cta="home_nav_book" data-cta-type="booking" data-product="roi"
+          >Book a call</a
         >
       </nav>
     </header>
@@ -164,16 +172,25 @@
           15 minutes. Drops sends yesterday’s winning ads before standup.
           Nothing else on the menu.
         </p>
-        <p class="updated">Updated 28 September 2026</p>
+        <p class="updated">Updated __UPDATED_HUMAN__</p>
         <div class="hero-actions">
           <a
             class="btn"
             href="https://calendly.com/danyal-jamil/30min"
             target="_blank"
             rel="noopener noreferrer"
+            data-cta="home_hero_roi" data-cta-type="booking" data-product="roi"
+            >Book an ROI setup call</a
+          >
+          <a
+            class="btn btn-secondary"
+            href="https://calendly.com/danyal-jamil/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cta="home_hero_drops" data-cta-type="trial" data-product="drops"
             >Try Drops free for 14 days</a
           >
-          <a class="text-link" href="#pricing">See pricing</a>
+          <a class="text-link" href="#pricing" data-cta="home_hero_pricing" data-cta-type="pricing" data-product="both">See pricing</a>
         </div>
         <div class="hero-meta">
           <a href="/roi/">
@@ -259,35 +276,6 @@
           </ul>
         </div>
 
-        <div class="tool-group">
-          <h3>Call tracking</h3>
-          <ul class="tool-grid">
-            <li>
-              <a class="tool" href="https://www.callrail.com" target="_blank" rel="noopener noreferrer">
-                <img src="/tools/callrail.svg" alt="" width="36" height="36" />
-                <span>CallRail</span>
-              </a>
-            </li>
-            <li>
-              <a class="tool" href="https://www.ctm.com" target="_blank" rel="noopener noreferrer">
-                <img src="/tools/ctm.svg" alt="" width="220" height="66" />
-                <span>CTM</span>
-              </a>
-            </li>
-            <li>
-              <a class="tool" href="https://www.invoca.com" target="_blank" rel="noopener noreferrer">
-                <img src="/tools/invoca.svg" alt="" width="127" height="39" />
-                <span>Invoca</span>
-              </a>
-            </li>
-            <li>
-              <a class="tool" href="https://www.whatconverts.com" target="_blank" rel="noopener noreferrer">
-                <img src="/tools/whatconverts.svg" alt="" width="239" height="30" />
-                <span>WhatConverts</span>
-              </a>
-            </li>
-          </ul>
-        </div>
       </section>
 
       <section class="products" id="products">
@@ -311,7 +299,7 @@
               <li>Call payout next to ad spend, in Slack</li>
               <li>Meta, Google, and TikTok in the same message</li>
             </ul>
-            <a class="btn" href="/roi/">Open ROI</a>
+            <a class="btn" href="/roi/" data-cta="home_product_roi" data-cta-type="product" data-product="roi">Open ROI</a>
           </div>
           <div class="product-stage">
             <figure class="shot-frame shot-photo">
@@ -348,7 +336,7 @@
               <li>Vertical ads, the way buyers actually look at them</li>
               <li>Watch the structure. Write your own version.</li>
             </ul>
-            <a class="btn" href="/drops/">Open Drops</a>
+            <a class="btn" href="/drops/" data-cta="home_product_drops" data-cta-type="product" data-product="drops">Open Drops</a>
           </div>
           <div class="product-stage" aria-hidden="true">
             <div class="os-window is-thread">
@@ -460,22 +448,22 @@
           <h2>Monthly. No sales deck.</h2>
         </header>
         <p class="lede">
-          Drops is free for 14 days, no card. ROI is set up by hand in the
-          first week. Cancel either one any month.
+          ROI is set up by hand in the first week. Drops is free for 14
+          days, no card. Cancel either one any month.
         </p>
         <ul class="price-table">
-          <li>
-            <strong>$79</strong>
-            <div>
-              <h3>Drops, per month</h3>
-              <p>Winning ads in your vertical, in Slack every morning. First 14 days free.</p>
-            </div>
-          </li>
           <li>
             <strong>$100</strong>
             <div>
               <h3>ROI, per month</h3>
               <p>Payout, spend, and profit in Slack every 15 minutes. $200 the first month, setup included.</p>
+            </div>
+          </li>
+          <li>
+            <strong>$79</strong>
+            <div>
+              <h3>Drops, per month</h3>
+              <p>Winning ads in your vertical, in Slack every morning. First 14 days free.</p>
             </div>
           </li>
           <li>
@@ -491,7 +479,8 @@
           Ten ad accounts included in ROI. Each extra account is $25 a month.
         </p>
         <div class="hero-actions">
-          <a class="btn" href="https://calendly.com/danyal-jamil/30min" target="_blank" rel="noopener noreferrer">Start the Drops trial</a>
+          <a class="btn" href="https://calendly.com/danyal-jamil/30min" target="_blank" rel="noopener noreferrer" data-cta="home_pricing_roi" data-cta-type="booking" data-product="roi">Book an ROI setup call</a>
+          <a class="btn btn-secondary" href="https://calendly.com/danyal-jamil/30min" target="_blank" rel="noopener noreferrer" data-cta="home_pricing_drops" data-cta-type="trial" data-product="drops">Start the Drops trial</a>
         </div>
       </section>
 
@@ -555,19 +544,35 @@
 
       <section class="access" id="book">
         <div class="access-inner">
-          <p class="index">14 days free</p>
-          <h2>Start with tomorrow’s drop.</h2>
+          <p class="index">30 minutes</p>
+          <h2>See what paid back this&nbsp;week.</h2>
           <p class="lede">
-            Pick a time, tell us your vertical, add the Slack app. The first
-            drop lands the next morning. No card for the trial.
+            We’ll look at your stack. You share read-only access. First Slack
+            update the same week.
           </p>
-          <a
-            class="btn"
-            href="https://calendly.com/danyal-jamil/30min"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Start the Drops trial</a
-          >
+          <p class="lede">
+            Only want the ads? Pick a time, tell us your vertical, add the
+            Slack app. The first drop lands the next morning. No card for the
+            trial.
+          </p>
+          <div class="hero-actions">
+            <a
+              class="btn"
+              href="https://calendly.com/danyal-jamil/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta="home_closing_roi" data-cta-type="booking" data-product="roi"
+              >Book an ROI setup call</a
+            >
+            <a
+              class="btn btn-secondary"
+              href="https://calendly.com/danyal-jamil/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta="home_closing_drops" data-cta-type="trial" data-product="drops"
+              >Start the Drops trial</a
+            >
+          </div>
         </div>
       </section>
     </main>
@@ -580,12 +585,17 @@
         </p>
         <p>Marketing tools for performance teams.</p>
         <p class="foot-by">A project by <a href="https://jamilglobal.com">jamilglobal.com</a></p>
+        <p class="foot-legal">
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="mailto:__CONTACT_EMAIL__" data-cta="foot_email" data-cta-type="contact" data-product="none">__CONTACT_EMAIL__</a>
+        </p>
       </div>
       <div class="foot-meta">
         <a href="/roi/">ROI</a>
         <a href="/drops/">Drops</a>
         <a href="#pricing">Pricing</a>
-        <a href="https://calendly.com/danyal-jamil/30min" target="_blank" rel="noopener noreferrer">Book a meeting</a>
+        <a href="https://calendly.com/danyal-jamil/30min" target="_blank" rel="noopener noreferrer" data-cta="home_foot_book" data-cta-type="booking" data-product="roi">Book a meeting</a>
         <span>© <span id="year">2026</span></span>
       </div>
     </footer>
