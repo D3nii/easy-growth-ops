@@ -19,8 +19,8 @@
             Ringba tracks call revenue and payout and can send calls back to Meta
             as conversions. Its documented reports don't put Meta ad spend next to that payout. To see profit, join Meta spend (Ads Manager export or
             Marketing API) with Ringba revenue or payout for the same window, then
-            subtract call-platform fees. ROI does this in Slack every 15 minutes,
-            with read-only access.
+            subtract call-platform fees. ROI does this in Slack every 15–30 minutes,
+            depending on setup, with read-only access.
           </p>
           <!--@byline-->
         </header>
@@ -31,7 +31,7 @@
             <li>Ringba’s Summary and Call Details reports show Revenue, Payout, and Profit on the <em>call</em> side. They do not include Meta Ads spend.</li>
             <li>Ringba’s Facebook Offline Events integration pushes conversions <em>to</em> Meta. Ringba’s docs don’t describe it pulling spend <em>from</em> Meta (checked 8 October 2026).</li>
             <li>Net profit = call payout − Meta spend − Google spend − TikTok spend − call-platform fees.</li>
-            <li>You can build that report in Sheets, with Make/n8n, or have ROI post it to Slack every 15 minutes.</li>
+            <li>You can build that report in Sheets, with Make/n8n, or have ROI post it to Slack every 15–30 minutes, depending on setup.</li>
           </ul>
         </section>
 
@@ -50,7 +50,7 @@
             reports, what its Facebook integration does, the formula, and three
             ways to build the report. One of those ways is
             <a href="/roi/">Easy Growth Ops ROI</a>, which posts the P&amp;L to
-            Slack every 15 minutes.
+            Slack every 15–30 minutes, depending on setup.
           </p>
         </section>
 
@@ -127,8 +127,11 @@
             shape of the P&amp;L stays the same once you add other platforms.
             “Call payout” is the Ringba Revenue or Payout field you chose at
             setup. “Call-platform fees” means Ringba’s own fees. In ROI’s Slack
-            readout, ROAS is return on ad spend, CPC is cost per call (not cost
-            per click), and CPA is cost per acquisition.
+            readout, ROAS is return on ad spend, calculated as
+            ROAS = (revenue − spend) ÷ spend, where revenue is that call payout
+            figure. So $820 of revenue on $713.57 of spend is a 14.91% ROAS, and
+            0% means break-even. CPC is cost per call (not cost per click), and
+            CPA is cost per acquisition.
           </p>
           <!-- FUTURE: link to /guides/pay-per-call-profit-formula/ (Brief #3) once that page is live. -->
         </section>
@@ -165,7 +168,7 @@
                 </tr>
                 <tr>
                   <th scope="row"><a href="/roi/">ROI</a></th>
-                  <td>Slack P&amp;L every 15 minutes, setup done for you</td>
+                  <td>Slack P&amp;L every 15–30 minutes (depending on setup), built for you</td>
                   <td>Easy Growth Ops</td>
                   <td>The team needs the number without opening a dashboard</td>
                 </tr>
@@ -208,7 +211,8 @@
               <strong>Align the windows.</strong> Put both exports into one
               sheet. Match rows by day (or by whatever grain you exported). Watch
               for mismatches: Ads Manager and Ringba can be set to different
-              time zones, so the same “day” can cover different hours. Take spend
+              time zones, so the same “day” can cover different hours; pick one
+              time zone and convert the other export to it. Take spend
               from Meta and calls and payout from Ringba; don’t mix in the
               conversions Meta reports under its own attribution window. If
               totals don’t line up, fix the windows before you trust the profit
@@ -222,7 +226,8 @@
             </li>
             <li>
               <strong>Read ROAS and cost per call off the same sheet.</strong>
-              ROAS = call payout ÷ Meta spend. Cost per call = Meta spend ÷
+              ROAS = (call payout − Meta spend) ÷ Meta spend, the same
+              definition ROI uses. Cost per call = Meta spend ÷
               paid calls (Ringba’s Summary report counts calls that met the
               payout requirements in its Paid column).
             </li>
@@ -251,14 +256,17 @@
             API changes.
           </p>
 
-          <h3>Done-for-you: ROI posts the P&amp;L to Slack every 15 minutes</h3>
+          <h3>Done-for-you: ROI posts the P&amp;L to Slack every 15–30 minutes, depending on setup</h3>
           <p>
             <a href="/roi/">ROI</a> is the Slack P&amp;L for pay-per-call buyers.
             It reads Meta Ads spend, Google Ads spend, and TikTok Ads spend,
             places call payout beside that spend from one call platform
             (Ringba, CallGrid, TrackDrive, Retreaver, or Phonexa), and posts net
-            profit, ROAS, CPC (cost per call), CPA, and per-account totals to
-            Slack every 15 minutes. Access is read-only: we never bid, pause, or
+            profit, ROAS, CPC (cost per call), CPA, and totals to Slack every
+            15–30 minutes, depending on setup. For now it reports per ad
+            account, not per campaign. ROI lines up Meta spend and Ringba calls
+            in US Eastern time (EST), so both sides of each total cover the same
+            hours. Access is read-only: we never bid, pause, or
             scale ads, and you can revoke access. Setup is done for you; the
             first Slack update arrives the same week.
           </p>
@@ -279,7 +287,7 @@
           <h2>What the Slack P&amp;L looks like</h2>
           <p>
             The update is a short Slack message: each ad account, then the
-            totals. Spend, call payout (labelled Revenue here), ROAS, profit,
+            totals. For now ROI reports per account, not per campaign. Spend, call payout (labelled Revenue here), ROAS, profit,
             CPC (cost per call), and CPA sit in the same readout. Names in the
             screenshot are replaced.
           </p>
@@ -289,13 +297,15 @@
                 src="/shots/roi-bot-redacted.png"
                 width="938"
                 height="407"
-                alt="Slack message from ROI showing spend, call revenue, ROAS, profit, and CPA per ad account, then totals including CPC. Account and bot names are replaced."
+                alt="Slack message from ROI, 7:30 PM update, showing spend, call revenue, ROAS, profit, and CPA per ad account, then totals: Profit $1,172.51 on completed calls and Net Profit $1,582.01 including estimated revenue from 13 live calls. Account and bot names are replaced."
                 loading="lazy"
               />
             </div>
             <figcaption>
               A Slack update from ROI. Every ad account, then the totals.
-              Account and bot names replaced for publication.
+              Profit counts completed calls only. Net Profit adds the estimated
+              revenue from calls still in progress (13 here). Account and bot
+              names replaced for publication.
             </figcaption>
           </figure>
           <blockquote class="pull-quote">
@@ -348,7 +358,7 @@
                   Join Meta spend with Ringba Revenue or Payout for the same time
                   window, then subtract Ringba fees. You can do that in a sheet,
                   with a Make or n8n flow, or with ROI posting the P&amp;L to
-                  Slack every 15 minutes.
+                  Slack every 15–30 minutes, depending on setup.
                 </p>
               </div>
             </li>
@@ -356,9 +366,10 @@
               <h3>How do I calculate ROAS for Ringba calls from Facebook?</h3>
               <div class="faq-a">
                 <p>
-                  ROAS = call payout ÷ Meta spend. Call payout is the Ringba
-                  Revenue or Payout field you treat as income. Net profit still
-                  subtracts call-platform fees on top of that.
+                  ROAS = (call payout − Meta spend) ÷ Meta spend. That is how
+                  ROI computes it: (revenue − spend) ÷ spend. Call payout is the
+                  Ringba Revenue or Payout field you treat as income. Net profit
+                  still subtracts call-platform fees on top of that.
                 </p>
               </div>
             </li>
@@ -378,7 +389,8 @@
               <div class="faq-a">
                 <p>
                   Often enough that you can pause a burst or scale a winner
-                  without waiting for end of day. ROI refreshes every 15 minutes.
+                  without waiting for end of day. ROI refreshes every 15–30
+                  minutes, depending on setup.
                   A daily sheet is enough if you don’t need to act mid-flight.
                 </p>
               </div>

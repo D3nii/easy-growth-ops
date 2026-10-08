@@ -81,9 +81,9 @@ export function llmsTxt() {
   const body = [...sections].map(([name, lines]) => `## ${name}\n\n${lines.join("\n")}`).join("\n\n");
   return `# Easy Growth Ops
 
-> Two Slack-delivered tools for performance marketers. ROI posts call payout from one call platform (Ringba, CallGrid, TrackDrive, Retreaver, or Phonexa) next to Meta Ads, Google Ads, and TikTok Ads spend in Slack every 15 minutes, read-only. Drops sends yesterday's winning Meta, Google, and TikTok ads to Slack each morning.
+> Two Slack-delivered tools for performance marketers. ROI posts call payout from one call platform (Ringba, CallGrid, TrackDrive, Retreaver, or Phonexa) next to Meta Ads, Google Ads, and TikTok Ads spend in Slack every 15–30 minutes (depending on setup), read-only. Drops sends yesterday's winning Meta, Google, and TikTok ads to Slack each morning.
 
-Net profit in ROI = call payout − Meta spend − Google spend − TikTok spend − call-platform fees. Pricing: ROI is $200 the first month (setup included), then $100/mo for the first 50 shops; Drops is $79/mo after a 14-day free trial; both are $150/mo.
+Net profit in ROI = call payout − Meta spend − Google spend − TikTok spend − call-platform fees. ROAS in ROI = (revenue − spend) ÷ spend. Pricing: ROI is $200 the first month (setup included), then $100/mo for the first 50 shops; Drops is $79/mo after a 14-day free trial; both are $150/mo.
 
 ${body}
 `;

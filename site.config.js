@@ -70,7 +70,7 @@ export const PAGES = [
       section: "Products",
       title: "ROI: pay-per-call Slack P&L",
       summary:
-        "Call payout from Ringba, CallGrid, TrackDrive, Retreaver, or Phonexa next to Meta, Google, and TikTok ad spend, posted to Slack every 15 minutes. Read-only. Pricing, comparison with RedTrack/Make/Looker Studio, and FAQ.",
+        "Call payout from Ringba, CallGrid, TrackDrive, Retreaver, or Phonexa next to Meta, Google, and TikTok ad spend, posted to Slack every 15–30 minutes, depending on setup. Read-only. Pricing, comparison with RedTrack/Make/Looker Studio, and FAQ.",
     },
   },
   {

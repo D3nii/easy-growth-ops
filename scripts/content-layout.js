@@ -179,7 +179,7 @@ function jsonLd(page, root, trail) {
       operatingSystem: "Slack",
       creator: { "@id": `${SITE_URL}/#org` },
       description:
-        "Slack P&L for pay-per-call media buyers. Reads Meta Ads, Google Ads, and TikTok Ads spend plus call payout from Ringba, CallGrid, TrackDrive, Retreaver, or Phonexa, then posts net profit every 15 minutes.",
+        "Slack P&L for pay-per-call media buyers. Reads Meta Ads, Google Ads, and TikTok Ads spend plus call payout from Ringba, CallGrid, TrackDrive, Retreaver, or Phonexa, then posts net profit every 15–30 minutes, depending on setup.",
       offers: {
         "@type": "Offer",
         priceCurrency: "USD",
