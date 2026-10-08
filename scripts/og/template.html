@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Rendered to public/og/*.png by scripts/og-images.mjs. Open with ?page=home|roi|drops to preview. -->
+    <style>
+      @import "../../node_modules/@fontsource/syne/latin-700.css";
+      @import "../../node_modules/@fontsource/syne/latin-800.css";
+      @import "../../node_modules/@fontsource/outfit/latin-400.css";
+      @import "../../node_modules/@fontsource/outfit/latin-500.css";
+      @import "../../node_modules/@fontsource/ibm-plex-mono/latin-500.css";
+
+      :root {
+        --paper: #f3eee4;
+        --ink: #141210;
+        --stage-2: #201c18;
+        --mute: #b7b0a4;
+        --line: #3a342c;
+        --lime: #c8f04a;
+      }
+      * { box-sizing: border-box; margin: 0; }
+      html, body { width: 1200px; height: 630px; overflow: hidden; }
+      body {
+        position: relative;
+        background: var(--ink);
+        color: var(--paper);
+        font-family: "Outfit", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      .spine { position: absolute; left: 72px; top: 0; bottom: 0; width: 1px; background: var(--line); }
+      .card { position: absolute; inset: 0; padding: 64px 80px 56px 112px; display: flex; flex-direction: column; }
+      .brand { display: flex; align-items: center; gap: 16px; font-family: "Syne", sans-serif; font-weight: 700; font-size: 30px; letter-spacing: -0.04em; }
+      .mark { display: grid; place-items: center; width: 48px; height: 48px; background: var(--lime); color: var(--ink); font-family: "Syne", sans-serif; font-weight: 800; font-size: 18px; letter-spacing: -0.06em; }
+      .kicker { margin-top: 54px; display: flex; align-items: center; gap: 14px; color: var(--mute); font-size: 26px; font-weight: 500; letter-spacing: -0.015em; }
+      .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--lime); }
+      h1 { margin-top: 18px; font-family: "Syne", sans-serif; font-weight: 700; font-size: 84px; line-height: 1.0; letter-spacing: -0.045em; max-width: 1000px; }
+      h1 em { font-style: normal; color: var(--lime); }
+      .sub { margin-top: 26px; max-width: 900px; color: #d9d2c5; font-size: 30px; line-height: 1.35; letter-spacing: -0.015em; }
+      .foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 22px; border-top: 1px solid var(--line); }
+      .domain { font-family: "IBM Plex Mono", monospace; font-weight: 500; font-size: 24px; color: var(--paper); }
+      .chips { display: flex; gap: 10px; }
+      .chip { padding: 8px 14px; border: 1px solid var(--line); color: var(--mute); font-size: 22px; font-weight: 500; }
+      .chip.on { background: var(--lime); border-color: var(--lime); color: var(--ink); }
+      .rise { position: absolute; right: 0; top: 40px; width: 560px; height: 150px; opacity: 0.95; }
+      .rise path { stroke: var(--lime); stroke-width: 3; fill: none; stroke-linecap: round; }
+    </style>
+  </head>
+  <body>
+    <div class="spine"></div>
+    <svg class="rise" viewBox="0 0 1200 180" aria-hidden="true">
+      <path d="M0 150 C 140 150, 180 148, 260 132 S 400 90, 480 88 S 620 110, 700 70 S 860 20, 980 28 S 1100 60, 1200 8" />
+    </svg>
+    <main class="card">
+      <div class="brand"><span class="mark">EG</span>Easy Growth Ops</div>
+      <p class="kicker"><span id="kicker"></span><span class="dot"></span><span id="kicker2"></span></p>
+      <h1 id="title"></h1>
+      <p class="sub" id="sub"></p>
+      <div class="foot">
+        <span class="domain">geteasygrowthops.co</span>
+        <div class="chips" id="chips"></div>
+      </div>
+    </main>
+    <script>
+      const PAGES = {
+        home: {
+          kicker: "Two products",
+          kicker2: "Slack-first tools for performance marketers",
+          title: "Know the return.<br />See the ads that&nbsp;<em>won.</em>",
+          sub: "ROI: call payout next to Meta, Google, and TikTok spend, in Slack every 15 minutes. Drops: yesterday’s winning ads before standup.",
+          chips: [["ROI", true], ["Drops", false]],
+        },
+        roi: {
+          kicker: "01 — ROI",
+          kicker2: "Pay-per-call Slack P&amp;L",
+          title: "Call payout next to ad&nbsp;<em>spend.</em>",
+          sub: "Net profit = call payout − Meta, Google, and TikTok spend − call&#8209;platform fees. Posted to Slack every 15&nbsp;minutes.",
+          chips: [["Ringba", false], ["CallGrid", false], ["TrackDrive", false], ["Retreaver", false], ["Phonexa", false]],
+        },
+        drops: {
+          kicker: "02 — Drops",
+          kicker2: "Winning ads in Slack",
+          title: "Yesterday’s winners.<br />In Slack. This&nbsp;<em>morning.</em>",
+          sub: "Three or four winning Meta, Google, and TikTok ads, in a Slack thread before standup.",
+          chips: [["Meta", false], ["Google", false], ["TikTok", false]],
+        },
+      };
+      const key = new URLSearchParams(location.search).get("page") || "home";
+      const p = PAGES[key] || PAGES.home;
+      document.getElementById("kicker").innerHTML = p.kicker;
+      document.getElementById("kicker2").innerHTML = p.kicker2;
+      document.getElementById("title").innerHTML = p.title;
+      document.getElementById("sub").innerHTML = p.sub;
+      document.getElementById("chips").innerHTML = p.chips
+        .map(([label, on]) => `<span class="chip${on ? " on" : ""}">${label}</span>`)
+        .join("");
+      document.fonts.ready.then(() => document.body.setAttribute("data-ready", "1"));
+    </script>
+  </body>
+</html>

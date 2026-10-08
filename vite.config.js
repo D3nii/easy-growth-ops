@@ -1,21 +1,19 @@
-import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { defineConfig } from "vite";
+import sitePlugin, { buildInputs } from "./scripts/vite-site-plugin.js";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
 
 export default defineConfig({
+  plugins: [sitePlugin(root)],
   server: {
     port: 5173,
     host: true,
   },
   build: {
     rollupOptions: {
-      input: {
-        main: resolve(root, "index.html"),
-        roi: resolve(root, "roi/index.html"),
-        drops: resolve(root, "drops/index.html"),
-      },
+      // One entry per page in site.config.js (also drives sitemap.xml).
+      input: buildInputs(root),
     },
   },
 });

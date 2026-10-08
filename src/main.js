@@ -1,9 +1,11 @@
 import { inject } from "@vercel/analytics";
+import { BOOK_URL } from "../site.config.js";
+import { initCtaTracking, initGa4 } from "./track.js";
 import "./style.css";
 
 inject();
-
-const BOOK_URL = "https://calendly.com/danyal-jamil/30min";
+initGa4();
+initCtaTracking();
 
 const year = document.querySelector("#year");
 if (year) year.textContent = String(new Date().getFullYear());
