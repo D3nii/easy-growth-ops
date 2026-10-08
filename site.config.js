@@ -103,34 +103,6 @@ export const PAGES = [
     llms: { section: "Guides", title: "Guides hub", summary: "Index of every Easy Growth Ops guide." },
   },
   {
-    name: "pay-per-call-profit-formula",
-    path: "/guides/pay-per-call-profit-formula/",
-    file: "guides/pay-per-call-profit-formula/index.html",
-    changefreq: "monthly",
-    priority: "0.7",
-    layout: "content",
-    schema: "Article",
-    published: "2026-10-08",
-    title: "Pay-Per-Call Profit Formula: Profit, ROAS, ROI, Break-Even",
-    h1: "How to Calculate Pay-Per-Call Profit, ROAS, and ROI (With Formulas)",
-    description:
-      "Pay-per-call net profit = call payout − Meta, Google, and TikTok spend − call-platform fees. ROAS vs ROI, break-even cost per call, and sheet formulas.",
-    breadcrumb: "Pay-per-call profit formula",
-    ogImage: "pay-per-call-profit-formula",
-    ogImageAlt: "Pay-per-call profit formula: call payout minus ad spend minus call-platform fees, plus ROAS, ROI, and break-even cost per call.",
-    guide: {
-      section: "Formulas",
-      summary:
-        "Net profit, ROAS, ROI, revenue per call, and break-even cost per call for pay-per-call, with a worked example, common mistakes, and formulas to paste into a sheet.",
-    },
-    llms: {
-      section: "Guides",
-      title: "Pay-per-call profit formula",
-      summary:
-        "Formulas and definitions for pay-per-call buyers: net profit = call payout − ad spend (Meta + Google + TikTok) − call-platform fees; ROAS; ROI; revenue per call; cost per call vs cost per click; break-even cost per call and break-even ROAS.",
-    },
-  },
-  {
     name: "ringba-facebook-ads-profit-report",
     path: "/integrations/ringba-facebook-ads-profit-report/",
     file: "integrations/ringba-facebook-ads-profit-report/index.html",
@@ -157,6 +129,34 @@ export const PAGES = [
       title: "Ringba + Facebook Ads profit report",
       summary:
         "How to see Ringba call revenue or payout next to Meta ad spend: Ringba report columns, the Facebook Conversions API integration, the profit formula, and three ways to build the report.",
+    },
+  },
+  {
+    name: "pay-per-call-profit-formula",
+    path: "/guides/pay-per-call-profit-formula/",
+    file: "guides/pay-per-call-profit-formula/index.html",
+    changefreq: "monthly",
+    priority: "0.7",
+    layout: "content",
+    schema: "Article",
+    published: "2026-10-08",
+    title: "Pay-Per-Call Profit Formula: Profit, ROAS, ROI, Break-Even",
+    h1: "How to Calculate Pay-Per-Call Profit, ROAS, and ROI (With Formulas)",
+    description:
+      "Pay-per-call net profit = call payout − Meta, Google, and TikTok spend − call-platform fees. ROAS vs ROI, break-even cost per call, and sheet formulas.",
+    breadcrumb: "Pay-per-call profit formula",
+    ogImage: "pay-per-call-profit-formula",
+    ogImageAlt: "Pay-per-call profit formula: call payout minus ad spend minus call-platform fees, plus ROAS, ROI, and break-even cost per call.",
+    guide: {
+      section: "Formulas",
+      summary:
+        "Net profit, ROAS, ROI, revenue per call, and break-even cost per call for pay-per-call, with a worked example, common mistakes, and formulas to paste into a sheet.",
+    },
+    llms: {
+      section: "Guides",
+      title: "Pay-per-call profit formula",
+      summary:
+        "Formulas and definitions for pay-per-call buyers: net profit = call payout − ad spend (Meta + Google + TikTok) − call-platform fees; ROAS; ROI; revenue per call; cost per call vs cost per click; break-even cost per call and break-even ROAS.",
     },
   },
   {
