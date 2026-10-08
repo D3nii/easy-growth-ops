@@ -97,6 +97,13 @@
           sub: "Call payout next to Meta spend, minus Ringba fees. Three ways to build it.",
           chips: [["Revenue / Payout", false], ["Meta spend", false], ["Profit", true]],
         },
+        "redtrack-alternative-pay-per-call": {
+          kicker: "Comparison",
+          kicker2: "RedTrack alternative for pay-per-call",
+          title: "Profit in Slack, not another&nbsp;<em>tracker.</em>",
+          sub: "When you need spend vs call payout per ad account, and when you should stay on RedTrack.",
+          chips: [["Attribution", false], ["Profit visibility", true]],
+        },
       };
       const key = new URLSearchParams(location.search).get("page") || "home";
       const p = PAGES[key] || PAGES.home;

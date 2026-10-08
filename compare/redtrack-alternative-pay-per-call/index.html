@@ -1,0 +1,513 @@
+<!doctype html>
+<!--
+  Content page. <head>, nav, breadcrumbs, footer, byline, and JSON-LD come from
+  layouts/content.html (scripts/content-layout.js). Metadata is the
+  "redtrack-alternative-pay-per-call" entry in site.config.js.
+  FAQPage JSON-LD is built from [data-faq] below.
+  RedTrack and ClickFlare facts were checked on 8 October 2026. Re-check prices and sync rates before editing.
+-->
+<html lang="en">
+  <body>
+      <article class="article">
+        <header class="page-hero content-hero">
+          <p class="kicker">
+            <span>Compare</span>
+            <span class="dot" aria-hidden="true"></span>
+            <span>RedTrack alternative</span>
+          </p>
+          <h1>RedTrack Alternative for Pay-Per-Call: When You Need Profit in Slack, Not Another&nbsp;Tracker</h1>
+          <p class="lede answer">
+            Need click-ID attribution and call conversions sent back to Meta and
+            Google? Stay on RedTrack (or ClickFlare). If you mainly check whether
+            each ad account is profitable, ROI posts that P&amp;L to Slack every
+            15–30 minutes, depending on setup: call payout minus Meta, Google, and
+            TikTok spend minus fees. Founding price: $200, then $100/mo. It can
+            run alongside RedTrack.
+          </p>
+          <!--@byline-->
+        </header>
+
+        <section class="key-facts" aria-labelledby="key-facts">
+          <h2 id="key-facts" class="visually-hidden">Key facts</h2>
+          <ul>
+            <li>RedTrack is an ad tracker. It ties Ringba and Retreaver calls to the click, syncs ad spend at ad level, and sends call conversions back to ad platforms through CAPI (as of 8 October 2026).</li>
+            <li>RedTrack syncs ad spend every 6 hours on Builder ($79/mo), every 60 minutes on Solo ($169/mo), and every 30 minutes on Team ($399/mo) and Enterprise ($999/mo). Faster sync is a paid add-on priced by monthly ad spend.</li>
+            <li>ROI is not a tracker. It is a read-only Slack P&amp;L per ad account: call payout next to Meta, Google, and TikTok spend, every 15–30 minutes, depending on setup. It does not attribute calls to ads.</li>
+            <li>They answer different questions. Some shops need one, some need both.</li>
+          </ul>
+        </section>
+
+        <section id="short-answer">
+          <h2>The short answer</h2>
+          <p>
+            Pay-per-call buyers usually reach for RedTrack for one of two
+            reasons. Either they want to know <em>which ad, ad set, or keyword
+            drove a call</em> and teach Meta and Google to find more of those
+            callers. Or they want to know <em>whether the account is making
+            money right now</em>, without stitching Ads Manager and the call
+            board together by hand.
+          </p>
+          <p>
+            RedTrack is built for the first job. The second is narrower: spend
+            next to payout, minus fees, often enough to act on. That is what
+            <a href="/roi/">Easy Growth Ops ROI</a> does, in Slack, with setup
+            done for you. If the second job is all you use RedTrack
+            for, ROI can replace it. If you need both, keep RedTrack and add the
+            Slack P&amp;L.
+          </p>
+        </section>
+
+        <section id="stay-on-redtrack">
+          <h2>Who should stay on RedTrack</h2>
+          <p>
+            Be honest about what a tracker gives you. The ROI page itself says
+            RedTrack is stronger at click-ID attribution and sending call
+            conversions back to Meta and Google. Per RedTrack’s own pages (as of
+            8 October 2026), stay on it if you rely on any of these:
+          </p>
+          <ul>
+            <li>
+              <strong>Calls tied to the click.</strong> Ringba and Retreaver are
+              native integrations. They pass the call and its payout into
+              RedTrack with the original click ID, and any platform that can fire
+              a postback with the click ID also works
+              (<a href="https://www.redtrack.io/for-affiliates/call-tracking/" target="_blank" rel="noopener noreferrer">RedTrack call tracking</a>).
+            </li>
+            <li>
+              <strong>Conversions back to the ad platforms.</strong> RedTrack
+              sends call conversions to Meta, Google, and other platforms through
+              its Conversions API integrations, so their bidding learns from
+              callers instead of clicks.
+            </li>
+            <li>
+              <strong>Ad-level reporting.</strong> RedTrack pulls spend by API
+              and matches it to tracking data at ad level, then rolls it up to ad
+              set, campaign, and channel
+              (<a href="https://www.redtrack.io/pricing/" target="_blank" rel="noopener noreferrer">RedTrack pricing</a>).
+            </li>
+            <li>
+              <strong>Rules that act on campaigns.</strong> RedTrack lists Stop
+              Rules that pause spend when thresholds are hit, plus Scale Rules and
+              an Ads Manager edit mode as add-ons.
+            </li>
+            <li>
+              <strong>Traffic beyond Meta, Google, and TikTok.</strong> RedTrack
+              lists ad-level spend sync for Snapchat, Pinterest, Taboola,
+              Outbrain, RevContent, NewsBreak, and others. ROI reads Meta Ads,
+              Google Ads, and TikTok Ads only.
+            </li>
+          </ul>
+          <p>
+            If you optimize at ad or keyword level, ROI will not replace any of
+            that. It reports per ad account, not per campaign or ad.
+          </p>
+        </section>
+
+        <section id="profit-vs-attribution">
+          <h2>Who needs something different: profit visibility vs attribution</h2>
+          <p>
+            Attribution answers “which ad drove this call?” Profit visibility
+            answers “after spend and fees, is this account up or down today?”
+            If you mostly ask the second question, many times a day, from a
+            phone, a tracker can be more tool than the job needs: tracking
+            links, postbacks, and a dashboard somebody has to open.
+          </p>
+          <p>
+            ROI starts from the other end. It reads spend from Meta Ads, Google
+            Ads, and TikTok Ads, reads call payout from one call platform
+            (Ringba, CallGrid, TrackDrive, Retreaver, or Phonexa), and posts the
+            result to Slack every 15–30 minutes, depending on setup. The formula
+            is the one Easy Growth Ops publishes:
+          </p>
+          <p class="formula">
+            Net profit = call payout − Meta spend − Google spend − TikTok spend − call-platform fees.
+          </p>
+          <p>
+            “Call-platform fees” means the call platform’s own fees, such as
+            Ringba’s or CallGrid’s. On Ringba, we set up ROI to treat either the
+            Revenue or the Payout field as your call payout, whichever matches
+            how you get paid. In the readout, ROAS is (revenue − spend) ÷ spend,
+            so 0% means break-even on ad spend. CPC is cost per call, not cost
+            per click, and CPA is cost per acquisition.
+          </p>
+          <figure class="article-figure">
+            <div class="shot-frame shot-photo">
+              <img
+                src="/shots/roi-bot-redacted.png"
+                width="938"
+                height="407"
+                alt="Slack message from ROI, 7:30 PM update, showing spend, call revenue, ROAS, profit, and CPA per ad account, then totals: Profit $1,172.51 on completed calls and Net Profit $1,582.01 including estimated revenue from 13 live calls. Account and bot names are replaced."
+                loading="lazy"
+              />
+            </div>
+            <figcaption>
+              A Slack update from ROI: every ad account, then the totals. Profit
+              counts completed calls only. Net Profit adds the estimated revenue
+              from calls still in progress (13 here). Account and bot names
+              replaced for publication.
+            </figcaption>
+          </figure>
+          <blockquote class="pull-quote">
+            <p>
+              “I can’t keep accounts open all day and sit there refreshing. …
+              Google’s UI is late. The API is not.”
+            </p>
+            <footer>— Danyal Jamil, media buyer</footer>
+          </blockquote>
+        </section>
+
+        <section id="side-by-side">
+          <h2>ROI vs RedTrack, side by side</h2>
+          <p>
+            RedTrack details are from its
+            <a href="https://www.redtrack.io/pricing/" target="_blank" rel="noopener noreferrer">pricing page</a>
+            and
+            <a href="https://www.redtrack.io/for-affiliates/call-tracking/" target="_blank" rel="noopener noreferrer">call-tracking page</a>
+            as of 8 October 2026. ROI details are from the
+            <a href="/roi/">ROI page</a>.
+          </p>
+          <div class="compare-wrap">
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th scope="col">Question</th>
+                  <th scope="col">ROI</th>
+                  <th scope="col">RedTrack</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">What it is</th>
+                  <td>Slack P&amp;L for pay-per-call buyers</td>
+                  <td>Ad tracker and attribution platform</td>
+                </tr>
+                <tr>
+                  <th scope="row">Data shown</th>
+                  <td>Spend, call payout, net profit, ROAS, CPC (cost per call), CPA, per ad account, then totals</td>
+                  <td>Spend, revenue, and ROI by ad, ad set, campaign, and channel; calls reported with other conversions</td>
+                </tr>
+                <tr>
+                  <th scope="row">Where you see it</th>
+                  <td>A Slack message</td>
+                  <td>RedTrack reports and dashboards, plus a mobile app</td>
+                </tr>
+                <tr>
+                  <th scope="row">Spend refresh</th>
+                  <td>Every 15–30 minutes, depending on setup, included in the price</td>
+                  <td>6 hours (Builder), 60 minutes (Solo), 30 minutes (Team, Enterprise); 30, 15, or 5 minutes as a paid add-on</td>
+                </tr>
+                <tr>
+                  <th scope="row">Click-ID attribution</th>
+                  <td>Not the job</td>
+                  <td>Yes, calls arrive with the original click ID</td>
+                </tr>
+                <tr>
+                  <th scope="row">Sends calls back to Meta and Google</th>
+                  <td>No</td>
+                  <td>Yes, through CAPI</td>
+                </tr>
+                <tr>
+                  <th scope="row">Bids or pauses ads</th>
+                  <td>Never. Read-only access you can revoke</td>
+                  <td>Stop Rules can pause spend; Scale Rules and Ads Manager edit mode are add-ons</td>
+                </tr>
+                <tr>
+                  <th scope="row">Call platforms</th>
+                  <td>One at a time: Ringba, CallGrid, TrackDrive, Retreaver, or Phonexa</td>
+                  <td>Ringba and Retreaver native; others by postback with click ID</td>
+                </tr>
+                <tr>
+                  <th scope="row">Ad platforms</th>
+                  <td>Meta Ads, Google Ads, TikTok Ads</td>
+                  <td>Meta, Google, TikTok, Snapchat, Pinterest, Taboola, Outbrain, and more</td>
+                </tr>
+                <tr>
+                  <th scope="row">Setup</th>
+                  <td>Done for you; first Slack update the same week</td>
+                  <td>Tracker setup (click IDs, postbacks); paid setup assistance on any plan</td>
+                </tr>
+                <tr>
+                  <th scope="row">Pricing model</th>
+                  <td>$200 first month (setup included), then $100/mo; 10 ad accounts, +$25/mo each extra</td>
+                  <td>Plan tiers from $79/mo by event volume and seats; sync add-ons priced by ad spend</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="together">
+          <h2>Using ROI and RedTrack together</h2>
+          <p>
+            Keep RedTrack, add the Slack P&amp;L. ROI only reads: it takes spend
+            from the ad platforms and payout from the call platform, and it
+            never bids, pauses, or scales ads, so it leaves your campaigns and
+            your tracking setup as they are. RedTrack keeps doing attribution and CAPI.
+            ROI tells the team, in Slack, whether each ad account is profitable.
+          </p>
+          <p>
+            Expect small differences. RedTrack credits a call to the click and
+            the ad. ROI reports per ad account and, for Meta and Ringba, lines
+            both sides up in US Eastern time. If totals don’t match, check time
+            zones and date windows before assuming either is wrong.
+          </p>
+          <p>
+            The ROI page’s one customer result: “LeadVIPS, a pay-per-call team
+            buying on Meta and Google, went from 3 hours of daily reporting to
+            zero.”
+          </p>
+        </section>
+
+        <section id="other-alternatives">
+          <h2>Other RedTrack alternatives pay-per-call buyers consider</h2>
+
+          <h3>ClickFlare</h3>
+          <p>
+            Another ad tracker. ClickFlare lists Ringba, Retreaver, and CallRail
+            call attribution, ties calls to the ad, keyword, and campaign, and
+            pushes call conversions back to Meta, Google, and TikTok via CAPI
+            (as of 8 October 2026;
+            <a href="https://www.clickflare.com/integrations/ringba" target="_blank" rel="noopener noreferrer">ClickFlare CRM and call tracking integrations</a>).
+            Its pricing page lists automatic cost sync on every plan
+            (<a href="https://www.clickflare.com/pricing" target="_blank" rel="noopener noreferrer">ClickFlare pricing</a>).
+            If you want a tracker but a different one, this is the usual
+            comparison.
+          </p>
+          <!-- FUTURE: link /compare/clickflare-alternative-pay-per-call/ (Brief #6) once that page is live. -->
+
+          <h3>DIY: Make or n8n, plus Sheets or Data Studio</h3>
+          <p>
+            You can build the spend-versus-payout join yourself with a workflow
+            tool such as <a href="https://www.make.com/en" target="_blank" rel="noopener noreferrer">Make</a>
+            or <a href="https://n8n.io/" target="_blank" rel="noopener noreferrer">n8n</a>,
+            write it to a sheet, and chart it in Google’s free
+            <a href="https://datastudio.google.com/overview" target="_blank" rel="noopener noreferrer">Data Studio</a>
+            (the ROI page calls it Looker Studio). The tools are cheap. The cost
+            is the build and whoever maintains it when an API changes. A
+            dashboard also still has to be opened.
+          </p>
+
+          <h3>Your call platform’s own reports</h3>
+          <p>
+            Call platforms already report the call side. Ringba’s Summary report,
+            for example, has Revenue, Payout, Profit, and Margin columns
+            (as of 8 October 2026;
+            <a href="https://support.ringba.com/hc/en-us/articles/17993834757783-Summary-Report" target="_blank" rel="noopener noreferrer">Ringba Summary Report</a>).
+            Its documented columns don’t include ad spend, so you still have to
+            join the call side with Ads Manager. Our
+            <a href="/integrations/ringba-facebook-ads-profit-report/">Ringba + Facebook Ads profit report guide</a>
+            walks through that join step by step.
+          </p>
+          <!-- FUTURE: link /guides/pay-per-call-profit-tracking/ (Brief #5) for the full methods comparison,
+               and /guides/pay-per-call-profit-formula/ (Brief #3) for the formulas, once those pages are live. -->
+        </section>
+
+        <section id="pricing">
+          <h2>Pricing compared</h2>
+          <p>
+            List prices in USD as shown on each vendor’s pricing page on
+            8 October 2026, before tax. “Annual” is the monthly equivalent when
+            billed yearly. Check the live pages before you decide.
+          </p>
+          <div class="compare-wrap">
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th scope="col">Plan</th>
+                  <th scope="col">Monthly</th>
+                  <th scope="col">Annual</th>
+                  <th scope="col">Spend refresh included</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">RedTrack Builder</th>
+                  <td>$79</td>
+                  <td>$69/mo</td>
+                  <td>Every 6 hours</td>
+                </tr>
+                <tr>
+                  <th scope="row">RedTrack Solo</th>
+                  <td>$169</td>
+                  <td>$141/mo</td>
+                  <td>Every 60 minutes</td>
+                </tr>
+                <tr>
+                  <th scope="row">RedTrack Team</th>
+                  <td>$399</td>
+                  <td>$333/mo</td>
+                  <td>Every 30 minutes</td>
+                </tr>
+                <tr>
+                  <th scope="row">RedTrack Enterprise</th>
+                  <td>$999</td>
+                  <td>$833/mo</td>
+                  <td>Every 30 minutes</td>
+                </tr>
+                <tr>
+                  <th scope="row">ClickFlare Starter / Pro / Master</th>
+                  <td>$89 / $219 / $429</td>
+                  <td>$69 / $169 / $329 per month</td>
+                  <td>Automatic cost sync on all plans</td>
+                </tr>
+                <tr>
+                  <th scope="row">Easy Growth Ops ROI</th>
+                  <td>$200 first month (setup included), then $100</td>
+                  <td>No annual plan</td>
+                  <td>Every 15–30 minutes, depending on setup</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            RedTrack sells faster ad spend sync as an add-on priced by monthly
+            ad spend. Its 15-minute ad-level sync is listed from $1,990 a year
+            for accounts spending up to $150K a month, rising to $29,990 a year
+            above $2M a month
+            (<a href="https://www.redtrack.io/pricing/" target="_blank" rel="noopener noreferrer">RedTrack pricing</a>).
+            RedTrack and ClickFlare both offer a 14-day free trial.
+          </p>
+          <p>
+            ROI’s price is a founding price for the first 50 shops: $200 the
+            first month including setup, then $100 a month. Ten ad accounts are
+            included and each extra account is $25 a month. After 50 shops, new
+            shops pay $150 a month. Billing is monthly and you can cancel any
+            month. ROI has no free trial.
+            <a class="text-link" href="/roi/#price" data-cta="redtrack_alt_pricing" data-cta-type="pricing" data-product="roi">See ROI pricing</a>.
+          </p>
+        </section>
+
+        <section class="faq" id="faq" data-faq>
+          <h2>FAQ</h2>
+          <ul class="faq-list">
+            <li class="faq-item">
+              <h3>Is there a RedTrack alternative built for pay-per-call?</h3>
+              <div class="faq-a">
+                <p>
+                  If you need attribution, the alternatives are other trackers,
+                  such as ClickFlare. If you need profit visibility, ROI is built
+                  for pay-per-call: call payout from Ringba, CallGrid, TrackDrive,
+                  Retreaver, or Phonexa next to Meta, Google, and TikTok spend, in
+                  Slack every 15–30 minutes, depending on setup.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Do I need a tracker if I only want profit per ad account?</h3>
+              <div class="faq-a">
+                <p>
+                  Not necessarily. Profit per ad account only needs spend, call
+                  payout, and fees for the same window. A tracker earns its keep
+                  when you need click-level attribution or conversions sent back
+                  to the ad platforms.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>How often does RedTrack sync ad spend, and what does faster sync cost?</h3>
+              <div class="faq-a">
+                <p>
+                  As of 8 October 2026: every 6 hours on Builder, every 60 minutes
+                  on Solo, and every 30 minutes on Team and Enterprise. Faster
+                  sync is a paid add-on priced by monthly ad spend; the 15-minute
+                  option starts at $1,990 a year for up to $150K of monthly spend.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Can I use ROI with RedTrack?</h3>
+              <div class="faq-a">
+                <p>
+                  Yes. ROI is read-only and doesn’t replace attribution. RedTrack
+                  keeps tracking clicks and sending conversions back; ROI posts
+                  the per-account P&amp;L to Slack.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>What does RedTrack do better than ROI?</h3>
+              <div class="faq-a">
+                <p>
+                  Click-ID attribution, sending call conversions back to Meta and
+                  Google through CAPI, ad-level reports, rules that act on
+                  campaigns, and support for many more ad platforms. ROI does none
+                  of those.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Is ROI cheaper than RedTrack?</h3>
+              <div class="faq-a">
+                <p>
+                  Not on sticker price: RedTrack Builder is $79/mo (as of
+                  8 October 2026) and ROI is $200 the first month, then $100 a
+                  month. But Builder syncs spend every 6 hours. ROI includes setup
+                  and a 15–30 minute refresh, depending on setup; matching that on
+                  RedTrack means a higher plan or a sync add-on. Compare the job,
+                  not the plan name.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Does ROI attribute calls to ads?</h3>
+              <div class="faq-a">
+                <p>
+                  No. ROI reports per ad account. Click-ID attribution is not its
+                  job, and with read-only access it doesn’t send conversions back
+                  to ad platforms.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Which call platforms does ROI support?</h3>
+              <div class="faq-a">
+                <p>
+                  One at a time: Ringba, CallGrid, TrackDrive, Retreaver, or
+                  Phonexa. None of them is the default.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="sources" id="sources">
+          <h2>Sources</h2>
+          <p>Third-party pages checked on 8 October 2026. Prices and features change; re-check before relying on them.</p>
+          <ul>
+            <li><a href="https://www.redtrack.io/pricing/" target="_blank" rel="noopener noreferrer">RedTrack: Plans &amp; Pricing</a></li>
+            <li><a href="https://www.redtrack.io/for-affiliates/call-tracking/" target="_blank" rel="noopener noreferrer">RedTrack: Call Tracking for Affiliate Media Buyers</a></li>
+            <li><a href="https://www.clickflare.com/pricing" target="_blank" rel="noopener noreferrer">ClickFlare: Pricing</a></li>
+            <li><a href="https://www.clickflare.com/integrations/ringba" target="_blank" rel="noopener noreferrer">ClickFlare: CRM and call tracking integrations</a></li>
+            <li><a href="https://support.ringba.com/hc/en-us/articles/17993834757783-Summary-Report" target="_blank" rel="noopener noreferrer">Ringba: Summary Report</a></li>
+            <li><a href="https://www.make.com/en" target="_blank" rel="noopener noreferrer">Make</a></li>
+            <li><a href="https://n8n.io/" target="_blank" rel="noopener noreferrer">n8n</a></li>
+            <li><a href="https://datastudio.google.com/overview" target="_blank" rel="noopener noreferrer">Google Data Studio overview</a></li>
+          </ul>
+          <p class="source-note">Easy Growth Ops is not affiliated with RedTrack, ClickFlare, Ringba, Make, n8n, or Google.</p>
+        </section>
+
+        <section class="access" id="book">
+          <div class="access-inner">
+            <p class="index">30 minutes</p>
+            <h2>Book a meeting.</h2>
+            <p class="lede">
+              We’ll look at your stack. You share read-only access. First Slack
+              update the same week.
+            </p>
+            <a
+              class="btn"
+              href="https://calendly.com/danyal-jamil/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta="redtrack_alt_closing_book" data-cta-type="booking" data-product="roi"
+              >Book a meeting</a
+            >
+            <p class="access-alt">
+              Keep RedTrack, add the Slack P&amp;L. Or read the full product page:
+              <a href="/roi/" data-cta="redtrack_alt_closing_roi" data-cta-type="product" data-product="roi">ROI</a>.
+            </p>
+          </div>
+        </section>
+      </article>
+  </body>
+</html>
