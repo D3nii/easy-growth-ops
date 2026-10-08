@@ -21,8 +21,7 @@ export const SITE_URL = "https://www.geteasygrowthops.co";
 export const GA4_MEASUREMENT_ID = "";
 
 /**
- * Public contact address shown in the footer and the legal pages.
- * TODO(Danyal): confirm this inbox exists (or replace it) before merging.
+ * Public contact address shown in the footer and the legal pages (inbox confirmed).
  */
 export const CONTACT_EMAIL = "hello@geteasygrowthops.co";
 

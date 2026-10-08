@@ -1,7 +1,8 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- DRAFT: written for Easy Growth Ops, not yet reviewed by a lawyer. -->
+    <!-- DRAFT: legal-review edits applied, pending legal sign-off. The [PAYMENT PROVIDER]
+         placeholder (rendered as <mark class="placeholder">) must be filled in before this is final. -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Privacy policy — Easy Growth Ops</title>
@@ -93,10 +94,18 @@
         <section>
           <h2>Who we are</h2>
           <p>
-            Easy Growth Ops is a project by Jamil Global (“we”, “us”). This
+            Easy Growth Ops is operated by Jamil Global (“we”, “us”), based in
+            the United Arab Emirates. Postal address: Jamil Global, Shams,
+            Sharjah, UAE. This
             policy covers this website and the two services we sell: ROI
             and Drops. Questions go to
             <a href="mailto:__CONTACT_EMAIL__">__CONTACT_EMAIL__</a>.
+          </p>
+          <p>
+            For this website, bookings, and billing, we decide how your data
+            is used. For the ad and call data in your ROI reports, we act as
+            your processor: we handle it only on your instructions, to
+            produce your reports.
           </p>
         </section>
 
@@ -105,7 +114,8 @@
           <h3>When you visit this website</h3>
           <ul>
             <li><strong>Vercel Web Analytics.</strong> Page views and button clicks (for example, which “Book” or “Trial” button you pressed), with referrer, page, country, browser, and device type. Vercel Web Analytics does not use cookies.</li>
-            <li><strong>Google Analytics 4</strong>, if we switch it on. Google receives the same page views and button clicks plus device and approximate location data, and sets first-party cookies to recognise returning browsers.</li>
+            <li><strong>Google Analytics 4</strong>, if we switch it on, and only after you accept it in a consent banner. Google receives the same page views and button clicks plus device and approximate location data, and sets first-party cookies to recognise returning browsers.</li>
+            <!-- TODO: "booking and trial button" wording must change once self-serve signup ships. -->
             <li><strong>Calendly.</strong> Every booking and trial button opens Calendly. When you book, Calendly collects your name, email, and anything you type in the form, under Calendly’s own privacy policy, and shares it with us so we can run the call.</li>
           </ul>
           <h3>When you use ROI</h3>
@@ -122,7 +132,8 @@
           <h3>When you talk to us or pay us</h3>
           <ul>
             <li>Your name, company, email, and what you send us.</li>
-            <li>Billing details. Card payments are handled by our payment provider. We do not store full card numbers.</li>
+            <!-- Payment provider: MamoPay is expected; confirm before replacing the placeholder. -->
+            <li>Billing details. Card payments are handled by our payment provider, <mark class="placeholder">[PAYMENT PROVIDER]</mark>. We do not store full card numbers.</li>
           </ul>
         </section>
 
@@ -138,6 +149,17 @@
             We do not sell personal data. We do not use your ad or call
             data to advertise to you or to anyone else.
           </p>
+        </section>
+
+        <section>
+          <h2>Legal bases (EU and UK)</h2>
+          <p>If you are in the EU or UK, we rely on these legal bases:</p>
+          <ul>
+            <li><strong>Contract:</strong> to run the services you signed up for, including setup, support, and billing.</li>
+            <li><strong>Legitimate interests:</strong> to understand how this site is used through cookieless analytics, and to keep the site and services secure.</li>
+            <li><strong>Consent:</strong> for Google Analytics 4 cookies. Before we turn GA4 on, we will show a consent banner, and GA4 runs only if you accept. You can withdraw consent at any time.</li>
+            <li><strong>Legal obligation:</strong> to keep invoices and other records the law requires.</li>
+          </ul>
         </section>
 
         <section>
@@ -162,8 +184,8 @@
             <li>Vercel, which hosts this website and runs Vercel Web Analytics.</li>
             <li>Google, for Google Analytics 4 if it is switched on.</li>
             <li>Calendly, for booking calls.</li>
-            <li>The infrastructure and automation providers that run the reporting jobs.</li>
-            <li>Our payment provider, for billing.</li>
+            <li>Make.com, which runs the reporting jobs.</li>
+            <li><mark class="placeholder">[PAYMENT PROVIDER]</mark>, our payment provider, for billing.</li>
           </ul>
           <p>
             We may also disclose data if the law requires it, or to a buyer
@@ -176,7 +198,8 @@
           <h2>Cookies</h2>
           <p>
             This site sets no cookies of its own. Vercel Web Analytics is
-            cookieless. Google Analytics 4, when switched on, sets cookies.
+            cookieless. Google Analytics 4, when switched on, sets cookies,
+            and only after you accept them in the consent banner.
             Calendly sets its own cookies on calendly.com.
           </p>
         </section>
@@ -188,6 +211,11 @@
             active. When you cancel, we revoke or discard our access tokens and
             API keys and delete your stored report data within 30 days, unless
             the law requires us to keep something longer, such as invoices.
+          </p>
+          <p>
+            Messages our app has already posted in your Slack stay in your
+            workspace, under your control. Deletion covers our systems only.
+            You can delete those messages in Slack.
           </p>
         </section>
 
