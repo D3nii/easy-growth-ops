@@ -50,3 +50,13 @@ npm run motion
 ```
 
 Needs Chrome (`CHROME_PATH` to override) and ffmpeg.
+
+## Social preview images
+
+`public/og/{home,roi,drops}.png` (1200×630) are rendered from `scripts/og/template.html`:
+
+```bash
+npm run og
+```
+
+Needs Chrome (`CHROME_PATH` to override). Edit the copy in the template's `PAGES` object, re-run, and commit the PNGs.
