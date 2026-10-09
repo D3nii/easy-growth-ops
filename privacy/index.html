@@ -32,12 +32,18 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebPage",
-        "@id": "__SITE_URL__/privacy/#page",
-        "url": "__SITE_URL__/privacy/",
-        "name": "Privacy policy — Easy Growth Ops",
-        "dateModified": "__UPDATED_ISO__",
-        "isPartOf": { "@id": "__SITE_URL__/#org" }
+        "@graph": [
+          __SCHEMA_SITE_NODES__,
+          {
+            "@type": "WebPage",
+            "@id": "__SITE_URL__/privacy/#page",
+            "url": "__SITE_URL__/privacy/",
+            "name": "Privacy policy — Easy Growth Ops",
+            "dateModified": "__UPDATED_ISO__",
+            "isPartOf": { "@id": "__SITE_URL__/#website" },
+            "about": { "@id": "__SITE_URL__/#org" }
+          }
+        ]
       }
     </script>
   </head>
@@ -54,6 +60,7 @@
       <nav class="nav-links" aria-label="Primary">
         <a href="/roi/">ROI</a>
         <a href="/drops/">Drops</a>
+        <a href="/guides/">Guides</a>
         <a
           class="nav-cta"
           href="https://calendly.com/danyal-jamil/30min"

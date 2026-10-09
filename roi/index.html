@@ -38,22 +38,7 @@
       {
         "@context": "https://schema.org",
         "@graph": [
-          {
-            "@type": "Organization",
-            "@id": "__SITE_URL__/#org",
-            "name": "Easy Growth Ops",
-            "url": "__SITE_URL__",
-            "parentOrganization": {
-              "@type": "Organization",
-              "name": "Jamil Global",
-              "url": "https://jamilglobal.com"
-            },
-            "founder": { "@id": "__SITE_URL__/#danyal" },
-            "sameAs": [
-              "https://jamilglobal.com",
-              "https://www.linkedin.com/company/jamil-global/"
-            ]
-          },
+          __SCHEMA_SITE_NODES__,
           {
             "@type": "Person",
             "@id": "__SITE_URL__/#danyal",
@@ -85,7 +70,7 @@
             "url": "__SITE_URL__/roi/",
             "name": "Call payout + Meta and Google ad spend in Slack — ROI",
             "dateModified": "__UPDATED_ISO__",
-            "isPartOf": { "@id": "__SITE_URL__/#org" },
+            "isPartOf": { "@id": "__SITE_URL__/#website" },
             "about": { "@id": "__SITE_URL__/roi/#app" },
             "mainEntity": { "@id": "__SITE_URL__/roi/#faq" }
           },
@@ -160,6 +145,7 @@
       <nav class="nav-links" aria-label="Primary">
         <a href="/roi/" aria-current="page">ROI</a>
         <a href="/drops/">Drops</a>
+        <a href="/guides/">Guides</a>
         <a
           class="nav-cta"
           href="https://calendly.com/danyal-jamil/30min"
@@ -330,7 +316,7 @@
         </header>
         <div class="use-copy">
           <p>
-            I’ve run almost $10 million in ad spend over the past three years.
+            I’ve run $15M+ in ad spend over the past three years.
             I can’t keep accounts open all day and sit there refreshing.
           </p>
           <p>
@@ -474,6 +460,15 @@
           For shops already buying or selling inbound calls. Not for students,
           GMB work, or people still getting into pay-per-call.
         </p>
+      </section>
+
+      <section class="guides-index" aria-labelledby="guide-links-title">
+        <header class="section-head">
+          <p class="index">Guides</p>
+          <h2 id="guide-links-title">From the guides.</h2>
+        </header>
+        <p class="lede">Formulas, comparisons, and how-tos for pay-per-call buyers.</p>
+        <!--@guide-links:roi-->
       </section>
 
       <section class="faq" id="faq">
