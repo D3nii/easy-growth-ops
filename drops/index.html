@@ -38,22 +38,7 @@
       {
         "@context": "https://schema.org",
         "@graph": [
-          {
-            "@type": "Organization",
-            "@id": "__SITE_URL__/#org",
-            "name": "Easy Growth Ops",
-            "url": "__SITE_URL__",
-            "parentOrganization": {
-              "@type": "Organization",
-              "name": "Jamil Global",
-              "url": "https://jamilglobal.com"
-            },
-            "founder": { "@id": "__SITE_URL__/#danyal" },
-            "sameAs": [
-              "https://jamilglobal.com",
-              "https://www.linkedin.com/company/jamil-global/"
-            ]
-          },
+          __SCHEMA_SITE_NODES__,
           {
             "@type": "Person",
             "@id": "__SITE_URL__/#danyal",
@@ -70,7 +55,21 @@
             "applicationCategory": "BusinessApplication",
             "operatingSystem": "Slack",
             "creator": { "@id": "__SITE_URL__/#org" },
-            "description": "Daily Slack drop of yesterday’s winning Meta, Google, and TikTok ads for performance teams. Not a swipe-file dashboard."
+            "description": "Daily Slack drop of yesterday’s winning Meta, Google, and TikTok ads for performance teams. Not a swipe-file dashboard.",
+            "offers": {
+              "@type": "Offer",
+              "price": "79",
+              "priceCurrency": "USD",
+              "priceSpecification": {
+                "@type": "UnitPriceSpecification",
+                "price": "79",
+                "priceCurrency": "USD",
+                "unitText": "MONTH",
+                "unitCode": "MON",
+                "billingDuration": "P1M"
+              },
+              "description": "$79 a month for one vertical after a 14-day free trial."
+            }
           },
           {
             "@type": "WebPage",
@@ -78,7 +77,7 @@
             "url": "__SITE_URL__/drops/",
             "name": "Yesterday’s winning Meta, Google, and TikTok ads in Slack — Drops",
             "dateModified": "__UPDATED_ISO__",
-            "isPartOf": { "@id": "__SITE_URL__/#org" },
+            "isPartOf": { "@id": "__SITE_URL__/#website" },
             "about": { "@id": "__SITE_URL__/drops/#app" },
             "mainEntity": { "@id": "__SITE_URL__/drops/#faq" }
           },
@@ -129,6 +128,7 @@
       <nav class="nav-links" aria-label="Primary">
         <a href="/roi/">ROI</a>
         <a href="/drops/" aria-current="page">Drops</a>
+        <a href="/guides/">Guides</a>
         <a
           class="nav-cta"
           href="https://calendly.com/danyal-jamil/30min"

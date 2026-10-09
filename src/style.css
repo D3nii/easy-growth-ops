@@ -1554,6 +1554,24 @@ main > .proof-band {
   }
 }
 
+/* Phones: four nav items (ROI, Drops, Guides, Book a meeting) don't fit beside the wordmark,
+   so the wordmark gets its own row and the links sit on the row below. */
+@media (max-width: 480px) {
+  .nav {
+    flex-wrap: wrap;
+    row-gap: 0.55rem;
+  }
+
+  .nav-links {
+    flex: 1 1 100%;
+    gap: 0.85rem;
+  }
+
+  .nav-links .nav-cta {
+    margin-left: auto;
+  }
+}
+
 /* ---------- Content pages (layouts/content.html) ---------- */
 .visually-hidden {
   position: absolute;
@@ -1871,4 +1889,40 @@ main > .proof-band {
 
 .guide-summary {
   color: var(--ink-2);
+}
+
+/* Guide links on the home and ROI pages (guideLinksHtml in scripts/content-layout.js) */
+.guides-index {
+  padding: 2.4rem var(--pad) 2.6rem;
+  border-top: 1px solid var(--line);
+}
+
+.guide-links {
+  list-style: none;
+  max-width: 42rem;
+  margin-top: 1.6rem;
+}
+
+.guide-links li {
+  display: grid;
+  gap: 0.3rem;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.guide-links a {
+  font-family: var(--display);
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+
+.guide-links a:hover {
+  text-decoration: underline;
+}
+
+.guide-links + .text-link {
+  display: inline-block;
+  margin-top: 1.4rem;
 }

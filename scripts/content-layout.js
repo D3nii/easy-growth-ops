@@ -6,13 +6,14 @@
 //   - shared nav and footer, breadcrumbs (visible + BreadcrumbList JSON-LD)
 //   - <!--@byline--> -> author byline + "Updated <date>" (git date of the page file)
 //   - <!--@guides--> -> card list of every page with a `guide` entry (for /guides/)
-//   - JSON-LD graph: Organization, Person (Danyal), WebPage/CollectionPage, BreadcrumbList,
-//     TechArticle/Article, plus FAQPage from [data-faq] blocks, HowTo from ol[data-howto],
-//     SoftwareApplication (ROI) when `software: true`, ItemList on the hub.
+//   - JSON-LD graph: Organization and WebSite (shared, from scripts/schema.js), Person (Danyal),
+//     WebPage/CollectionPage, BreadcrumbList, TechArticle/Article, plus FAQPage from [data-faq] blocks,
+//     HowTo from ol[data-howto], SoftwareApplication (ROI) when `software: true`, ItemList on the hub.
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parse } from "node-html-parser";
 import { PAGES, SITE_URL } from "../site.config.js";
+import { organizationNode, websiteNode } from "./schema.js";
 
 const esc = (value) =>
   String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
@@ -51,6 +52,24 @@ function guidesHtml() {
     )
     .join("\n");
   return `<ul class="guide-list">\n${cards}\n        </ul>`;
+}
+
+/**
+ * Short guide list for the home and ROI pages (the <!--@guide-links:PREFIX--> placeholder).
+ * One item per PAGES entry with a `guide`; the link text is the page title without any " | ..." suffix.
+ * PREFIX is the data-cta prefix for the page, e.g. "home" or "roi".
+ */
+export function guideLinksHtml(prefix) {
+  const items = PAGES.filter((page) => page.guide)
+    .map(
+      (page) => `          <li>
+            <span class="guide-section">${esc(page.guide.section)}</span>
+            <a href="${page.path}" data-cta="${prefix}_guides_${page.name}" data-cta-type="product" data-product="roi">${esc(page.title.replace(/\s+\|.*$/, ""))}</a>
+          </li>`,
+    )
+    .join("\n");
+  return `<ul class="guide-links">\n${items}\n        </ul>
+        <a class="text-link" href="/guides/" data-cta="${prefix}_guides_all" data-cta-type="product" data-product="roi">All guides</a>`;
 }
 
 function bylineHtml() {
@@ -95,13 +114,8 @@ function howToNode(root, page) {
 function jsonLd(page, root, trail) {
   const url = abs(page.path);
   const graph = [
-    {
-      "@type": "Organization",
-      "@id": `${SITE_URL}/#org`,
-      name: "Easy Growth Ops",
-      url: SITE_URL,
-      parentOrganization: { "@type": "Organization", name: "Jamil Global", url: "https://jamilglobal.com" },
-    },
+    organizationNode(),
+    websiteNode(),
     {
       "@type": "Person",
       "@id": `${SITE_URL}/#danyal`,
@@ -117,7 +131,7 @@ function jsonLd(page, root, trail) {
       name: page.title,
       description: page.description,
       dateModified: "__UPDATED_ISO__",
-      isPartOf: { "@id": `${SITE_URL}/#org` },
+      isPartOf: { "@id": `${SITE_URL}/#website` },
       breadcrumb: { "@id": `${url}#breadcrumb` },
       ...(page.schema === "CollectionPage" ? { mainEntity: { "@id": `${url}#guides` } } : {}),
     },

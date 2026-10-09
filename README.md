@@ -21,8 +21,11 @@ Site-wide settings live in [`site.config.js`](site.config.js):
 - `PAGES`: every page (Vite build inputs + sitemap entries)
 
 HTML pages use tokens (`__SITE_URL__`, `__SITE_DOMAIN__`, `__CONTACT_EMAIL__`, `__UPDATED_ISO__`,
-`__UPDATED_HUMAN__`) that `scripts/vite-site-plugin.js` replaces in dev and build. The same plugin
-writes `sitemap.xml`, `robots.txt`, and `llms.txt`; each page's `lastmod` and "Updated" date come from the last
+`__UPDATED_HUMAN__`) that `scripts/vite-site-plugin.js` replaces in dev and build. A hand-written page's
+JSON-LD `@graph` starts with `__SCHEMA_SITE_NODES__,`, which becomes the shared Organization and WebSite
+nodes from [`scripts/schema.js`](scripts/schema.js). The same plugin writes `sitemap.xml`, `robots.txt`,
+`llms.txt`, and `llms-full.txt` (`llms.txt` plus the plain text of every page, from
+[`scripts/main-text.js`](scripts/main-text.js)); each page's `lastmod` and "Updated" date come from the last
 git commit that touched that page.
 
 ## Local
@@ -85,7 +88,7 @@ To add a page:
 4. Tag CTAs with `data-cta`, `data-cta-type`, and `data-product` so `cta_click` fires.
 5. Add an OG card to `scripts/og/template.html` and run `npm run og -- <key>`, or point
    `ogImage` at an existing image such as `roi`.
-6. `npm run build`. The page appears in the build inputs, `sitemap.xml`, `/guides/`, and `/llms.txt`.
+6. `npm run build`. The page appears in the build inputs, `sitemap.xml`, `/guides/`, `/llms.txt`, and `/llms-full.txt`.
 
 Links to pages that don't exist yet go in HTML comments marked `FUTURE:` so they can be found later.
 
