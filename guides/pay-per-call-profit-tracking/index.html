@@ -1,0 +1,507 @@
+<!doctype html>
+<!--
+  Content page. <head>, nav, breadcrumbs, footer, byline, and JSON-LD come from
+  layouts/content.html (scripts/content-layout.js). Metadata is the
+  "pay-per-call-profit-tracking" entry in site.config.js.
+  FAQPage JSON-LD is built from [data-faq] below.
+  Competitor prices: as of 13 October 2026. Re-check before publishing and before relying on them.
+  Do not describe how ROI computes its ROAS (open question for Danyal). Define ROAS generally only.
+  No spreadsheet template download (not approved). No ClickFlare cost-update interval, no Kaliper
+  ad-data claim, no CallScaler polling interval, no RedTrack Builder or 15-min add-on.
+-->
+<html lang="en">
+  <body>
+      <article class="article">
+        <header class="page-hero content-hero">
+          <p class="kicker">
+            <span>Guides</span>
+            <span class="dot" aria-hidden="true"></span>
+            <span>Profit tracking</span>
+          </p>
+          <h1>Pay-Per-Call Profit Tracking: Spreadsheet vs Call Platform vs Tracker vs Slack&nbsp;P&amp;L</h1>
+          <p class="lede answer">
+            Pay-per-call profit tracking puts call payout next to ad spend and
+            call-platform fees for the same time window. There are five common
+            ways to do it: a manual spreadsheet, call-platform reports (usually
+            call-side only), an ad tracker with call integration such as RedTrack
+            or ClickFlare, a DIY automation built on Make or n8n, and a Slack P&amp;L
+            such as <a href="/roi/">ROI</a>. Choose by whether you need click-level
+            attribution or just profit, how fast you need the number, and who maintains it.
+          </p>
+          <!--@byline-->
+        </header>
+
+        <section class="key-facts" aria-labelledby="key-facts">
+          <h2 id="key-facts" class="visually-hidden">Key facts</h2>
+          <ul>
+            <li>Call tracking answers “which ad drove this call?” Profit tracking answers “after spend and fees, is this account up or down?”</li>
+            <li>The five methods solve different jobs. None is wrong. Pick by the question you need answered.</li>
+            <li>Profit needs one window and one time zone for every line: payout, each ad platform’s spend, and fees.</li>
+            <li>Competitor prices are as of 13 October 2026. Check them on the day you buy.</li>
+          </ul>
+        </section>
+
+        <section id="short-answer">
+          <h2>The short answer</h2>
+          <p>
+            Each method below answers a different question. This table compares
+            them on what you see, how often it updates, what it costs to set up,
+            and who it suits.
+          </p>
+          <div class="compare-wrap">
+            <table class="compare-table">
+              <caption class="visually-hidden">Five ways to track pay-per-call profit, compared</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Method</th>
+                  <th scope="col">What you see</th>
+                  <th scope="col">Refresh</th>
+                  <th scope="col">Setup effort</th>
+                  <th scope="col">Attribution</th>
+                  <th scope="col">Best for</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1. Spreadsheet</th>
+                  <td>Profit, ROAS, and cost per call, from numbers you enter</td>
+                  <td>When you update it, usually daily</td>
+                  <td>Low to start; ongoing typing</td>
+                  <td>None</td>
+                  <td>One daily number, one account</td>
+                </tr>
+                <tr>
+                  <th scope="row">2. Call-platform reporting</th>
+                  <td>Call-side revenue, payout, and profit inside the call platform</td>
+                  <td>Live in the platform</td>
+                  <td>Low; already in your account</td>
+                  <td>Call-level, not ad-level</td>
+                  <td>Checking calls, not ad spend</td>
+                </tr>
+                <tr>
+                  <th scope="row">3. Ad tracker + call integration</th>
+                  <td>Ad-level and click-level reporting, with call conversions</td>
+                  <td>Set by your plan (see pricing below)</td>
+                  <td>Medium to high; tracking setup</td>
+                  <td>Click-ID and conversion-level</td>
+                  <td>Attribution and optimisation</td>
+                </tr>
+                <tr>
+                  <th scope="row">4. DIY automation</th>
+                  <td>Whatever you build: usually a Sheet or Slack post</td>
+                  <td>Whatever you schedule</td>
+                  <td>High; an engineer maintains it</td>
+                  <td>Only what you code</td>
+                  <td>Teams with a builder who will own it</td>
+                </tr>
+                <tr>
+                  <th scope="row">5. Slack P&amp;L (ROI)</th>
+                  <td>Net profit, ROAS, and CPA per ad account, next to spend and payout</td>
+                  <td>Every 15–30 minutes, depending on setup</td>
+                  <td>Low for you; setup via a booked meeting</td>
+                  <td>None (not its job)</td>
+                  <td>A profit glance and team visibility</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="track-profit-vs-calls">
+          <h2>Track profit vs track calls</h2>
+          <p>
+            Most “pay-per-call tracking” pages are about <em>call</em> tracking:
+            which ad, keyword, or click produced a call, and where the caller
+            went. That is a real job, and call-tracking vendors do it well. It
+            is a different job from profit tracking.
+          </p>
+          <p>
+            Profit tracking takes the money in and the money out and puts them
+            side by side. Call payout is the money in. Ad spend from Meta, Google,
+            and TikTok, plus call-platform fees, is the money out:
+          </p>
+          <p class="formula">
+            Net profit = call payout − Meta spend − Google spend − TikTok spend − call-platform fees.
+          </p>
+          <p>
+            Two more terms come up in every method. ROAS (return on ad spend) is
+            generally call payout ÷ ad spend. It ignores fees, so it tells you
+            how efficiently traffic is turning into payout, not whether the account
+            makes money. The <a href="/guides/pay-per-call-profit-formula/">pay-per-call profit formula guide</a>
+            defines ROAS, ROI, break-even cost per call, and the rest, with a
+            hypothetical worked example. Use it as the reference for every method here.
+          </p>
+        </section>
+
+        <section id="spreadsheet-method">
+          <h2>Method 1: Spreadsheet</h2>
+          <p>
+            A spreadsheet is the cheapest method and the one most buyers start
+            with. You export payout from the call platform, export spend from
+            each ad platform, and type the fees in. Then the sheet does the
+            division.
+          </p>
+          <p>
+            Copy the column layout in the
+            <a href="/guides/pay-per-call-profit-formula/#spreadsheet">formula guide’s spreadsheet section</a>:
+            one row per day or per account per day, inputs in the first columns,
+            and formulas for ad spend, net profit, ROAS, cost per call, and break-even
+            cost per call. Paste the formulas into row 2 and fill down.
+          </p>
+          <p>The usual pitfalls are the same as in the formula guide:</p>
+          <ul>
+            <li>
+              <strong>Time zones.</strong> Each ad account has its own zone, and
+              so does the call platform’s report. Meta’s help centre explains how
+              to change an ad account’s time zone, and that changing it can close
+              the account and create a new one
+              (<a href="https://www.facebook.com/business/help/754049591334898" target="_blank" rel="noopener noreferrer">Meta: change your ad account time zone</a>).
+              Google Ads has its own account time zone setting
+              (<a href="https://support.google.com/google-ads/answer/17006726?hl=en" target="_blank" rel="noopener noreferrer">Google Ads time zone setting</a>).
+              Pick one zone and convert the others.
+            </li>
+            <li>
+              <strong>Billable vs all calls.</strong> Divide payout and spend by
+              the same count of calls. Mixing a billable-call denominator with an
+              all-call denominator makes break-even look better than it is.
+            </li>
+            <li>
+              <strong>Late payout adjustments.</strong> Calls still in progress and
+              calls later adjusted or returned both move the payout figure. Re-pull
+              the sheet before you call a day final.
+            </li>
+          </ul>
+          <p>
+            A sheet works until you need the number while traffic is running.
+            Then the cost is the daily export, the paste, and the check. That cost
+            is the reason most teams move to one of the next four methods.
+          </p>
+        </section>
+
+        <section id="call-platform-method">
+          <h2>Method 2: Call-platform reporting</h2>
+          <p>
+            Your call platform already knows the calls, the payout, and the
+            fees. Ringba’s Summary and Call Details reports show Revenue, Payout,
+            and Profit, along with a Paid column for calls that met the payout
+            requirements. Ringba defines Profit as “the net amount of money earned
+            from the call after expenses” (as of 8 October 2026; see
+            <a href="https://support.ringba.com/hc/en-us/articles/17993834757783-Summary-Report" target="_blank" rel="noopener noreferrer">Ringba Summary Report</a>).
+          </p>
+          <p>
+            Its documented reports don’t include Meta, Google, or TikTok ad spend.
+            So Ringba’s Profit is a call-side number, not an ad-account profit
+            number. The
+            <a href="/integrations/ringba-facebook-ads-profit-report/">Ringba + Facebook Ads profit report guide</a>
+            walks through the join and what Ringba’s Facebook integration does and
+            doesn’t do. That integration pushes conversions <em>to</em> Meta. It is
+            not a spend feed and it is not a profit report.
+          </p>
+          <p>
+            Other call platforms have similar reporting. Whichever you use, check
+            its documented columns before assuming it shows spend. Some call-side
+            tools send scheduled summaries. CallGrid’s MCP automations, for
+            example, deliver read-only summaries to Slack, Gmail, Sheets, or Notion
+            through your own connector (as of 13 October 2026;
+            <a href="https://callgrid.com/mcp-automations" target="_blank" rel="noopener noreferrer">CallGrid MCP automations</a>).
+            Its published examples show call-side metrics only, with sample data,
+            and no ad spend.
+          </p>
+          <p>
+            Use this method when you need to check calls and payout. Don’t use it
+            as your only profit number, because the spend line is missing.
+          </p>
+        </section>
+
+        <section id="tracker-method">
+          <h2>Method 3: Ad tracker with call integration</h2>
+          <p>
+            Trackers such as RedTrack and ClickFlare are built for attribution.
+            They record clicks and click IDs, connect ad-level spend, and can send
+            call conversions back to ad platforms. That is what they do well, and
+            it is the main reason to choose one. ROI’s own
+            <a href="/compare/redtrack-alternative-pay-per-call/">RedTrack alternative page</a>
+            says the same: RedTrack is stronger at click-ID attribution and at sending
+            call conversions back to Meta and Google.
+          </p>
+          <p>Prices as of 13 October 2026. Check each pricing page before you buy.</p>
+          <ul>
+            <li>
+              <strong>RedTrack</strong> (<a href="https://www.redtrack.io/pricing" target="_blank" rel="noopener noreferrer">redtrack.io/pricing</a>):
+              Solo $169/mo ($141/mo annual) with hourly ad spend sync; Team $399/mo
+              ($333/mo annual) with 30-minute sync; Enterprise $999/mo ($833/mo annual).
+              Faster ad-level sync is a paid add-on priced by monthly ad spend.
+              14-day free trial.
+            </li>
+            <li>
+              <strong>ClickFlare</strong> (<a href="https://clickflare.com/pricing" target="_blank" rel="noopener noreferrer">clickflare.com/pricing</a>):
+              Starter $89/mo ($69/mo annual), Pro $219/mo ($169/mo annual), Master
+              $429/mo ($329/mo annual). 14-day free trial.
+            </li>
+          </ul>
+          <p>
+            A tracker gives you the most detail. It also takes the most setup:
+            pixels, click parameters, postbacks, and a person who checks them. And
+            a tracker is not a profit glance. Its reports are built around attribution,
+            so you still need to subtract fees and sum the accounts yourself, or
+            pair the tracker with another method. If you already run a tracker and
+            want a profit number in Slack, you don’t have to replace it. See the
+            “how to choose” section below.
+          </p>
+        </section>
+
+        <section id="diy-method">
+          <h2>Method 4: DIY automation</h2>
+          <p>
+            You can build the report yourself. A typical build uses Make or n8n,
+            the Meta Marketing API, and the call platform’s API, then writes the
+            totals to a Google Sheet or a Slack channel. The formula is the same
+            one above. The cost is build time and upkeep: API changes, token
+            renewals, a broken schedule, and the one person who knows how it works.
+          </p>
+          <p>
+            Choose DIY if you have an engineer who will own the flow for as long as
+            you run it. If nobody owns it, the report stops working quietly. A
+            sheet, a call-platform report, or a managed Slack report is then safer.
+            The integration guide linked above covers the Ringba side of the API join.
+          </p>
+        </section>
+
+        <section id="slack-method">
+          <h2>Method 5: Slack P&amp;L</h2>
+          <p>
+            A Slack P&amp;L is a read-only report that puts call payout next to Meta,
+            Google, and TikTok spend, subtracts the call-platform fees, and posts the
+            result in Slack. <a href="/roi/">ROI</a> works this way. It reads spend
+            from Meta Ads, Google Ads, and TikTok Ads, reads payout from one call
+            platform (Ringba, CallGrid, TrackDrive, Retreaver, or Phonexa), and posts
+            net profit, ROAS, and per-account totals every 15–30 minutes, depending
+            on setup.
+          </p>
+          <p>The limits are real, and they matter when you choose:</p>
+          <ul>
+            <li><strong>One call platform at a time.</strong> ROI reads payout from one platform, not several.</li>
+            <li><strong>Per ad account, not per campaign.</strong> The readout is totals per account.</li>
+            <li><strong>No click-ID attribution.</strong> ROI doesn’t do click-level attribution or send conversions back to Meta or Google. That is a tracker’s job.</li>
+            <li><strong>Read-only.</strong> ROI never bids, pauses, or scales ads. You can revoke access.</li>
+          </ul>
+          <p>
+            Between the call platform’s own report and a full tracker, this is the
+            method that answers “am I up or down today?” without setup on your side
+            beyond access. Setup starts with a booked meeting, where the team looks at
+            your stack and you share read-only access.
+          </p>
+          <figure class="article-figure">
+            <div class="shot-frame shot-photo">
+              <img
+                src="/shots/roi-bot-redacted.png"
+                width="938"
+                height="407"
+                alt="Slack message from ROI, 7:30 PM update, showing spend, call revenue, ROAS, profit, and CPA per ad account, then totals: Profit $1,172.51 on completed calls and Net Profit $1,582.01 including estimated revenue from 13 live calls. Account and bot names are replaced."
+                loading="lazy"
+              />
+            </div>
+            <figcaption>
+              A Slack update from ROI: every ad account, then the totals. Profit
+              counts completed calls only. Net Profit adds the estimated revenue
+              from calls still in progress (13 here). Account and bot names
+              replaced for publication.
+            </figcaption>
+          </figure>
+        </section>
+
+        <section id="how-to-choose">
+          <h2>How to choose</h2>
+          <p>Start from the question you need answered:</p>
+          <ul>
+            <li>
+              <strong>You need click-level attribution or call conversions sent back to Meta or Google.</strong>
+              Use a tracker. See the
+              <a href="/compare/redtrack-alternative-pay-per-call/">RedTrack alternative page</a> for how a tracker and a Slack P&amp;L differ.
+            </li>
+            <li>
+              <strong>You need a profit number and team visibility, without building anything.</strong>
+              Use a Slack P&amp;L such as <a href="/roi/">ROI</a>.
+            </li>
+            <li>
+              <strong>You need both.</strong> Keep the tracker for attribution and add a Slack P&amp;L for profit. The two do different jobs.
+            </li>
+            <li>
+              <strong>You only need the number once a day.</strong> A spreadsheet is enough.
+            </li>
+            <li>
+              <strong>You have an engineer who will own the flow.</strong> A DIY build is an option. Plan for upkeep.
+            </li>
+            <li>
+              <strong>You run ACA traffic during open enrollment.</strong> Payouts and caps move around the deadlines, so watch profit during the day. See the
+              <a href="/verticals/aca-pay-per-call/">ACA pay-per-call guide</a>.
+            </li>
+          </ul>
+          <p>
+            If you want a daily Slack thread of winning ads rather than a profit
+            number, that is a different product: <a href="/drops/">Drops</a>. It is not
+            part of the profit method above.
+          </p>
+        </section>
+
+        <section id="mistakes">
+          <h2>Common mistakes</h2>
+          <h3>Leaving out call-platform fees</h3>
+          <p>
+            Payout minus ad spend is a gross number. The fees are a real cost, and
+            leaving them out overstates profit. The gap is often visible when you
+            compare ROAS with ROI, as the formula guide shows.
+          </p>
+          <h3>Mismatched time zones</h3>
+          <p>
+            An ad account’s day and a call platform’s day can start at different
+            hours. If you pull one report in Pacific time and the other in your local
+            zone, the same “day” covers different calls. Pick one zone and convert.
+          </p>
+          <h3>Mixing denominators</h3>
+          <p>
+            Dividing payout by billable calls and spend by all calls flatters the
+            result. Use the same count on both sides of any ratio.
+          </p>
+          <h3>Mid-day numbers on calls still in progress</h3>
+          <p>
+            A call still in progress has no final payout yet. Mid-day profit can be
+            too low if live calls will pay, or too high if calls are later returned.
+            ROI’s Slack readout shows this directly: Profit counts completed calls
+            only, and Net Profit adds the estimated revenue from calls still in progress.
+          </p>
+          <h3>Spend-only reports called “profit”</h3>
+          <p>
+            A report with spend and payout but no fees line is a spend report. Call it that.
+          </p>
+        </section>
+
+        <section class="faq" id="faq" data-faq>
+          <h2>FAQ</h2>
+          <ul class="faq-list">
+            <li class="faq-item">
+              <h3>What’s the best way to track pay-per-call profit across Meta, Google, and TikTok?</h3>
+              <div class="faq-a">
+                <p>
+                  There isn’t one best way. A spreadsheet is cheapest and enough for
+                  one daily number. A Slack P&amp;L gives a profit view across all three
+                  platforms without building anything. A tracker gives click-level
+                  attribution. Many teams use a tracker for attribution and a separate
+                  profit report for money.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Can my call platform show profit, including ad spend?</h3>
+              <div class="faq-a">
+                <p>
+                  Call platforms usually show call-side revenue, payout, and profit.
+                  Their documented reports generally don’t include Meta, Google, or
+                  TikTok spend. Check each platform’s documented columns before you
+                  assume a feature exists. Adding spend is the join described in the
+                  <a href="/integrations/ringba-facebook-ads-profit-report/">Ringba + Facebook Ads guide</a>.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Do I need a tracker like RedTrack or ClickFlare to track profit?</h3>
+              <div class="faq-a">
+                <p>
+                  No. You need spend, payout, and fees in one window. A tracker adds
+                  click-level attribution and conversion sending, which is valuable if
+                  you need those. If you only need profit, a spreadsheet or a Slack P&amp;L is enough.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>How much time does manual reporting take?</h3>
+              <div class="faq-a">
+                <p>
+                  It depends on your accounts and how often you export. One figure
+                  from a pay-per-call team buying on Meta and Google, as published on
+                  <a href="/roi/">ROI’s page</a> and attributed to LeadVIPS: “3 hours of
+                  daily reporting to zero.”
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Is a Slack report enough, or do I still need a dashboard?</h3>
+              <div class="faq-a">
+                <p>
+                  A Slack report is enough for a daily or intraday profit check per
+                  account. A dashboard helps when you need to drill into campaigns,
+                  creatives, or time-of-day patterns. ROI reports per ad account, not
+                  per campaign, so pair it with your ad platform’s own reports for
+                  campaign-level work.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Which formula should I use?</h3>
+              <div class="faq-a">
+                <p>
+                  Net profit = call payout − Meta spend − Google spend − TikTok spend −
+                  call-platform fees, for one window and one time zone. The
+                  <a href="/guides/pay-per-call-profit-formula/">pay-per-call profit formula guide</a>
+                  defines each term and includes a hypothetical worked example.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Which should I choose if I’m just starting?</h3>
+              <div class="faq-a">
+                <p>
+                  Start with a spreadsheet using the formula guide’s columns, so you
+                  learn the numbers. Move to a Slack P&amp;L when the daily export becomes
+                  the bottleneck. Add a tracker when you need click-level attribution.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="sources" id="sources">
+          <h2>Sources</h2>
+          <p>
+            Ringba quotes were checked on 8 October 2026 for the formula guide and
+            were not re-fetched for this page. Competitor prices and CallGrid details
+            are as of 13 October 2026. Re-check all of them before relying on them.
+          </p>
+          <ul>
+            <li><a href="https://support.ringba.com/hc/en-us/articles/17993834757783-Summary-Report" target="_blank" rel="noopener noreferrer">Ringba: Summary Report</a></li>
+            <li><a href="https://support.ringba.com/hc/en-us/articles/26894023126551-Call-Details-Report-Column-Dictionary" target="_blank" rel="noopener noreferrer">Ringba: Call Details Report Column Dictionary</a></li>
+            <li><a href="https://support.ringba.com/hc/en-us/articles/17998414341527-Facebook-Offline-Events-Integration-Call-Only-Ads" target="_blank" rel="noopener noreferrer">Ringba: Facebook Offline Events Integration (Call-Only Ads)</a></li>
+            <li><a href="https://callgrid.com/mcp-automations" target="_blank" rel="noopener noreferrer">CallGrid: MCP automations</a></li>
+            <li><a href="https://www.redtrack.io/pricing" target="_blank" rel="noopener noreferrer">RedTrack pricing (as of 13 October 2026)</a></li>
+            <li><a href="https://clickflare.com/pricing" target="_blank" rel="noopener noreferrer">ClickFlare pricing (as of 13 October 2026)</a></li>
+            <li><a href="https://www.facebook.com/business/help/754049591334898" target="_blank" rel="noopener noreferrer">Meta Business Help Center: Change the time zone for your ad account</a></li>
+            <li><a href="https://support.google.com/google-ads/answer/17006726?hl=en" target="_blank" rel="noopener noreferrer">Google Ads Help: About your Google Ads time zone setting</a></li>
+          </ul>
+          <p class="source-note">Easy Growth Ops is not affiliated with Ringba, CallGrid, RedTrack, ClickFlare, Google, or Meta.</p>
+        </section>
+
+        <section class="access" id="book">
+          <div class="access-inner">
+            <p class="index">30 minutes</p>
+            <h2>Book a meeting.</h2>
+            <p class="lede">
+              We’ll look at your stack. You share read-only access. First Slack
+              update the same week.
+            </p>
+            <a
+              class="btn"
+              href="https://calendly.com/danyal-jamil/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta="ppc_profit_tracking_closing_book" data-cta-type="booking" data-product="roi"
+              >Book a meeting</a
+            >
+            <p class="access-alt">
+              Or read the full product page:
+              <a href="/roi/" data-cta="ppc_profit_tracking_closing_roi" data-cta-type="product" data-product="roi">ROI</a>.
+            </p>
+          </div>
+        </section>
+      </article>
+  </body>
+</html>
