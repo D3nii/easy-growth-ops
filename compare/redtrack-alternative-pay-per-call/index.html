@@ -4,7 +4,7 @@
   layouts/content.html (scripts/content-layout.js). Metadata is the
   "redtrack-alternative-pay-per-call" entry in site.config.js.
   FAQPage JSON-LD is built from [data-faq] below.
-  RedTrack and ClickFlare facts were checked on 8 October 2026. Re-check prices and sync rates before editing.
+  RedTrack prices were checked 13 October 2026 (as of Oct 2026); ClickFlare facts were checked 8 October 2026. Re-check prices and sync rates before editing.
 -->
 <html lang="en">
   <body>
@@ -30,8 +30,8 @@
         <section class="key-facts" aria-labelledby="key-facts">
           <h2 id="key-facts" class="visually-hidden">Key facts</h2>
           <ul>
-            <li>RedTrack is an ad tracker. It ties Ringba and Retreaver calls to the click, syncs ad spend at ad level, and sends call conversions back to ad platforms through CAPI (as of 8 October 2026).</li>
-            <li>RedTrack syncs ad spend every 6 hours on Builder ($79/mo), every 60 minutes on Solo ($169/mo), and every 30 minutes on Team ($399/mo) and Enterprise ($999/mo). Faster sync is a paid add-on priced by monthly ad spend.</li>
+            <li>RedTrack is an ad tracker. It ties Ringba and Retreaver calls to the click, syncs ad spend at ad level, and sends call conversions back to ad platforms through CAPI (as of Oct 2026).</li>
+            <li>RedTrack syncs ad spend every 60 minutes on Solo ($169/mo), and every 30 minutes on Team ($399/mo) and Enterprise ($999/mo). Faster sync is a paid add-on priced by monthly ad spend.</li>
             <li>ROI is not a tracker. It is a read-only Slack P&amp;L per ad account: call payout next to Meta, Google, and TikTok spend, every 15–30 minutes, depending on setup. It does not attribute calls to ads.</li>
             <li>They answer different questions. Some shops need one, some need both.</li>
           </ul>
@@ -63,7 +63,7 @@
             Be honest about what a tracker gives you. The ROI page itself says
             RedTrack is stronger at click-ID attribution and sending call
             conversions back to Meta and Google. Per RedTrack’s own pages (as of
-            8 October 2026), stay on it if you rely on any of these:
+            Oct 2026), stay on it if you rely on any of these:
           </p>
           <ul>
             <li>
@@ -163,7 +163,7 @@
             <a href="https://www.redtrack.io/pricing/" target="_blank" rel="noopener noreferrer">pricing page</a>
             and
             <a href="https://www.redtrack.io/for-affiliates/call-tracking/" target="_blank" rel="noopener noreferrer">call-tracking page</a>
-            as of 8 October 2026. ROI details are from the
+            as of Oct 2026. ROI details are from the
             <a href="/roi/">ROI page</a>.
           </p>
           <div class="compare-wrap">
@@ -194,7 +194,7 @@
                 <tr>
                   <th scope="row">Spend refresh</th>
                   <td>Every 15–30 minutes, depending on setup, included in the price</td>
-                  <td>6 hours (Builder), 60 minutes (Solo), 30 minutes (Team, Enterprise); 30, 15, or 5 minutes as a paid add-on</td>
+                  <td>60 minutes (Solo), 30 minutes (Team, Enterprise); 30, 15, or 5 minutes as a paid add-on</td>
                 </tr>
                 <tr>
                   <th scope="row">Click-ID attribution</th>
@@ -229,7 +229,7 @@
                 <tr>
                   <th scope="row">Pricing model</th>
                   <td>$200 first month (setup included), then $100/mo; 10 ad accounts, +$25/mo each extra</td>
-                  <td>Plan tiers from $79/mo by event volume and seats; sync add-ons priced by ad spend</td>
+                  <td>Plan tiers from $169/mo by event volume and seats; sync add-ons priced by ad spend</td>
                 </tr>
               </tbody>
             </table>
@@ -308,9 +308,10 @@
         <section id="pricing">
           <h2>Pricing compared</h2>
           <p>
-            List prices in USD as shown on each vendor’s pricing page on
-            8 October 2026, before tax. “Annual” is the monthly equivalent when
-            billed yearly. Check the live pages before you decide.
+            List prices in USD as shown on each vendor’s pricing page, before
+            tax. RedTrack prices are as of Oct 2026; ClickFlare prices are as of
+            8 October 2026. “Annual” is the monthly equivalent when billed
+            yearly. Check the live pages before you decide.
           </p>
           <div class="compare-wrap">
             <table class="compare-table">
@@ -323,12 +324,6 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">RedTrack Builder</th>
-                  <td>$79</td>
-                  <td>$69/mo</td>
-                  <td>Every 6 hours</td>
-                </tr>
                 <tr>
                   <th scope="row">RedTrack Solo</th>
                   <td>$169</td>
@@ -362,6 +357,7 @@
               </tbody>
             </table>
           </div>
+          <p class="source-note">RedTrack prices as of Oct 2026 (RedTrack pricing page, checked 13 Oct 2026).</p>
           <p>
             RedTrack sells faster ad spend sync as an add-on priced by monthly
             ad spend. Its 15-minute ad-level sync is listed from $1,990 a year
@@ -410,8 +406,8 @@
               <h3>How often does RedTrack sync ad spend, and what does faster sync cost?</h3>
               <div class="faq-a">
                 <p>
-                  As of 8 October 2026: every 6 hours on Builder, every 60 minutes
-                  on Solo, and every 30 minutes on Team and Enterprise. Faster
+                  As of Oct 2026: every 60 minutes on Solo, and every 30 minutes
+                  on Team and Enterprise. Faster
                   sync is a paid add-on priced by monthly ad spend; the 15-minute
                   option starts at $1,990 a year for up to $150K of monthly spend.
                 </p>
@@ -442,12 +438,14 @@
               <h3>Is ROI cheaper than RedTrack?</h3>
               <div class="faq-a">
                 <p>
-                  Not on sticker price: RedTrack Builder is $79/mo (as of
-                  8 October 2026) and ROI is $200 the first month, then $100 a
-                  month. But Builder syncs spend every 6 hours. ROI includes setup
-                  and a 15–30 minute refresh, depending on setup; matching that on
-                  RedTrack means a higher plan or a sync add-on. Compare the job,
-                  not the plan name.
+                  Yes, after the first month. RedTrack’s entry plan, Solo, is
+                  $169/mo (as of Oct 2026; $141/mo billed annually) and syncs ad
+                  spend every 60 minutes. ROI is $200 the first month, including
+                  setup, then $100/mo, with a 15–30 minute refresh depending on
+                  setup. Month one costs more on ROI than Solo; from month two, ROI
+                  is less. Matching a 15-minute refresh on RedTrack means a paid
+                  sync add-on, starting at $1,990 a year. Compare the job, not the
+                  plan name.
                 </p>
               </div>
             </li>
@@ -475,7 +473,7 @@
 
         <section class="sources" id="sources">
           <h2>Sources</h2>
-          <p>Third-party pages checked on 8 October 2026. Prices and features change; re-check before relying on them.</p>
+          <p>RedTrack pages checked 13 October 2026 (as of Oct 2026). ClickFlare, Ringba, and tool pages checked 8 October 2026. Prices and features change; re-check before relying on them.</p>
           <ul>
             <li><a href="https://www.redtrack.io/pricing/" target="_blank" rel="noopener noreferrer">RedTrack: Plans &amp; Pricing</a></li>
             <li><a href="https://www.redtrack.io/for-affiliates/call-tracking/" target="_blank" rel="noopener noreferrer">RedTrack: Call Tracking for Affiliate Media Buyers</a></li>

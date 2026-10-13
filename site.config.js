@@ -169,6 +169,7 @@ export const PAGES = [
     schema: "Article",
     software: true,
     published: "2026-10-08",
+    lastmod: "2026-10-13",
     title: "RedTrack Alternative for Pay-Per-Call Buyers (2026) | ROI",
     h1: "RedTrack Alternative for Pay-Per-Call: When You Need Profit in Slack, Not Another Tracker",
     description:
@@ -185,7 +186,7 @@ export const PAGES = [
       section: "Guides",
       title: "RedTrack alternative for pay-per-call",
       summary:
-        "ROI vs RedTrack for pay-per-call buyers: click-ID attribution and CAPI (RedTrack) vs a read-only Slack P&L per ad account (ROI), with RedTrack spend-sync tiers and prices as of 8 October 2026.",
+        "ROI vs RedTrack for pay-per-call buyers: click-ID attribution and CAPI (RedTrack) vs a read-only Slack P&L per ad account (ROI), with RedTrack spend-sync tiers and prices as of Oct 2026.",
     },
   },
   {
