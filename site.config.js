@@ -218,6 +218,34 @@ export const PAGES = [
     },
   },
   {
+    name: "pay-per-call-profit-tracking",
+    path: "/guides/pay-per-call-profit-tracking/",
+    file: "guides/pay-per-call-profit-tracking/index.html",
+    changefreq: "monthly",
+    priority: "0.7",
+    layout: "content",
+    schema: "Article",
+    published: "2026-10-13",
+    title: "Pay-Per-Call Profit Tracking: 5 Ways Compared (2026)",
+    h1: "Pay-Per-Call Profit Tracking: Spreadsheet vs Call Platform vs Tracker vs Slack P&L",
+    description:
+      "Five ways to track pay-per-call profit: spreadsheet, call-platform reports, tracker, DIY automation, or Slack P&L. Compare them and pick one.",
+    breadcrumb: "Pay-per-call profit tracking",
+    ogImage: "pay-per-call-profit-tracking",
+    ogImageAlt: "Pay-per-call profit tracking: spreadsheet, call platform, tracker, DIY automation, and Slack P&L compared.",
+    guide: {
+      section: "Methods",
+      summary:
+        "Five ways to track pay-per-call profit compared: a spreadsheet, call-platform reports, an ad tracker, a DIY build, and a Slack P&L. What each shows, its limits, dated tracker pricing, and how to choose.",
+    },
+    llms: {
+      section: "Guides",
+      title: "Pay-per-call profit tracking",
+      summary:
+        "Five ways to track pay-per-call profit: a spreadsheet, call-platform reporting (call-side, usually without ad spend), an ad tracker with call integration (RedTrack and ClickFlare prices as of 13 Oct 2026), a DIY Make or n8n build, and a Slack P&L (ROI, every 15–30 minutes, depending on setup). Includes a decision list and common mistakes.",
+    },
+  },
+  {
     name: "privacy",
     path: "/privacy/",
     file: "privacy/index.html",

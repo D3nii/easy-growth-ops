@@ -118,6 +118,13 @@
           sub: "How ACA calls pay, the open enrollment calendar, and call payout next to Meta, Google, and TikTok spend.",
           chips: [["Meta", false], ["Google", false], ["TikTok", false], ["Profit", true]],
         },
+        "pay-per-call-profit-tracking": {
+          kicker: "Guide",
+          kicker2: "Pay-per-call profit tracking",
+          title: "Five ways to track <em>profit,</em> compared.",
+          sub: "Spreadsheet, call platform, tracker, DIY, or Slack P&amp;L. Pick by the question you need answered.",
+          chips: [["Spreadsheet", false], ["Tracker", false], ["DIY", false], ["Slack P&amp;L", true]],
+        },
       };
       const key = new URLSearchParams(location.search).get("page") || "home";
       const p = PAGES[key] || PAGES.home;
