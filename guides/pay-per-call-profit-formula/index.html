@@ -18,15 +18,14 @@
           <h1>How to Calculate Pay-Per-Call Profit, ROAS, and ROI (With&nbsp;Formulas)</h1>
           <p class="lede answer">
             Pay-per-call net profit = call payout − ad spend (Meta + Google +
-            TikTok) − call-platform fees. ROAS (industry definition, as in Google
-            Ads) = call payout ÷ ad spend; some reports, including Easy Growth Ops
-            ROI, show it as a return: (revenue − spend) ÷ spend. ROI = net profit ÷ total cost (ad
+            TikTok) − call-platform fees. ROAS = (revenue − ad spend) ÷ ad spend,
+            where revenue is call payout. ROI = net profit ÷ total cost (ad
             spend + fees). Break-even cost per call = average payout per call −
             fees per call.
           </p>
           <p class="lede">
             Example (hypothetical): $5,000 payout, $4,000 ad spend, $300 fees →
-            $700 net profit, ROAS 1.25× (a 25% return on spend), ROI 16.3%.
+            $700 net profit, ROAS 25%, ROI 16.3%.
           </p>
           <!--@byline-->
         </header>
@@ -35,7 +34,7 @@
           <h2 id="key-facts" class="visually-hidden">Key facts</h2>
           <ul>
             <li>ROAS ignores call-platform fees. Net profit and ROI subtract them.</li>
-            <li>The same day can be written as “ROAS 125%” (Google’s convention) or “25% return on spend”. Say which one you mean.</li>
+            <li>Google Ads shows ROAS as payout ÷ spend, so the same day reads “125%” there and “ROAS 25%” on this page. Say which one you mean.</li>
             <li>CPC means cost per <em>click</em> in Meta and Google Ads, but some pay-per-call reports use it for cost per <em>call</em>. Label it.</li>
             <li>Use one time zone and one call count for every number on the sheet.</li>
           </ul>
@@ -71,8 +70,7 @@
                 <tr><th scope="row">Call-platform fees</th><td>$300</td><td>From the call platform’s billing</td></tr>
                 <tr><th scope="row">Calls / billable calls</th><td>200 / 125</td><td>From the call platform</td></tr>
                 <tr><th scope="row">Net profit</th><td>$700</td><td>$5,000 − $4,000 − $300</td></tr>
-                <tr><th scope="row">ROAS</th><td>1.25× (125%)</td><td>$5,000 ÷ $4,000</td></tr>
-                <tr><th scope="row">Return on ad spend</th><td>25%</td><td>($5,000 − $4,000) ÷ $4,000</td></tr>
+                <tr><th scope="row">ROAS</th><td>25%</td><td>($5,000 − $4,000) ÷ $4,000</td></tr>
                 <tr><th scope="row">ROI</th><td>16.3%</td><td>$700 ÷ ($4,000 + $300)</td></tr>
                 <tr><th scope="row">Cost per call</th><td>$20.00</td><td>$4,000 ÷ 200</td></tr>
                 <tr><th scope="row">Revenue per call</th><td>$25.00</td><td>$5,000 ÷ 200</td></tr>
@@ -121,11 +119,13 @@
               In pay-per-call, write down what counts as an acquisition.
             </li>
             <li>
-              <strong><dfn>ROAS</dfn>.</strong> Return on ad spend. Google Ads
-              calculates it as “total conversion value divided by total spend”,
-              shown as a percentage (as of 8 October 2026;
-              <a href="https://support.google.com/google-ads/answer/12851704?hl=en" target="_blank" rel="noopener noreferrer">Google Ads Glossary</a>). Some teams show the return instead:
-              (payout − spend) ÷ spend. That is the first number minus 100%. Easy Growth Ops ROI’s readout uses this return form, (revenue − spend) ÷ spend, so 0% is break-even on ad spend.
+              <strong><dfn>ROAS</dfn>.</strong> Return on ad spend. On this page,
+              ROAS = (revenue − ad spend) ÷ ad spend, with revenue = call payout.
+              So 0% is break-even on ad spend, and 25% means each $1 of ads
+              returned $0.25 above its cost. Google Ads calculates it as “total
+              conversion value divided by total spend”, shown as a percentage (as
+              of 8 October 2026;
+              <a href="https://support.google.com/google-ads/answer/12851704?hl=en" target="_blank" rel="noopener noreferrer">Google Ads Glossary</a>). That figure is this page’s ROAS plus 100%.
             </li>
             <li>
               <strong><dfn>ROI</dfn>.</strong> Return on investment. Google’s
@@ -163,8 +163,8 @@
                 </tr>
                 <tr>
                   <th scope="row">ROAS</th>
-                  <td>Payout ÷ ad spend</td>
-                  <td>How much payout per $1 of ads?</td>
+                  <td>(Payout − ad spend) ÷ ad spend</td>
+                  <td>How much return per $1 of ads?</td>
                   <td>Ignores fees; inflated by payout that later gets adjusted down</td>
                 </tr>
                 <tr>
@@ -217,11 +217,10 @@
           </ol>
           <p>
             Break-even ROAS comes from the same numbers. You break even when
-            payout = ad spend + fees, so break-even ROAS = 1 + fees ÷ ad spend.
-            In the example that is 1 + $300 ÷ $4,000 = 1.075×, or a 7.5% return
-            on spend. So there is no universal “good ROAS” for pay-per-call: it
-            depends on your fees, and on costs outside this formula, such as
-            salaries.
+            payout = ad spend + fees, so break-even ROAS = fees ÷ ad spend.
+            In the example that is $300 ÷ $4,000 = 7.5%. So there is no
+            universal “good ROAS” for pay-per-call: it depends on your fees, and
+            on costs outside this formula, such as salaries.
           </p>
         </section>
 
@@ -229,7 +228,7 @@
           <h2>Common mistakes</h2>
           <h3>Leaving out platform fees</h3>
           <p>
-            In the example, return on ad spend is 25% but ROI is 16.3%. The gap
+            In the example, ROAS is 25% but ROI is 16.3%. The gap
             is the $300 of fees.
           </p>
           <h3>Mismatched time zones</h3>
@@ -297,17 +296,16 @@
                 <tr><th scope="row">A–H</th><td>Date, call payout, Meta spend, Google spend, TikTok spend, call-platform fees, calls, billable calls</td><td>Inputs</td></tr>
                 <tr><th scope="row">I</th><td>Ad spend</td><td><code>=C2+D2+E2</code></td></tr>
                 <tr><th scope="row">J</th><td>Net profit</td><td><code>=B2-I2-F2</code></td></tr>
-                <tr><th scope="row">K</th><td>ROAS (×)</td><td><code>=B2/I2</code></td></tr>
-                <tr><th scope="row">L</th><td>Return on ad spend (%)</td><td><code>=(B2-I2)/I2</code></td></tr>
-                <tr><th scope="row">M</th><td>ROI (%)</td><td><code>=J2/(I2+F2)</code></td></tr>
-                <tr><th scope="row">N</th><td>Cost per call</td><td><code>=I2/G2</code></td></tr>
-                <tr><th scope="row">O</th><td>Revenue per call</td><td><code>=B2/G2</code></td></tr>
-                <tr><th scope="row">P</th><td>Break-even cost per call</td><td><code>=(B2-F2)/G2</code></td></tr>
-                <tr><th scope="row">Q</th><td>Cost per billable call</td><td><code>=I2/H2</code></td></tr>
+                <tr><th scope="row">K</th><td>ROAS (%)</td><td><code>=(B2-I2)/I2</code></td></tr>
+                <tr><th scope="row">L</th><td>ROI (%)</td><td><code>=J2/(I2+F2)</code></td></tr>
+                <tr><th scope="row">M</th><td>Cost per call</td><td><code>=I2/G2</code></td></tr>
+                <tr><th scope="row">N</th><td>Revenue per call</td><td><code>=B2/G2</code></td></tr>
+                <tr><th scope="row">O</th><td>Break-even cost per call</td><td><code>=(B2-F2)/G2</code></td></tr>
+                <tr><th scope="row">P</th><td>Cost per billable call</td><td><code>=I2/H2</code></td></tr>
               </tbody>
             </table>
           </div>
-          <p>Format L and M as percentages.</p>
+          <p>Format K and L as percentages.</p>
           <!-- FUTURE: link /guides/pay-per-call-profit-tracking/ (Brief #5) here: "spreadsheet vs call platform vs tracker vs Slack P&L". -->
         </section>
 
@@ -352,6 +350,76 @@
             <a href="/verticals/aca-pay-per-call/">ACA pay-per-call for media buyers</a>.
           </p>
           <!-- FUTURE: link /verticals/final-expense-pay-per-call/ (Brief #8), which links back here for the math, once live. -->
+        </section>
+
+        <section id="forecasting">
+          <h2>Forecasting profit before you scale spend</h2>
+          <p>
+            To forecast pay-per-call profit before you scale, project payout, ad
+            spend, and call-platform fees at the higher spend level, then
+            calculate forecast net profit = projected payout − projected ad spend
+            − platform fees. Don’t carry today’s cost per call and answer rate
+            forward unchanged: assume cost per call rises and answer rate falls
+            as spend grows, and test a pessimistic, realistic, and optimistic case.
+          </p>
+          <p>
+            Example numbers, not benchmarks. Today you spend $1,000 a day at $50
+            per call, which is 20 calls. Say you want to scale to $3,000 a day.
+            In the realistic case, cost per call rises to $60, so $3,000 ÷ $60 =
+            50 calls. At an 84% answer rate, 42 calls are answered. At $90 payout
+            per answered call, projected payout is $3,780. Platform fees are $0.50
+            per call on all 50 calls, or $25. Forecast net profit = $3,780 − $3,000
+            − $25 = $755. ROAS = ($3,780 − $3,000) ÷ $3,000 = 26%.
+          </p>
+          <p>
+            Example numbers, not benchmarks. The three scenarios below all start
+            from $1,000 a day at $50 per call. Payout is $90 per answered call,
+            and platform fees are $0.50 per call on all calls. The optimistic case
+            uses $3,300 of spend rather than $3,000, so that $3,300 ÷ $55 gives a
+            whole number of calls (60).
+          </p>
+          <div class="compare-wrap">
+            <table class="compare-table">
+              <caption class="visually-hidden">Forecast scenarios with example numbers</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Scenario</th>
+                  <th scope="col">Daily spend</th>
+                  <th scope="col">Cost per call</th>
+                  <th scope="col">Answer rate</th>
+                  <th scope="col">Answered calls</th>
+                  <th scope="col">Payout per answered call</th>
+                  <th scope="col">Projected payout</th>
+                  <th scope="col">Platform fees</th>
+                  <th scope="col">Forecast net profit</th>
+                  <th scope="col">ROAS</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Pessimistic</th><td>$3,000</td><td>$75</td><td>70%</td><td>28</td><td>$90</td><td>$2,520</td><td>$20</td><td>−$500</td><td>−16%</td></tr>
+                <tr><th scope="row">Realistic</th><td>$3,000</td><td>$60</td><td>84%</td><td>42</td><td>$90</td><td>$3,780</td><td>$25</td><td>$755</td><td>26%</td></tr>
+                <tr><th scope="row">Optimistic</th><td>$3,300</td><td>$55</td><td>90%</td><td>54</td><td>$90</td><td>$4,860</td><td>$30</td><td>$1,530</td><td>47%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Total calls are 40, 50, and 60 (spend ÷ cost per call). Answered calls
+            are total calls × answer rate. ROAS = (projected payout − daily spend)
+            ÷ daily spend, which ignores platform fees, as defined above.
+          </p>
+          <p>Every week, record these and compare each one with the forecast:</p>
+          <ul>
+            <li>Actual spend per ad account (Meta, Google, TikTok)</li>
+            <li>Cost per call</li>
+            <li>Answer rate</li>
+            <li>Payout per answered call</li>
+            <li>Call-platform fees</li>
+            <li>Net profit</li>
+            <li>ROAS vs forecast</li>
+          </ul>
+          <p>
+            <a href="/roi/" data-cta="ppc_formula_forecast_roi" data-cta-type="product" data-product="roi">Easy Growth Ops ROI</a> shows the actuals in Slack so you can compare them to the forecast.
+          </p>
         </section>
 
         <section class="faq" id="faq" data-faq>
@@ -418,7 +486,7 @@
               <div class="faq-a">
                 <p>
                   There is no universal number. Anything above your break-even
-                  ROAS (1 + fees ÷ ad spend) makes money before other overhead.
+                  ROAS (fees ÷ ad spend) makes money before other overhead.
                 </p>
               </div>
             </li>
@@ -439,6 +507,14 @@
                   In Meta and Google Ads it is cost per click. Some pay-per-call
                   reports, including ROI’s Slack readout, use CPC for cost per
                   call. Label the column.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>How do I forecast pay-per-call profit before scaling?</h3>
+              <div class="faq-a">
+                <p>
+                  Project your payout, ad spend, and call-platform fees at the higher spend level, then subtract: forecast net profit = projected payout − projected ad spend − platform fees. Assume cost per call rises and answer rate falls as you scale, run pessimistic, realistic, and optimistic cases, and compare the forecast to your actuals every week.
                 </p>
               </div>
             </li>
