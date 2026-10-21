@@ -1,0 +1,304 @@
+<!doctype html>
+<!--
+  Content page. <head>, nav, breadcrumbs, footer, byline, and JSON-LD come from
+  layouts/content.html (scripts/content-layout.js). Metadata is the
+  "ringba-google-ads-profit" entry in site.config.js.
+  FAQPage and HowTo JSON-LD are built from [data-faq] and ol[data-howto] below.
+  Google facts: checked 21 October 2026 (Google Ads Help). Ringba facts: "Ringba's doc"
+  as of 21 October 2026. Re-verify both before publishing or editing.
+
+  Left out on purpose. Do not add these back without written confirmation:
+  - How Ringba attributes or tracks calls from call assets. Ringba's doc doesn't mention call assets. Point readers to Ringba support.
+  - Whether "Number" or "JS Tag" is the right choice for call assets.
+  - Which identifier ties a call-asset call to a click.
+  - Upload delays for call assets. The doc's delays are for call-only and click ads only.
+  - What choosing Conversion vs Payout changes in Google.
+  - Whether manual payout adjustments in Ringba sync to Google.
+  - "One integration per publisher number" (unverified).
+  - Google MCC or manager accounts, and whether ROI reads Google at account level.
+  - Any spend total for Danyal. His quote appears with no figure.
+  - Pricing, the LeadVIPS quote, "We read spend and payouts. We never bid.", the "First Slack update" line, read-only claims, and competitor links (Call Tracker or any other).
+  - Any Google or Ringba partnership or endorsement. Google's data is delayed, never "wrong".
+  - Advice that depends on creating a new call-only ad.
+  - ROI claims beyond the approved list in confirmed-facts.md: no posting-channel claims, no Google-reading claims, no per-account wording, no 15-minute refresh wording. Refresh is "every 15–30 minutes, depending on setup".
+  - The ROI screenshot.
+  - The FAQ "How does Ringba see calls from call assets?" was dropped on purpose.
+-->
+<html lang="en">
+  <body>
+      <article class="article">
+        <header class="page-hero content-hero">
+          <p class="kicker">
+            <span>Integrations</span>
+            <span class="dot" aria-hidden="true"></span>
+            <span>Ringba + Google Ads</span>
+          </p>
+          <h1>Ringba Google Ads Integration After Call-Only Ads: From Conversion Upload to Profit</h1>
+          <p class="lede answer">
+            Google removed new call-only ad creation in February 2026, and existing ones stop serving in February 2027. Move pay-per-call numbers to call assets in responsive search ads. Ringba’s Google Ads integration uploads conversions to Google Ads. It does not show profit. For profit, join Google Ads spend with call payout and call-platform fees for the same window. <a href="/roi/">ROI</a> does that join every 15–30 minutes, depending on setup.
+          </p>
+          <!--@byline-->
+        </header>
+
+        <section class="key-facts" aria-labelledby="key-facts">
+          <h2 id="key-facts" class="visually-hidden">Key facts</h2>
+          <ul>
+            <li>Google’s dates: new call ads were removed in February 2026. Existing call ads stop receiving impressions in February 2027.</li>
+            <li>Google’s path: add call assets, add them to a responsive search ad, then remove the old call ad once the new ad is approved and performing.</li>
+            <li>Ringba’s doc (checked 21 October 2026) lists a “Number” and a “JS Tag” option, “RB-” conversion sets, and a Conversion or Payout upload event.</li>
+            <li>Ringba’s doc doesn’t mention call assets. Ask Ringba support how its integration handles them.</li>
+            <li>Net profit = call payout − Meta spend − Google spend − TikTok spend − call-platform fees.</li>
+          </ul>
+        </section>
+
+        <section id="short-answer">
+          <h2>The short answer</h2>
+          <p>
+            If you buy pay-per-call traffic on Google, the ad format you use is changing. Google’s call-only ads are being retired, and Google says to add your phone numbers to responsive search ads as call assets. That is the first job. The second is the Ringba side: its integration that uploads call conversions to Google Ads. The third is profit. Google Ads doesn’t do the subtraction for you. Profit needs spend and payout for the same window, minus call-platform fees.
+          </p>
+          <p>
+            This page covers all three in that order. It summarizes Google’s steps for the move, walks through Ringba’s Google Ads integration doc, lists the upload timing values, and shows where profit comes from. Ringba’s doc doesn’t cover call assets, so some questions go to Ringba support. We say which ones.
+          </p>
+        </section>
+
+        <section id="what-changed">
+          <h2>What changed: call-only ads are being retired</h2>
+          <p>
+            Google’s help page <a href="https://support.google.com/google-ads/answer/6341403" target="_blank" rel="noopener noreferrer">“About call ads”</a> gives two dates. Both are quoted here as Google wrote them.
+          </p>
+
+          <h3>Timeline: creation removed Feb 2026; no impressions Feb 2027</h3>
+          <ul>
+            <li>
+              <strong>February 2026:</strong> “All options to create new call ads will be removed.” Google adds that advertisers must add their phone numbers to responsive search ads as call assets.
+            </li>
+            <li>
+              <strong>February 2027:</strong> “Existing call ads will stop receiving impressions.”
+            </li>
+          </ul>
+          <p>
+            You can’t create new call ads, so the move is to call assets. Existing call ads keep receiving impressions until February 2027. Plan the switch before then, and don’t wait for the last month.
+          </p>
+        </section>
+
+        <section id="call-assets">
+          <h2>Move from call-only ads to call assets</h2>
+          <p>
+            Google’s help page “How to transition from call ads to call assets” lists three steps. The list below summarizes them. Read
+            <a href="https://support.google.com/google-ads/answer/16619010" target="_blank" rel="noopener noreferrer">Google’s page</a>
+            for the full steps and the screens.
+          </p>
+          <ol id="howto" data-howto="Move from Google call-only ads to call assets">
+            <li>
+              <strong>Add the business name and phone numbers as call assets.</strong>
+              Add your business name in account or campaign settings, then add the phone numbers as call assets.
+            </li>
+            <li>
+              <strong>Add call assets to a responsive search ad.</strong>
+              Create a responsive search ad (RSA) or modify one, then add call assets through “More Asset Types.”
+            </li>
+            <li>
+              <strong>Remove the old call ad.</strong>
+              Do this only after the new or modified RSA is approved and performing.
+            </li>
+          </ol>
+
+          <h3>Add business name and phone numbers as call assets</h3>
+          <p>
+            The first step sets the business name at the account or campaign level. Then it adds the phone numbers as call assets. Add every number you plan to run on these ads.
+          </p>
+
+          <h3>Add call assets to responsive search ads</h3>
+          <p>
+            The second step uses responsive search ads. Create one or modify an existing one. Then open “More Asset Types” and add the call assets. Google’s page shows where each setting sits, so follow it rather than guessing the menu path.
+          </p>
+
+          <h3>Remove the old call ad after the new RSA is approved and performing</h3>
+          <p>
+            The third step is to wait. Once the new or modified RSA is approved and performing, remove the old call ad. The order matters. The old ad stays in place until the new one is running.
+          </p>
+        </section>
+
+        <section id="connect-ringba">
+          <h2>Connect Ringba to Google Ads</h2>
+          <p>
+            Ringba’s “Google Ads Integration” doc covers conversion upload to Google Ads. We checked it on 21 October 2026, so re-verify it before you rely on it. The doc covers two integration options, the conversion set, and the upload event. It doesn’t mention call assets.
+          </p>
+          <p>
+            Auto-tagging is required. The doc says the gclid and kw URL parameters are created automatically.
+          </p>
+
+          <h3>“Number” option (the doc says it’s for call-only ads)</h3>
+          <p>
+            The doc lists “Number” as an integration option and says it is for call-only ads. Ask Ringba support which option applies to calls from call assets before you choose one.
+          </p>
+
+          <h3>“JS Tag” option (landing page with a number pool)</h3>
+          <p>
+            The doc lists “JS Tag” for ads that lead to a landing page with a number pool and the Ringba JS tag. Ask Ringba support how this option applies to call assets.
+          </p>
+
+          <h3>Conversion set and event (RB- prefix; Conversion or Payout)</h3>
+          <p>
+            New conversion sets are prefixed “RB-”. The upload event is either Conversion or Payout. The doc doesn’t say what each choice changes in Google Ads. Ask Ringba support before you pick one.
+          </p>
+        </section>
+
+        <section id="upload-timing">
+          <h2>Upload timing and retries (doc values, re-verify)</h2>
+          <p>
+            Conversions don’t always show in Google Ads right away. Three sources set the expectations. Each one covers different things.
+          </p>
+          <ul>
+            <li>
+              <strong>Google’s wait for a new conversion action.</strong> Google’s GCLID offline conversions help says to wait 4–6 hours after you create a new conversion action before you upload. Uploads made in those first 4–6 hours might take 2 days to appear.
+            </li>
+            <li>
+              <strong>Ringba’s documented delays.</strong> Ringba’s doc still lists upload delays of up to 300 minutes for a call-only ad and up to 1,400 minutes for a click ad. These are the doc’s values for those ad types.
+            </li>
+            <li>
+              <strong>Ringba’s retries.</strong> If an upload fails, Ringba retries hourly, up to 10 attempts. The doc describes this, and Ringba’s 6 December 2024 release notes say the same.
+            </li>
+          </ul>
+          <p>
+            Read the Ringba numbers as the doc’s values, checked 21 October 2026. Re-verify them before you rely on them. This page doesn’t apply them to call assets, because Ringba’s doc doesn’t cover call assets.
+          </p>
+        </section>
+
+        <section id="formula">
+          <h2>Conversions are not profit: the formula</h2>
+          <p>
+            A conversion upload tells Google that a conversion happened and what it was worth. It doesn’t subtract ad spend or call-platform fees. That subtraction is the profit step.
+          </p>
+          <p class="formula">
+            Net profit = call payout − Meta spend − Google spend − TikTok spend − call-platform fees.
+          </p>
+          <p>
+            Call payout is the Ringba Revenue or Payout figure. ROI uses one of the two, chosen per customer at setup. The formula above is the general one, not a description of ROI’s readout.
+          </p>
+          <p>
+            If you quote ROAS, define it as ROAS = (revenue − ad spend) ÷ ad spend. Google Ads’ own ROAS column is different. It shows conversion value ÷ spend, which is payout ÷ spend here. Label that figure as Google’s when you quote it.
+          </p>
+          <p>
+            In ROI, “Profit” is revenue minus spend on completed calls. “Net Profit” adds estimated revenue from calls still live. The
+            <a href="/guides/pay-per-call-profit-formula/">pay-per-call profit formula guide</a>
+            defines each term, with a worked example.
+          </p>
+        </section>
+
+        <section id="profit-options">
+          <h2>Options for the profit view: Sheets, DIY API pipeline, ROI</h2>
+          <p>
+            There are three ways to put Google spend next to call payout. The
+            <a href="/guides/pay-per-call-profit-tracking/">profit tracking guide</a>
+            compares five methods, including call-platform reports and ad trackers.
+          </p>
+          <ul>
+            <li>
+              <strong>Sheet.</strong> Export Google Ads spend and Ringba payout for the same dates. Match them by day, subtract the fees, and check that both sides cover the same hours. You own that join every time.
+            </li>
+            <li>
+              <strong>DIY API pipeline.</strong> Pull Google Ads and Ringba data through their APIs on a schedule, then write the result to a sheet. Someone has to keep the workflow working when an API changes.
+            </li>
+            <li>
+              <strong>ROI.</strong> <a href="/roi/">ROI</a> does that join every 15–30 minutes, depending on setup.
+            </li>
+          </ul>
+          <blockquote class="pull-quote">
+            <p>“Google’s UI is late. The API is not.”</p>
+            <footer>— Danyal Jamil, media buyer</footer>
+          </blockquote>
+        </section>
+
+        <section id="meta-tiktok">
+          <h2>Adding Meta and TikTok</h2>
+          <p>
+            The formula has a slot for each platform. Google is one term. Meta and TikTok spend go in the same formula, for the same window, minus the same call-platform fees. The
+            <a href="/integrations/ringba-facebook-ads-profit-report/">Ringba + Facebook Ads profit report</a>
+            guide covers the Meta side of that join.
+          </p>
+        </section>
+
+        <section class="faq" id="faq" data-faq>
+          <h2>FAQ</h2>
+          <ul class="faq-list">
+            <li class="faq-item">
+              <h3>Can I still create Google call-only ads?</h3>
+              <div class="faq-a">
+                <p>
+                  No. Google removed the option to create new call ads in February 2026. Existing call ads stop receiving impressions in February 2027. Move your pay-per-call numbers to call assets in responsive search ads.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>What do I move to?</h3>
+              <div class="faq-a">
+                <p>
+                  Responsive search ads with call assets. Add your business name and phone numbers as call assets, add call assets to the responsive search ad through “More Asset Types,” then remove the old call ad once the new ad is approved and performing.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>How does Ringba’s Google Ads integration work?</h3>
+              <div class="faq-a">
+                <p>
+                  Ringba’s doc lists two options, “Number” and “JS Tag.” Auto-tagging is required. New conversion sets are prefixed “RB-,” and the upload event is Conversion or Payout. The gclid and kw URL parameters are created automatically. The doc doesn’t mention call assets, so ask Ringba support how the integration handles them.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Why don’t my conversions show in Google Ads right away?</h3>
+              <div class="faq-a">
+                <p>
+                  Google says to wait 4–6 hours after you create a new conversion action before you upload. Uploads in those first hours might take 2 days to appear. Ringba’s doc lists upload delays of up to 300 minutes for a call-only ad and 1,400 minutes for a click ad, with hourly retries up to 10 attempts. Those are the doc’s values for those ad types.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Does the Ringba integration show profit?</h3>
+              <div class="faq-a">
+                <p>
+                  No. It uploads conversions and their values to Google Ads. For profit, join Google Ads spend with call payout and call-platform fees for the same window. ROI does that join every 15–30 minutes, depending on setup.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="sources" id="sources">
+          <h2>Sources</h2>
+          <p>Google pages and Ringba’s doc checked 21 October 2026. Re-check before relying on them.</p>
+          <ul>
+            <li><a href="https://support.google.com/google-ads/answer/6341403" target="_blank" rel="noopener noreferrer">Google Ads Help: About call ads</a></li>
+            <li><a href="https://support.google.com/google-ads/answer/16619010" target="_blank" rel="noopener noreferrer">Google Ads Help: How to transition from call ads to call assets</a></li>
+            <li><a href="https://support.google.com/google-ads/answer/7012522" target="_blank" rel="noopener noreferrer">Google Ads Help: GCLID offline conversions</a></li>
+            <li><a href="https://support.ringba.com/hc/en-us/articles/17997617379863-Google-Ads-Integration" target="_blank" rel="noopener noreferrer">Ringba: Google Ads Integration</a></li>
+            <li><a href="https://updates.ringba.com/release-notes-for-december-6-2024-305905" target="_blank" rel="noopener noreferrer">Ringba: Release notes for December 6, 2024</a></li>
+          </ul>
+          <p class="source-note">Easy Growth Ops is not affiliated with Google or Ringba.</p>
+        </section>
+
+        <section class="access" id="book">
+          <div class="access-inner">
+            <p class="index">30 minutes</p>
+            <h2>Book a meeting.</h2>
+            <p class="lede">
+              We’ll look at your stack.
+            </p>
+            <a
+              class="btn"
+              href="https://calendly.com/danyal-jamil/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta="ringba_google_closing_book" data-cta-type="booking" data-product="roi"
+              >Book a meeting</a
+            >
+            <p class="access-alt">
+              Or read the full product page:
+              <a href="/roi/" data-cta="ringba_google_closing_roi" data-cta-type="product" data-product="roi">ROI</a>.
+            </p>
+          </div>
+        </section>
+      </article>
+  </body>
+</html>

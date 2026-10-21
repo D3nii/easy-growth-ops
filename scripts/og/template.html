@@ -125,6 +125,13 @@
           sub: "Spreadsheet, call platform, tracker, DIY, or Slack P&amp;L. Pick by the question you need answered.",
           chips: [["Spreadsheet", false], ["Tracker", false], ["DIY", false], ["Slack P&amp;L", true]],
         },
+        "ringba-google-ads-profit": {
+          kicker: "Integration guide",
+          kicker2: "Ringba + Google Ads",
+          title: "Call assets, conversions, <em>profit.</em>",
+          sub: "Move from Google call-only ads to call assets, connect Ringba, then see profit after spend and fees.",
+          chips: [["Call assets", false], ["Conversions", false], ["Profit", true]],
+        },
       };
       const key = new URLSearchParams(location.search).get("page") || "home";
       const p = PAGES[key] || PAGES.home;

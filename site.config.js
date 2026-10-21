@@ -246,6 +246,34 @@ export const PAGES = [
     },
   },
   {
+    name: "ringba-google-ads-profit",
+    path: "/integrations/ringba-google-ads-profit/",
+    file: "integrations/ringba-google-ads-profit/index.html",
+    changefreq: "monthly",
+    priority: "0.7",
+    layout: "content",
+    schema: "TechArticle",
+    published: "2026-10-21",
+    title: "Ringba + Google Ads: Call Assets, Conversions, Profit (2026)",
+    h1: "Ringba Google Ads Integration After Call-Only Ads: From Conversion Upload to Profit",
+    description:
+      "Google call-only ads end in Feb 2027. Move pay-per-call to call assets, check the Ringba upload, then see profit, not just conversions.",
+    breadcrumb: "Ringba Google Ads integration",
+    ogImage: "ringba-google-ads-profit",
+    ogImageAlt: "Ringba + Google Ads: move from call-only ads to call assets, check the conversion upload, then see profit.",
+    guide: {
+      section: "Integrations",
+      summary:
+        "How to move from Google call-only ads to call assets before February 2027, connect Ringba's Google Ads integration, and see profit after spend and fees.",
+    },
+    llms: {
+      section: "Guides",
+      title: "Ringba Google Ads integration",
+      summary:
+        "Google removed new call-only ad creation in Feb 2026 and existing call ads stop serving in Feb 2027. Steps to move to call assets, Ringba's Google Ads integration doc (checked 21 Oct 2026), upload timing values, and why conversions are not profit.",
+    },
+  },
+  {
     name: "privacy",
     path: "/privacy/",
     file: "privacy/index.html",
