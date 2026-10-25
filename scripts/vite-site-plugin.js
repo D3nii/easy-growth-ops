@@ -1,7 +1,7 @@
 // Build-time SEO helpers for the static site:
 // - renderPage(): per page, renders content pages (layout: "content") through scripts/content-layout.js,
 //   replaces __SCHEMA_SITE_NODES__ with the shared Organization + WebSite JSON-LD (scripts/schema.js),
-//   then replaces __SITE_URL__ / __SITE_DOMAIN__ / __CONTACT_EMAIL__ / __UPDATED_*__ tokens
+//   then replaces __SITE_URL__ / __SITE_DOMAIN__ / __CONTACT_EMAIL__ / __MEDIA_*__ / __UPDATED_*__ tokens
 // - emits sitemap.xml (with lastmod from git), robots.txt, llms.txt, and llms-full.txt from SITE_URL + PAGES
 //   (llms-full.txt is llms.txt plus the plain text of every page's <main>, via scripts/main-text.js)
 // - serves those four files in `vite dev` too
@@ -9,7 +9,7 @@ import { execFileSync } from "node:child_process";
 import { readFileSync, statSync } from "node:fs";
 import { relative, resolve } from "node:path";
 import { parse } from "node-html-parser";
-import { CONTACT_EMAIL, PAGES, SITE_URL } from "../site.config.js";
+import { CONTACT_EMAIL, MEDIA_MIN_SPEND, MEDIA_PRICE, PAGES, SITE_URL } from "../site.config.js";
 import { guideLinksHtml, renderContentPage } from "./content-layout.js";
 import { mainText } from "./main-text.js";
 import { SCHEMA_SITE_NODES_TOKEN, siteNodesJson } from "./schema.js";
@@ -128,6 +128,8 @@ export function renderPage(root, page, html) {
     .replaceAll("__SITE_URL__", SITE_URL)
     .replaceAll("__SITE_DOMAIN__", SITE_DOMAIN)
     .replaceAll("__CONTACT_EMAIL__", CONTACT_EMAIL)
+    .replaceAll("__MEDIA_PRICE__", MEDIA_PRICE)
+    .replaceAll("__MEDIA_MIN_SPEND__", MEDIA_MIN_SPEND)
     .replaceAll("__UPDATED_ISO__", updated)
     .replaceAll("__UPDATED_HUMAN__", humanDate(updated));
   const leftover = out.match(/__[A-Z_]+__/);

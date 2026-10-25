@@ -3,6 +3,8 @@
 //   __SITE_URL__       -> SITE_URL (no trailing slash)
 //   __SITE_DOMAIN__    -> SITE_URL host without "www."
 //   __CONTACT_EMAIL__  -> CONTACT_EMAIL
+//   __MEDIA_PRICE__    -> MEDIA_PRICE (managed media buying page)
+//   __MEDIA_MIN_SPEND__ -> MEDIA_MIN_SPEND (managed media buying page)
 //   __UPDATED_ISO__    -> page last-modified date, e.g. 2026-10-08
 //   __UPDATED_HUMAN__  -> page last-modified date, e.g. 8 October 2026
 
@@ -27,6 +29,14 @@ export const CONTACT_EMAIL = "hello@geteasygrowthops.co";
 
 /** Every booking / trial CTA opens this Calendly page. */
 export const BOOK_URL = "https://calendly.com/danyal-jamil/30min";
+
+/**
+ * Managed media buying pricing (/managed-media-buying/). PRICING ON HOLD: final structure pending from Danyal.
+ * Defined once here. The page uses them through the __MEDIA_PRICE__ and __MEDIA_MIN_SPEND__ build tokens,
+ * and llms.txt reads them below, so editing these two strings updates every mention.
+ */
+export const MEDIA_PRICE = "From $2,000/month";
+export const MEDIA_MIN_SPEND = "$10k a month";
 
 /**
  * Pages built by Vite and listed in sitemap.xml and llms.txt.
@@ -283,7 +293,7 @@ export const PAGES = [
       section: "Services",
       title: "Managed media buying for pay-per-call",
       summary:
-        "Done-for-you paid media for pay-per-call buyers: Danyal Jamil's team runs Google Search, Google Display, YouTube, Meta video, and Meta display ads. From $2,000/mo, ROI included. Taking two to three clients to start.",
+        `Done-for-you paid media for pay-per-call buyers: Danyal Jamil's team runs Google Search, Google Display, YouTube, Meta video, and Meta display ads. ${MEDIA_PRICE}, minimum ${MEDIA_MIN_SPEND} in ad spend, paid by the client directly to the platforms. The ROI Slack profit report is included. A small number of client spots.`,
     },
   },
   {
