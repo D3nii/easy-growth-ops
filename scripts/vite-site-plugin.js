@@ -9,7 +9,20 @@ import { execFileSync } from "node:child_process";
 import { readFileSync, statSync } from "node:fs";
 import { relative, resolve } from "node:path";
 import { parse } from "node-html-parser";
-import { CONTACT_EMAIL, MEDIA_MIN_SPEND, MEDIA_PRICE, PAGES, SITE_URL } from "../site.config.js";
+import {
+  CONTACT_EMAIL,
+  MEDIA_FEE_EXAMPLES,
+  MEDIA_FEE_TEXT,
+  MEDIA_FEE_TIERS,
+  MEDIA_MIN_SPEND,
+  MEDIA_PRICE,
+  PAGES,
+  SITE_URL,
+} from "../site.config.js";
+
+/** Managed media buying fee table rows, from MEDIA_FEE_TIERS. */
+const mediaFeeRows = () =>
+  MEDIA_FEE_TIERS.map((t) => `<tr><td>${t.spend}</td><td>${t.fee}</td></tr>`).join("\n");
 import { guideLinksHtml, renderContentPage } from "./content-layout.js";
 import { mainText } from "./main-text.js";
 import { SCHEMA_SITE_NODES_TOKEN, siteNodesJson } from "./schema.js";
@@ -130,6 +143,9 @@ export function renderPage(root, page, html) {
     .replaceAll("__CONTACT_EMAIL__", CONTACT_EMAIL)
     .replaceAll("__MEDIA_PRICE__", MEDIA_PRICE)
     .replaceAll("__MEDIA_MIN_SPEND__", MEDIA_MIN_SPEND)
+    .replaceAll("__MEDIA_FEE_ROWS__", mediaFeeRows)
+    .replaceAll("__MEDIA_FEE_TEXT__", MEDIA_FEE_TEXT)
+    .replaceAll("__MEDIA_FEE_EXAMPLES__", MEDIA_FEE_EXAMPLES)
     .replaceAll("__UPDATED_ISO__", updated)
     .replaceAll("__UPDATED_HUMAN__", humanDate(updated));
   const leftover = out.match(/__[A-Z_]+__/);

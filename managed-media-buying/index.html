@@ -83,7 +83,7 @@
                 "name": "What does it cost?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "__MEDIA_PRICE__, with a minimum of __MEDIA_MIN_SPEND__ in ad spend. You pay ad spend directly to the platforms. Call tracking setup in Ringba or CallGrid is a paid add-on, priced on the call."
+                  "text": "__MEDIA_PRICE__. __MEDIA_FEE_TEXT__ Minimum ad spend is __MEDIA_MIN_SPEND__. You pay ad spend directly to the platforms. Call tracking setup in Ringba or CallGrid is a paid add-on, priced on the call."
                 }
               },
               {
@@ -284,47 +284,35 @@
         </div>
       </section>
 
-      <!-- PRICING ON HOLD: final structure pending from Danyal -->
-      <!-- Price strings live in site.config.js (MEDIA_PRICE, MEDIA_MIN_SPEND). -->
+      <!-- PRICING: edit the strings in site.config.js (MEDIA_PRICE, MEDIA_MIN_SPEND, MEDIA_FEE_TIERS, MEDIA_FEE_EXAMPLES). -->
       <section class="price" id="price">
         <header class="section-head">
           <p class="index">Price</p>
           <h2>Monthly. A small number of spots.</h2>
         </header>
         <p class="lede">__MEDIA_PRICE__.</p>
-        <ul class="price-table">
-          <li>
-            <strong>Fee</strong>
-            <div>
-              <h3>__MEDIA_PRICE__</h3>
-              <p>Danyal’s team runs your Google, YouTube, and Meta ads.</p>
-            </div>
-          </li>
-          <li>
-            <strong>Spend</strong>
-            <div>
-              <h3>Minimum __MEDIA_MIN_SPEND__</h3>
-              <p>You pay ad spend directly to the platforms.</p>
-            </div>
-          </li>
-          <li>
-            <strong>Extra</strong>
-            <div>
-              <h3>Call tracking setup, paid add-on</h3>
-              <p>In Ringba or CallGrid. Priced on the call.</p>
-            </div>
-          </li>
-          <li>
-            <strong>ROI</strong>
-            <div>
-              <h3>Included</h3>
-              <p>Call payout next to ad spend, in Slack.</p>
-            </div>
-          </li>
+        <div class="compare-wrap">
+          <table class="compare-table fee-table">
+            <caption class="visually-hidden">Management fee by monthly ad spend</caption>
+            <thead>
+              <tr>
+                <th scope="col">Monthly ad spend</th>
+                <th scope="col">Management fee</th>
+              </tr>
+            </thead>
+            <tbody>
+              __MEDIA_FEE_ROWS__
+            </tbody>
+          </table>
+        </div>
+        <p class="price-note">Examples: __MEDIA_FEE_EXAMPLES__.</p>
+        <ul class="price-lines">
+          <li>Minimum ad spend is __MEDIA_MIN_SPEND__.</li>
+          <li>You pay ad spend directly to the platforms.</li>
+          <li>Call tracking setup (Ringba or CallGrid) is a paid add-on, priced on the call.</li>
+          <li>The ROI Slack profit report is included.</li>
+          <li>We have a small number of client spots.</li>
         </ul>
-        <p class="price-note">
-          We have a small number of client spots.
-        </p>
       </section>
 
       <section class="faq" id="faq">
@@ -347,8 +335,8 @@
           <li>
             <h3>What does it cost?</h3>
             <p>
-              __MEDIA_PRICE__, with a minimum of __MEDIA_MIN_SPEND__
-              in ad spend. You pay ad spend directly to the platforms.
+              __MEDIA_PRICE__. __MEDIA_FEE_TEXT__ Minimum ad spend is
+              __MEDIA_MIN_SPEND__. You pay ad spend directly to the platforms.
               Call tracking setup in Ringba or CallGrid is a paid
               add-on, priced on the call.
             </p>
