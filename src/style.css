@@ -1189,6 +1189,22 @@ main > .proof-band {
   margin-top: 0.9rem;
 }
 
+.fee-table {
+  min-width: 0;
+  max-width: 44rem;
+}
+
+.price-lines {
+  max-width: 36rem;
+  margin-top: 1.2rem;
+  padding-left: 1.1rem;
+  color: var(--ink-2);
+}
+
+.price-lines li + li {
+  margin-top: 0.35rem;
+}
+
 .price-table + .price-note {
   margin-top: 1.7rem;
 }

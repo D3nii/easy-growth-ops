@@ -6,7 +6,7 @@
 //   cta_id     data-cta value, e.g. "home_hero_roi"
 //   cta_label  visible link text
 //   cta_type   "booking" | "trial" | "product" | "pricing" | "contact"
-//   product    "roi" | "drops" | "both" | "none"
+//   product    "roi" | "drops" | "both" | "media" | "none"
 //   page       location.pathname, e.g. "/roi/"
 //   link_url   destination href
 import { track as vercelTrack } from "@vercel/analytics";

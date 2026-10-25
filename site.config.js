@@ -3,6 +3,11 @@
 //   __SITE_URL__       -> SITE_URL (no trailing slash)
 //   __SITE_DOMAIN__    -> SITE_URL host without "www."
 //   __CONTACT_EMAIL__  -> CONTACT_EMAIL
+//   __MEDIA_PRICE__    -> MEDIA_PRICE (managed media buying page)
+//   __MEDIA_MIN_SPEND__ -> MEDIA_MIN_SPEND (managed media buying page)
+//   __MEDIA_FEE_ROWS__ -> <tr> rows built from MEDIA_FEE_TIERS (managed media buying page)
+//   __MEDIA_FEE_TEXT__ -> MEDIA_FEE_TIERS + MEDIA_FEE_EXAMPLES as one plain sentence (FAQ + JSON-LD)
+//   __MEDIA_FEE_EXAMPLES__ -> MEDIA_FEE_EXAMPLES
 //   __UPDATED_ISO__    -> page last-modified date, e.g. 2026-10-08
 //   __UPDATED_HUMAN__  -> page last-modified date, e.g. 8 October 2026
 
@@ -27,6 +32,28 @@ export const CONTACT_EMAIL = "hello@geteasygrowthops.co";
 
 /** Every booking / trial CTA opens this Calendly page. */
 export const BOOK_URL = "https://calendly.com/danyal-jamil/30min";
+
+/**
+ * Managed media buying pricing (/managed-media-buying/). Final pricing from Danyal, Oct 25, 2026.
+ * Defined once here. The page uses these through the __MEDIA_*__ build tokens (fee table, hero, FAQ,
+ * FAQPage JSON-LD), and llms.txt reads them below, so editing them here updates every mention.
+ */
+export const MEDIA_PRICE = "From $2,000/month";
+export const MEDIA_MIN_SPEND = "$10k a month";
+export const MEDIA_FEE_TIERS = [
+  { spend: "$10k to $50k", fee: "$2,000/month or 10% of monthly ad spend, whichever is higher" },
+  { spend: "$50k to $100k", fee: "10% on the first $50k plus 8% on spend above $50k" },
+  { spend: "Above $100k", fee: "Custom quote" },
+];
+export const MEDIA_FEE_EXAMPLES = "$5,000 at $50k spend, $9,000 at $100k spend";
+
+const lowerFirst = (str) => str.charAt(0).toLowerCase() + str.slice(1);
+
+/** The fee tiers as one plain sentence, for the FAQ, its JSON-LD, and llms.txt. */
+export const MEDIA_FEE_TEXT =
+  "Management fee by monthly ad spend: " +
+  MEDIA_FEE_TIERS.map((t) => `${lowerFirst(t.spend)}, ${lowerFirst(t.fee)}`).join("; ") +
+  `. For example, ${MEDIA_FEE_EXAMPLES}.`;
 
 /**
  * Pages built by Vite and listed in sitemap.xml and llms.txt.
@@ -271,6 +298,19 @@ export const PAGES = [
       title: "Ringba Google Ads integration",
       summary:
         "Google removed new call-only ad creation in Feb 2026 and existing call ads stop serving in Feb 2027. Steps to move to call assets, Ringba's Google Ads integration doc (checked 21 Oct 2026), upload timing values, and why conversions are not profit.",
+    },
+  },
+  {
+    name: "managed-media-buying",
+    path: "/managed-media-buying/",
+    file: "managed-media-buying/index.html",
+    changefreq: "monthly",
+    priority: "0.7",
+    llms: {
+      section: "Services",
+      title: "Managed media buying for pay-per-call",
+      summary:
+        `Done-for-you paid media for pay-per-call buyers: Danyal Jamil's team runs Google Search, Google Display, YouTube, Meta video, and Meta display ads. ${MEDIA_PRICE}. ${MEDIA_FEE_TEXT} Minimum ${MEDIA_MIN_SPEND} in ad spend, paid by the client directly to the platforms. The ROI Slack profit report is included. A small number of client spots.`,
     },
   },
   {
