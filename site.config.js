@@ -274,6 +274,19 @@ export const PAGES = [
     },
   },
   {
+    name: "managed-media-buying",
+    path: "/managed-media-buying/",
+    file: "managed-media-buying/index.html",
+    changefreq: "monthly",
+    priority: "0.7",
+    llms: {
+      section: "Services",
+      title: "Managed media buying for pay-per-call",
+      summary:
+        "Done-for-you paid media for pay-per-call buyers: Danyal Jamil's team runs Google Search, Google Display, YouTube, Meta video, and Meta display ads. From $2,000/mo, ROI included. Taking two to three clients to start.",
+    },
+  },
+  {
     name: "privacy",
     path: "/privacy/",
     file: "privacy/index.html",

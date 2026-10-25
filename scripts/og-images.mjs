@@ -9,7 +9,7 @@ import puppeteer from "puppeteer-core";
 const root = resolve(fileURLToPath(new URL("..", import.meta.url)));
 const template = pathToFileURL(join(root, "scripts/og/template.html")).href;
 const outDir = join(root, "public/og");
-const pages = process.argv.slice(2).length ? process.argv.slice(2) : ["home", "roi", "drops", "guides", "pay-per-call-profit-formula", "ringba-facebook-ads-profit-report", "redtrack-alternative-pay-per-call", "aca-pay-per-call", "pay-per-call-profit-tracking", "ringba-google-ads-profit"];
+const pages = process.argv.slice(2).length ? process.argv.slice(2) : ["home", "roi", "drops", "guides", "pay-per-call-profit-formula", "ringba-facebook-ads-profit-report", "redtrack-alternative-pay-per-call", "aca-pay-per-call", "pay-per-call-profit-tracking", "ringba-google-ads-profit", "managed-media-buying"];
 
 const candidates = [
   process.env.CHROME_PATH,
