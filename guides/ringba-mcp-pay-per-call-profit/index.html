@@ -1,0 +1,337 @@
+<!doctype html>
+<!--
+  Content page. <head>, nav, breadcrumbs, footer, byline, and JSON-LD come from
+  layouts/content.html (scripts/content-layout.js). Metadata is the
+  "ringba-mcp-pay-per-call-profit" entry in site.config.js.
+  FAQPage JSON-LD is built from [data-faq] below.
+  Verified 26 October 2026: Ringba’s MCP article (updated 7 October 2026), RedTrack’s MCP help page
+  (updated 20 October 2026), RedTrack pricing, CallGrid’s MCP page (no publish date shown), and Meta’s
+  “Manage ads from an AI agent” help page. Re-verify all of them before publishing or editing.
+
+  Left out on purpose. Do not add these back without written confirmation:
+  - Any claim that Ringba supports ChatGPT. Ringba’s article doesn’t name it.
+  - Tool names, server URLs, OAuth details, and permissions from Meta’s and RedTrack’s pages.
+  - Token examples, header values, account IDs, and setup code.
+  - Ringba MCP pricing beyond the list of plans that include it.
+  - RedTrack promo prices and trials.
+  - ROI pricing, free trial, alerts, thresholds, campaign or ad-level breakdowns, and customer results.
+  - Any claim that Ringba MCP is weak, or that any tool on this page fails or is inaccurate.
+  - Any Ringba, RedTrack, CallGrid, Meta, Anthropic, or OpenAI partnership or endorsement.
+-->
+<html lang="en">
+  <body>
+      <article class="article">
+        <header class="page-hero content-hero">
+          <p class="kicker">
+            <span>Guides</span>
+            <span class="dot" aria-hidden="true"></span>
+            <span>Ringba MCP and AI assistants</span>
+          </p>
+          <h1>Ringba MCP and AI Assistants: What They Can Answer for Pay-Per-Call Profit</h1>
+          <p class="lede answer">
+            Ringba MCP lets an AI assistant such as Claude answer questions about your Ringba data: call diagnostics, why a call did or didn’t pay, and account status. Ringba says it is read-only. It answers from Ringba data through the Ringba API and doesn’t list ad-platform spend. A profit number needs spend, payout, and fees for the same window. <a href="/roi/">ROI</a> posts that number to Slack every 15–30 minutes, depending on setup.
+          </p>
+          <!--@byline-->
+        </header>
+
+        <section class="key-facts" aria-labelledby="key-facts">
+          <h2 id="key-facts" class="visually-hidden">Key facts</h2>
+          <ul>
+            <li>Ringba’s article (updated 7 October 2026) says the connector is read-only and answers through the Ringba API.</li>
+            <li>The article names Claude, Cursor, and GitHub Copilot in VS Code as examples of assistants. It doesn’t name ChatGPT.</li>
+            <li>Ringba MCP is included in the Business, Professional, and Enterprise plans (as of 26 October 2026).</li>
+            <li>Ringba’s article doesn’t list Meta, Google, or TikTok spend. A profit number needs it.</li>
+            <li>Net profit = call payout − Meta spend − Google spend − TikTok spend − call-platform fees.</li>
+          </ul>
+        </section>
+
+        <section id="short-answer">
+          <h2>The short answer</h2>
+          <p>
+            An AI assistant can now answer questions about your pay-per-call account in plain language. It is not the same as a profit report. Ringba MCP connects an assistant to Ringba data. The connectors from RedTrack, CallGrid, and Meta each cover a different part of the stack.
+          </p>
+          <p>
+            Short version: Ringba MCP is strong for call diagnostics and ad-hoc questions. It won’t replace your profit number, because profit needs ad spend, and Ringba’s article doesn’t list ad-platform spend as something it reads. Use it next to a profit report, not in place of one.
+          </p>
+        </section>
+
+        <section id="ringba-answers">
+          <h2>What Ringba MCP answers well</h2>
+          <p>
+            Ringba’s <a href="https://support.ringba.com/hc/en-us/articles/43876612334615-Ringba-MCP" target="_blank" rel="noopener noreferrer">MCP article</a> says the connector lets AI assistants reach a Ringba account. You ask in plain language, and the assistant uses the Ringba API to find the answer. As of 26 October 2026, the article names Claude, Cursor, and GitHub Copilot in VS Code as examples. It also has setup examples for Claude Cowork, Claude Code, and OpenAI Codex. Other MCP clients that support custom headers may work, so check the article before you assume.
+          </p>
+          <p>
+            The connector is included in all Ringba subscription plans: Business, Professional, and Enterprise. Setup means running a terminal command or editing a config file.
+          </p>
+
+          <h3>Call diagnostics and ad-hoc questions</h3>
+          <p>
+            This is the strongest part of the connector. The article’s examples are call questions, such as “Why didn’t this call generate revenue or a payout?” and “What happened in Real Time Bidding?” Account questions work too, like “How many campaigns are running right now?” The article also lists review questions, such as “Can you check this call flow for errors?”
+          </p>
+          <p>
+            For a buyer chasing one bad call, or checking a flow after a change, that is the right tool. You ask, you get an answer, and you don’t have to build a report first.
+          </p>
+
+          <h3>What it doesn’t see: ad-platform spend</h3>
+          <p>
+            The article describes the assistant as answering from Ringba data through the Ringba API. It doesn’t list Meta, Google, or TikTok spend among the things it reads. If you ask it for profit, check where the spend figure comes from. Unless spend is added from another source, treat the answer as a call-side number.
+          </p>
+        </section>
+
+        <section id="redtrack-mcp">
+          <h2>What RedTrack’s MCP adds, and what it can change</h2>
+          <p>
+            RedTrack’s <a href="https://help.redtrack.io/knowledgebase/kb/redtrack-ai/redtrack-mcp-server/" target="_blank" rel="noopener noreferrer">MCP server help page</a> says it connects an AI assistant such as Claude or ChatGPT to a RedTrack account. As of 26 October 2026, the page (updated 20 October 2026) lists more than 40 actions. Its reporting covers clicks, conversions, and cost sync. The page also says: “The server manages the RedTrack side only, it doesn’t drive the ad platforms’ own ad managers.”
+          </p>
+
+          <h3>Read actions vs read+write actions</h3>
+          <p>
+            Each RedTrack action is Read or Write. Reporting, clicks and conversions, and cost sync are Read. Campaigns, traffic sources, offers, networks, landing pages, domains, and streams are Read + Write, so an assistant can create, update, or delete them. The page’s example prompt is “Pause every campaign that spent over $500 with zero conversions.”
+          </p>
+          <p>
+            Two guardrails are stated. The assistant confirms before anything destructive, and deletes are permanent. The server respects the permissions of the account tied to the API key. Analytics reporting is rate-limited to 20 requests per minute, so keep each report query to about 90 days.
+          </p>
+          <p>
+            API and MCP access must be enabled on your plan. RedTrack’s <a href="https://www.redtrack.io/pricing" target="_blank" rel="noopener noreferrer">pricing page</a> lists “AI Copilot, MCP and API access” on every paid plan. It also lists a separate Premium add-on for MCP and API access at $199/mo on monthly billing, as of 26 October 2026. For how RedTrack compares with a Slack P&amp;L, see the <a href="/compare/redtrack-alternative-pay-per-call/">RedTrack alternative page</a>.
+          </p>
+        </section>
+
+        <section id="callgrid-mcp">
+          <h2>CallGrid’s MCP</h2>
+          <p>
+            CallGrid’s <a href="https://callgrid.com/mcp" target="_blank" rel="noopener noreferrer">MCP page</a> describes a hosted server. You connect CallGrid to Claude or ChatGPT and ask in plain English. You authorize once by signing in, with no keys to copy. The page says it is available to CallGrid customers. It was fetched on 26 October 2026, and no publish date is shown.
+          </p>
+          <p>
+            It is read-only. It surfaces and analyzes data. It cannot place or route calls, create or edit campaigns and settings, or move numbers. The same read-only connection can run on a schedule and deliver a finished report to Slack, Gmail, Google Sheets, or Notion. The destination connector does the delivery.
+          </p>
+          <p>
+            That scheduled report is CallGrid call data. The page doesn’t say it joins ad-platform spend, so check that before you count on it for profit.
+          </p>
+        </section>
+
+        <section id="meta-mcp">
+          <h2>Meta’s ads MCP server</h2>
+          <p>
+            Meta’s <a href="https://www.facebook.com/business/help/1456422242197840" target="_blank" rel="noopener noreferrer">Business Help Center page</a> describes an ads MCP server as part of its AI connectors. An AI agent can pull reporting on campaign performance. It can also create and edit ads, ad sets, and campaigns. Ads are paused by default until you set them live. Meta says, “You may not have access to all of these tools and features yet.” Meta lists ChatGPT, Claude, Claude Code, and Perplexity as supported agents, as of 26 October 2026.
+          </p>
+          <p>
+            Actions need your authorization through the AI agent. If you have full control of a business portfolio, you can set rules per ad account in Meta Business Suite (Settings &gt; Integrations &gt; Ads MCP server) to allow or block actions such as creating campaigns or editing budgets.
+          </p>
+          <p>
+            This is the Meta side of the spend line. The Meta page doesn’t describe reading call payout, so payout still comes from your call platform.
+          </p>
+        </section>
+
+        <section id="join">
+          <h2>Why a profit number needs a join</h2>
+          <p>
+            Profit joins several sources. The formula is the same whichever assistant or report does the math:
+          </p>
+          <p class="formula">
+            Net profit = call payout − Meta spend − Google spend − TikTok spend − call-platform fees.
+          </p>
+          <p>
+            The <a href="/guides/pay-per-call-profit-formula/">pay-per-call profit formula guide</a> defines each term and includes a hypothetical worked example.
+          </p>
+          <p>
+            Two details cause most mismatches. First, call payout can be Ringba’s Revenue field or its Payout field. ROI uses one of the two, chosen per customer at setup. Second, the time window has to match. ROI aligns Meta spend and Ringba call data in US Eastern time. If one source uses a different zone, the same day covers different calls.
+          </p>
+
+          <h3>Asked vs scheduled</h3>
+          <p>
+            When you ask an assistant for profit, it runs the join at that moment. If you connect both Ringba MCP and Meta’s ads MCP to one assistant, it can combine them in principle. You still check that the windows and time zones match. Nothing posts unless you ask.
+          </p>
+          <p>
+            A scheduled report runs the same join on its own clock. ROI does that every 15–30 minutes, depending on setup. Its readout shows Profit, which counts completed calls, and Net Profit, which adds estimated revenue from calls still live. So an assistant’s number and the ROI readout can differ mid-day.
+          </p>
+        </section>
+
+        <section id="slack-pnl">
+          <h2>Where a Slack P&amp;L still wins</h2>
+          <p>
+            A Slack P&amp;L does one job on a schedule. It reads spend from Meta Ads, Google Ads, and TikTok Ads, reads payout from one call platform at a time, and posts totals per ad account. The table compares the four connectors and ROI on the points that matter here. Facts are as of 26 October 2026. “Not stated” means the source page doesn’t say.
+          </p>
+          <div class="compare-wrap">
+            <table class="compare-table">
+              <caption class="visually-hidden">Ringba MCP, RedTrack MCP, CallGrid MCP, Meta ads MCP, and ROI, compared</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Point</th>
+                  <th scope="col">Ringba MCP</th>
+                  <th scope="col">RedTrack MCP</th>
+                  <th scope="col">CallGrid MCP</th>
+                  <th scope="col">Meta ads MCP</th>
+                  <th scope="col">ROI (Slack P&amp;L)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">What it reads</th>
+                  <td>Ringba account data, through the Ringba API</td>
+                  <td>RedTrack account: reporting, clicks, conversions, cost sync, campaigns</td>
+                  <td>CallGrid call data</td>
+                  <td>Meta campaign performance and ad setup</td>
+                  <td>Spend from Meta, Google, and TikTok; payout from one call platform</td>
+                </tr>
+                <tr>
+                  <th scope="row">Can it change things</th>
+                  <td>No. Read-only</td>
+                  <td>Yes, for campaigns, offers, and other setup. Asks before destructive actions</td>
+                  <td>No. Read-only</td>
+                  <td>Yes, with your authorization. Admins can block actions per ad account</td>
+                  <td>No. Read-only</td>
+                </tr>
+                <tr>
+                  <th scope="row">Sees ad spend and call payout together</th>
+                  <td>Not stated (spend isn’t listed)</td>
+                  <td>Reads cost sync data; call payout not stated</td>
+                  <td>Not stated</td>
+                  <td>Not stated (no call payout described)</td>
+                  <td>Yes, per ad account</td>
+                </tr>
+                <tr>
+                  <th scope="row">Answers when</th>
+                  <td>When you ask</td>
+                  <td>When you ask (scheduling not stated)</td>
+                  <td>When you ask, or on a schedule through a destination connector</td>
+                  <td>When you ask</td>
+                  <td>Every 15–30 minutes, depending on setup</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Each connector is good at the job it was built for. The table is about scope, not quality. An assistant suits questions you didn’t plan for. A Slack P&amp;L suits the same profit view every day, without asking. ROI is read-only. It never bids, pauses, or scales ads, and you can revoke access. It doesn’t replace your call platform.
+          </p>
+          <p>
+            ROI reports per ad account, not per campaign. For campaign-level questions, use the assistant or your ad platform’s own reports.
+          </p>
+        </section>
+
+        <section id="safe-setup">
+          <h2>Safe setup for an AI assistant</h2>
+          <p>
+            The main risks are the token and write permissions.
+          </p>
+
+          <h3>Keep the token out of source control</h3>
+          <p>
+            Ringba MCP uses an API access token, created under Security &gt; API Access Tokens. Ringba shows the token only once. It never expires, so treat it like a password. Don’t save it in a shared file or in source control. If it leaks, delete it under Security &gt; API Access Tokens. That removes access for every client that uses it.
+          </p>
+
+          <h3>Read-only first, write actions last</h3>
+          <p>
+            Ringba MCP and CallGrid’s MCP are read-only. Start there. Add write access later, and only for one connection at a time. RedTrack’s assistant confirms before destructive actions, and its deletes are permanent. Meta lets a portfolio admin block actions per ad account, such as creating campaigns or editing budgets. If you have full control of the portfolio, set those rules before you connect.
+          </p>
+          <p>
+            If you want the profit number on a schedule, the next step is a Slack P&amp;L. The <a href="/guides/pay-per-call-profit-tracking/">profit tracking guide</a> compares it with a spreadsheet, call-platform reports, trackers, and DIY builds.
+          </p>
+        </section>
+
+        <section class="faq" id="faq" data-faq>
+          <h2>FAQ</h2>
+          <ul class="faq-list">
+            <li class="faq-item">
+              <h3>Does Ringba MCP replace a profit report?</h3>
+              <div class="faq-a">
+                <p>
+                  No. It answers questions from Ringba data. Ringba’s article doesn’t list ad-platform spend, so it can’t give you a full profit number on its own. A Slack P&amp;L does the join every 15–30 minutes, depending on setup.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Can ChatGPT use Ringba MCP?</h3>
+              <div class="faq-a">
+                <p>
+                  Ringba’s article doesn’t name ChatGPT. As of 26 October 2026, it names Claude, Cursor, and GitHub Copilot in VS Code as examples, and it has setup examples for Claude Cowork, Claude Code, and OpenAI Codex. Other MCP clients that support custom headers may work. Check the article before you set one up.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Which Ringba plans include Ringba MCP?</h3>
+              <div class="faq-a">
+                <p>
+                  Ringba’s article says it is included in all Ringba subscription plans: Business, Professional, and Enterprise (as of 26 October 2026).
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Is Ringba MCP read-only?</h3>
+              <div class="faq-a">
+                <p>
+                  Yes. Ringba’s article describes read-only access to your Ringba account. It is strong for call diagnostics and ad-hoc questions.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Can an assistant show my Meta, Google, and TikTok spend?</h3>
+              <div class="faq-a">
+                <p>
+                  Not from Ringba MCP alone, because Ringba’s article doesn’t list ad-platform spend. Meta’s ads MCP server can report on Meta campaign performance, with your authorization. For a joined number, use a Slack P&amp;L, or a spreadsheet that holds spend, payout, and fees for the same window.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Can I connect Ringba MCP and Meta’s ads MCP to one assistant?</h3>
+              <div class="faq-a">
+                <p>
+                  In principle, yes. The assistant does the join each time you ask, so check that the date windows and time zones match. Nothing posts unless you ask. Meta’s page says you may not have access to all of its tools and features yet.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Will CallGrid’s scheduled report show profit?</h3>
+              <div class="faq-a">
+                <p>
+                  It can send a scheduled CallGrid report to Slack, Gmail, Google Sheets, or Notion. CallGrid’s page describes call data and doesn’t say it joins ad-platform spend (as of 26 October 2026). Check before you rely on it for profit.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>How should I store the Ringba token?</h3>
+              <div class="faq-a">
+                <p>
+                  Keep it out of shared files and source control. Ringba shows it once, it never expires, and it works like a password. If it leaks, delete it under Security &gt; API Access Tokens. That removes access for every client that uses it.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="sources" id="sources">
+          <h2>Sources</h2>
+          <p>Third-party pages checked 26 October 2026. Ringba’s article was updated 7 October 2026, and RedTrack’s help page 20 October 2026. Re-check before relying on them.</p>
+          <ul>
+            <li><a href="https://support.ringba.com/hc/en-us/articles/43876612334615-Ringba-MCP" target="_blank" rel="noopener noreferrer">Ringba: Ringba MCP</a></li>
+            <li><a href="https://help.redtrack.io/knowledgebase/kb/redtrack-ai/redtrack-mcp-server/" target="_blank" rel="noopener noreferrer">RedTrack: MCP Server</a></li>
+            <li><a href="https://www.redtrack.io/pricing" target="_blank" rel="noopener noreferrer">RedTrack: Pricing</a></li>
+            <li><a href="https://callgrid.com/mcp" target="_blank" rel="noopener noreferrer">CallGrid: MCP</a></li>
+            <li><a href="https://www.facebook.com/business/help/1456422242197840" target="_blank" rel="noopener noreferrer">Meta Business Help Center: Manage ads from an AI agent with Meta ads AI connectors</a></li>
+          </ul>
+          <p class="source-note">Easy Growth Ops is not affiliated with Ringba, RedTrack, CallGrid, Meta, Anthropic, or OpenAI.</p>
+        </section>
+
+        <section class="access" id="book">
+          <div class="access-inner">
+            <p class="index">30 minutes</p>
+            <h2>Book a meeting.</h2>
+            <p class="lede">
+              We read spend and payouts. We never bid. You can revoke access.
+            </p>
+            <a
+              class="btn"
+              href="https://calendly.com/danyal-jamil/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta="ringba_mcp_closing_book" data-cta-type="booking" data-product="roi"
+              >Book a meeting</a
+            >
+            <p class="access-alt">
+              Or read the full product page:
+              <a href="/roi/" data-cta="ringba_mcp_closing_roi" data-cta-type="product" data-product="roi">ROI</a>.
+            </p>
+          </div>
+        </section>
+      </article>
+  </body>
+</html>
