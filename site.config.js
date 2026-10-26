@@ -196,7 +196,7 @@ export const PAGES = [
     schema: "Article",
     software: true,
     published: "2026-10-08",
-    lastmod: "2026-10-13",
+    lastmod: "2026-10-26",
     title: "RedTrack Alternative for Pay-Per-Call Buyers (2026) | ROI",
     h1: "RedTrack Alternative for Pay-Per-Call: When You Need Profit in Slack, Not Another Tracker",
     description:
