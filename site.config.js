@@ -301,6 +301,34 @@ export const PAGES = [
     },
   },
   {
+    name: "ringba-mcp-pay-per-call-profit",
+    path: "/guides/ringba-mcp-pay-per-call-profit/",
+    file: "guides/ringba-mcp-pay-per-call-profit/index.html",
+    changefreq: "monthly",
+    priority: "0.7",
+    layout: "content",
+    schema: "TechArticle",
+    published: "2026-10-26",
+    title: "Ringba MCP + AI Assistants: Pay-Per-Call Profit",
+    h1: "Ringba MCP and AI Assistants: What They Can Answer for Pay-Per-Call Profit",
+    description:
+      "Ringba's MCP lets Claude read your Ringba call data, not ad spend. What an AI assistant can answer, and where a scheduled Slack P&L still wins.",
+    breadcrumb: "Ringba MCP and AI assistants",
+    ogImage: "ringba-mcp-pay-per-call-profit",
+    ogImageAlt: "Ringba MCP and AI assistants: what Ringba's connector answers, and what a Slack P&L adds for profit.",
+    guide: {
+      section: "Integrations",
+      summary:
+        "What an AI assistant can answer with Ringba MCP, what its doc doesn't list (ad spend), how RedTrack, CallGrid, and Meta's MCP servers compare, and where a Slack P&L still fits.",
+    },
+    llms: {
+      section: "Guides",
+      title: "Ringba MCP and AI assistants",
+      summary:
+        "What Ringba's MCP connector answers from Ringba data (article checked 26 Oct 2026), how the RedTrack, CallGrid, and Meta ads MCP servers compare on scope, and why a profit number needs spend and fees joined.",
+    },
+  },
+  {
     name: "managed-media-buying",
     path: "/managed-media-buying/",
     file: "managed-media-buying/index.html",
