@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "test": "node --test tests/",
+    "test:browser": "node scripts/check-roi-calculator.mjs",
     "preview": "vite preview",
     "motion": "node motion/render.mjs roi drops",
     "og": "node scripts/og-images.mjs"

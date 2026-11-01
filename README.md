@@ -75,10 +75,11 @@ Twitter), nav, breadcrumbs, footer, and one JSON-LD `@graph`.
 To add a page:
 
 1. Add an entry to `PAGES` in `site.config.js` with `layout: "content"`, plus `title`, `h1`,
-   `description`, `breadcrumb`, `schema` (`TechArticle`, `Article`, or `CollectionPage`),
+   `description`, `breadcrumb`, `schema` (`TechArticle`, `Article`, `CollectionPage`, or `WebApplication`),
    `published`, `ogImage`, `ogImageAlt`, `guide` (section + summary for the `/guides/` hub card),
    and `llms` (section + summary for `/llms.txt`). Set `software: true` to add ROI's
-   `SoftwareApplication` node.
+   `SoftwareApplication` node. For a free web tool, use `schema: "WebApplication"` instead: it adds a
+   `WebApplication` node with a free (0 USD) offer and no ROI price.
 2. Create the HTML file at the entry's `file` path. Put `<!--@byline-->` right after the lede;
    it becomes the author line (Danyal Jamil, linked to the `#danyal` Person node) and the
    "Updated" date from git.

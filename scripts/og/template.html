@@ -146,6 +146,13 @@
           sub: "Google Search, Google Display, YouTube, and Meta, run by Danyal Jamil’s team. Profit in Slack with ROI.",
           chips: [["Google", false], ["YouTube", false], ["Meta", false], ["ROI included", true]],
         },
+        "pay-per-call-roi-calculator": {
+          kicker: "Free tool",
+          kicker2: "Pay-per-call ROI calculator",
+          title: "Profit, ROI, and ROAS, <em>in one&nbsp;place.</em>",
+          sub: "Enter spend, calls, billable rate, and payout. Get net profit, ROI, ROAS, and break-even cost per call.",
+          chips: [["Profit", true], ["ROI", false], ["ROAS", false], ["Break-even", false]],
+        },
       };
       const key = new URLSearchParams(location.search).get("page") || "home";
       const p = PAGES[key] || PAGES.home;

@@ -68,9 +68,10 @@ export const MEDIA_FEE_TEXT =
  *   h1             article headline (JSON-LD headline)
  *   description    meta description and og:description
  *   breadcrumb     last breadcrumb label
- *   schema         "TechArticle" | "Article" | "CollectionPage"
+ *   schema         "TechArticle" | "Article" | "CollectionPage" | "WebApplication"
  *                  FAQPage and HowTo JSON-LD are added automatically when the body
- *                  contains [data-faq] / ol[data-howto] blocks
+ *                  contains [data-faq] / ol[data-howto] blocks.
+ *                  "WebApplication" adds a free WebApplication node (offers price 0 USD). It does not add ROI's price.
  *   software       true adds the ROI SoftwareApplication node (only when the body states ROI's price)
  *   published      datePublished, YYYY-MM-DD
  *   ogImage        name of a PNG in public/og/ (render it with `npm run og`)
@@ -339,6 +340,34 @@ export const PAGES = [
       title: "Managed media buying for pay-per-call",
       summary:
         `Done-for-you paid media for pay-per-call buyers: Danyal Jamil's team runs Google Search, Google Display, YouTube, Meta video, and Meta display ads. ${MEDIA_PRICE}. ${MEDIA_FEE_TEXT} Minimum ${MEDIA_MIN_SPEND} in ad spend, paid by the client directly to the platforms. The ROI Slack profit report is included. A small number of client spots.`,
+    },
+  },
+  {
+    name: "pay-per-call-roi-calculator",
+    path: "/tools/pay-per-call-roi-calculator/",
+    file: "tools/pay-per-call-roi-calculator/index.html",
+    changefreq: "monthly",
+    priority: "0.7",
+    layout: "content",
+    schema: "WebApplication",
+    published: "2026-11-01",
+    title: "Free Pay-Per-Call ROI Calculator: Profit, ROAS, ROI",
+    h1: "Free Pay-Per-Call ROI Calculator",
+    description:
+      "Free pay-per-call ROI calculator. Enter ad spend, calls, billable rate, and payout to get net profit, ROI, ROAS, and break-even cost per call. Shareable link.",
+    breadcrumb: "ROI calculator",
+    ogImage: "pay-per-call-roi-calculator",
+    ogImageAlt: "Free pay-per-call ROI calculator: net profit, ROI, ROAS, and break-even cost per call from ad spend, calls, and payout.",
+    guide: {
+      section: "Tools",
+      summary:
+        "A free calculator for pay-per-call profit. Enter ad spend, calls or clicks, billable rate, and payout. Get net profit, ROI, ROAS, cost per call, and break-even, with a link you can share.",
+    },
+    llms: {
+      section: "Tools",
+      title: "Pay-per-call ROI calculator",
+      summary:
+        "Free browser calculator with no sign-up. Inputs: ad spend, calls (or clicks and click-to-call rate), billable rate, payout per billable call, and tool costs. Outputs: net profit, ROI, ROAS, revenue divided by ad spend, cost per call, and break-even cost per call. The inputs are kept in the URL so a scenario can be shared.",
     },
   },
   {
