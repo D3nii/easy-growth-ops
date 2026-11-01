@@ -1,0 +1,348 @@
+<!doctype html>
+<!--
+  Free tool page. <head>, nav, breadcrumbs, footer, byline, and JSON-LD come from layouts/content.html
+  (scripts/content-layout.js). Metadata is the "pay-per-call-roi-calculator" entry in site.config.js
+  (schema "WebApplication": a free WebApplication node, no ROI price). FAQPage JSON-LD is built from [data-faq] below.
+  Math: src/roi-calculator/calc.js, tested in tests/roi-calculator.test.mjs. Wiring: src/roi-calculator/ui.js.
+  The static worked example must match the calculator's defaults. The test checks it.
+  Example numbers are hypothetical. They match the worked example in the formula guide.
+-->
+<html lang="en">
+  <body>
+      <article class="article">
+        <header class="page-hero content-hero">
+          <p class="kicker">
+            <span>Tools</span>
+            <span class="dot" aria-hidden="true"></span>
+            <span>Free</span>
+          </p>
+          <h1>Free Pay-Per-Call ROI Calculator</h1>
+          <p class="lede answer">
+            Pay-per-call ROI = net profit ÷ total cost × 100. Net profit = call
+            payout − ad spend − tool costs, and total cost = ad spend + tool costs.
+            Enter your numbers below. The results update as you type, and the
+            address bar keeps your inputs, so you can share a scenario.
+          </p>
+          <!--@byline-->
+        </header>
+
+        <section class="calc" id="calculator" aria-labelledby="calc-heading">
+          <h2 id="calc-heading">Calculator</h2>
+          <noscript>
+            <p class="calc-note">This calculator needs JavaScript. The formulas and the worked example further down this page work without it.</p>
+          </noscript>
+
+          <form class="calc-form" id="calc-form" novalidate>
+            <fieldset class="calc-fieldset">
+              <legend>How do you count calls?</legend>
+              <div class="calc-radios">
+                <label class="calc-radio">
+                  <input type="radio" name="mode" value="calls" checked />
+                  I know my call count
+                </label>
+                <label class="calc-radio">
+                  <input type="radio" name="mode" value="clicks" />
+                  Estimate from clicks
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="calc-field">
+              <label for="spend">Ad spend ($)</label>
+              <input id="spend" name="spend" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-describedby="spend-help spend-error" />
+              <p class="calc-help" id="spend-help">Meta, Google, and TikTok spend for the same dates, in dollars.</p>
+              <p class="calc-error" id="spend-error" hidden></p>
+            </div>
+
+            <div class="calc-group" id="group-calls">
+              <div class="calc-field">
+                <label for="calls">Calls</label>
+                <input id="calls" name="calls" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-describedby="calls-help calls-error" />
+                <p class="calc-help" id="calls-help">Every call in the same dates, billable or not.</p>
+                <p class="calc-error" id="calls-error" hidden></p>
+              </div>
+            </div>
+
+            <div class="calc-group" id="group-clicks" hidden>
+              <div class="calc-field">
+                <label for="clicks">Clicks</label>
+                <input id="clicks" name="clicks" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-describedby="clicks-help clicks-error" />
+                <p class="calc-help" id="clicks-help">Clicks on your ads in the same dates.</p>
+                <p class="calc-error" id="clicks-error" hidden></p>
+              </div>
+              <div class="calc-field">
+                <label for="ctr">Click-to-call rate (%)</label>
+                <input id="ctr" name="ctr" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-describedby="ctr-help ctr-error" />
+                <p class="calc-help" id="ctr-help">Share of clicks that become a call. 8 means 8 calls per 100 clicks.</p>
+                <p class="calc-error" id="ctr-error" hidden></p>
+              </div>
+            </div>
+
+            <div class="calc-field">
+              <label for="bill">Billable rate (%)</label>
+              <input id="bill" name="bill" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-describedby="bill-help bill-error" />
+              <p class="calc-help" id="bill-help">Share of calls that meet your payout rules, such as a minimum call length. 62.5 means 62.5 billable calls per 100 calls.</p>
+              <p class="calc-error" id="bill-error" hidden></p>
+            </div>
+
+            <div class="calc-field">
+              <label for="payout">Payout per billable call ($)</label>
+              <input id="payout" name="payout" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-describedby="payout-help payout-error" />
+              <p class="calc-help" id="payout-help">What you are paid for each billable call, not for each call.</p>
+              <p class="calc-error" id="payout-error" hidden></p>
+            </div>
+
+            <div class="calc-field">
+              <label for="tools">Tracking, call-platform, and tool costs ($) (optional)</label>
+              <input id="tools" name="tools" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-describedby="tools-help tools-error" />
+              <p class="calc-help" id="tools-help">Fees on top of ad spend. Leave blank for $0.</p>
+              <p class="calc-error" id="tools-error" hidden></p>
+            </div>
+
+            <div class="calc-actions">
+              <button type="submit" class="btn">Calculate</button>
+              <button type="button" class="btn btn-secondary" id="calc-copy">Copy link to this scenario</button>
+              <button type="button" class="btn btn-secondary" id="calc-reset">Reset</button>
+            </div>
+          </form>
+
+          <div class="calc-link" id="calc-link" hidden>
+            <label for="calc-link-field">Scenario link (copy it by hand)</label>
+            <input id="calc-link-field" type="text" readonly />
+          </div>
+          <p class="calc-status" id="calc-status" role="status"></p>
+
+          <section class="calc-results" aria-labelledby="results-heading" aria-live="polite">
+            <h3 id="results-heading">Results</h3>
+            <dl class="calc-rows" id="calc-rows"></dl>
+          </section>
+        </section>
+
+        <section id="formulas" aria-labelledby="formulas-heading">
+          <h2 id="formulas-heading">The formulas</h2>
+          <p>
+            These are the same definitions as the
+            <a href="/guides/pay-per-call-profit-formula/">pay-per-call profit formula guide</a>.
+            Every row in the calculator uses them.
+          </p>
+          <dl class="calc-formulas">
+            <div>
+              <dt>Calls</dt>
+              <dd>The calls you enter. In clicks mode: clicks × click-to-call rate ÷ 100, with no rounding.</dd>
+            </div>
+            <div>
+              <dt>Billable calls</dt>
+              <dd>Calls × billable rate ÷ 100.</dd>
+            </div>
+            <div>
+              <dt>Revenue (call payout)</dt>
+              <dd>Billable calls × payout per billable call.</dd>
+            </div>
+            <div>
+              <dt>Total cost</dt>
+              <dd>Ad spend + tool costs.</dd>
+            </div>
+            <div>
+              <dt>Net profit</dt>
+              <dd>Revenue − ad spend − tool costs.</dd>
+            </div>
+            <div>
+              <dt>ROI</dt>
+              <dd>Net profit ÷ total cost × 100. Can't be calculated when total cost is $0.</dd>
+            </div>
+            <div>
+              <dt>ROAS</dt>
+              <dd>(Revenue − ad spend) ÷ ad spend × 100. Ignores tool costs. 0% is break-even on ad spend. Needs ad spend above $0.</dd>
+            </div>
+            <div>
+              <dt>Revenue / ad spend</dt>
+              <dd>Revenue ÷ ad spend. This is how Google Ads shows ROAS, so 1.25x here is 125% in Google Ads.</dd>
+            </div>
+            <div>
+              <dt>Cost per call (CPC)</dt>
+              <dd>Ad spend ÷ calls. In ROI, CPC means cost per call.</dd>
+            </div>
+            <div>
+              <dt>Cost per billable call</dt>
+              <dd>Ad spend ÷ billable calls.</dd>
+            </div>
+            <div>
+              <dt>Break-even cost per call</dt>
+              <dd>(Revenue − tool costs) ÷ calls. The most you can pay per call, on ad spend alone, and still break even.</dd>
+            </div>
+            <div>
+              <dt>Break-even payout per billable call</dt>
+              <dd>Total cost ÷ billable calls. The payout per billable call you need to break even.</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section id="example" aria-labelledby="example-heading">
+          <h2 id="example-heading">Worked example</h2>
+          <p>
+            The calculator starts with these hypothetical numbers: $4,000 of ad
+            spend, 200 calls, a 62.5% billable rate (125 billable calls), $40 per
+            billable call, and $300 of tool costs. They match the worked example
+            in the formula guide.
+          </p>
+          <div class="compare-wrap">
+            <table class="compare-table">
+              <caption class="visually-hidden">Worked example output with the calculator's starting numbers</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Output</th>
+                  <th scope="col">Value</th>
+                  <th scope="col">How it is calculated</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Calls</th><td>200.0</td><td>Entered directly</td></tr>
+                <tr><th scope="row">Billable calls</th><td>125.0</td><td>200.0 × 62.5%</td></tr>
+                <tr><th scope="row">Revenue (call payout)</th><td>$5,000.00</td><td>125.0 × $40.00</td></tr>
+                <tr><th scope="row">Total cost</th><td>$4,300.00</td><td>$4,000.00 + $300.00</td></tr>
+                <tr><th scope="row">Net profit</th><td>$700.00</td><td>$5,000.00 − $4,000.00 − $300.00</td></tr>
+                <tr><th scope="row">ROI</th><td>16.3%</td><td>$700.00 ÷ $4,300.00 × 100</td></tr>
+                <tr><th scope="row">ROAS</th><td>25.0%</td><td>($5,000.00 − $4,000.00) ÷ $4,000.00 × 100</td></tr>
+                <tr><th scope="row">Revenue / ad spend</th><td>1.25x</td><td>$5,000.00 ÷ $4,000.00</td></tr>
+                <tr><th scope="row">Cost per call (CPC)</th><td>$20.00</td><td>$4,000.00 ÷ 200.0</td></tr>
+                <tr><th scope="row">Cost per billable call</th><td>$32.00</td><td>$4,000.00 ÷ 125.0</td></tr>
+                <tr><th scope="row">Break-even cost per call</th><td>$23.50</td><td>($5,000.00 − $300.00) ÷ 200.0</td></tr>
+                <tr><th scope="row">Break-even payout per billable call</th><td>$34.40</td><td>$4,300.00 ÷ 125.0</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            The account makes $700 on $4,300 of total cost, so ROI is 16.3%. The
+            average cost per call is $20.00, and the break-even cost per call is
+            $23.50. That $3.50 gap across 200 calls is the $700 of net profit.
+          </p>
+        </section>
+
+        <section id="link" aria-labelledby="link-heading">
+          <h2 id="link-heading">How to link or embed this calculator</h2>
+          <p>
+            Link to the calculator with a plain link. It is a normal page, so no
+            iframe is needed:
+          </p>
+          <p class="calc-code"><code>__SITE_URL__/tools/pay-per-call-roi-calculator/</code></p>
+          <p>
+            To link a scenario, put the inputs in the query string. This link
+            opens the clicks version of the worked example above, with the same
+            results:
+          </p>
+          <p class="calc-code"><code>__SITE_URL__/tools/pay-per-call-roi-calculator/?mode=clicks&amp;spend=4000&amp;clicks=2500&amp;ctr=8&amp;bill=62.5&amp;payout=40&amp;tools=300</code></p>
+          <p>
+            The parameters are <code>mode</code> (<code>calls</code> or
+            <code>clicks</code>), <code>spend</code>, <code>calls</code>,
+            <code>clicks</code>, <code>ctr</code> (click-to-call rate),
+            <code>bill</code> (billable rate), <code>payout</code>, and
+            <code>tools</code>. A parameter you leave out uses the starting number.
+            Anyone with the link can read the numbers in it.
+          </p>
+        </section>
+
+        <section class="faq" id="faq" data-faq>
+          <h2>FAQ</h2>
+          <ul class="faq-list">
+            <li class="faq-item">
+              <h3>What is a good ROI for pay per call?</h3>
+              <div class="faq-a">
+                <p>
+                  There is no universal number. Start with break-even: the
+                  payout you need per billable call to cover ad spend and tool
+                  costs. Any ROI above 0% means the account made money after ad
+                  spend and tool costs. Whether that is enough depends on costs
+                  this calculator does not include, such as salaries and your time.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>What is the difference between ROAS and ROI?</h3>
+              <div class="faq-a">
+                <p>
+                  ROAS compares revenue with ad spend only: (revenue − ad spend)
+                  ÷ ad spend. ROI compares net profit with total cost, which
+                  includes tool costs: net profit ÷ (ad spend + tool costs).
+                  Google Ads shows ROAS as revenue ÷ ad spend, so 125% there is
+                  25% here. This calculator shows both.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>What counts as a billable call?</h3>
+              <div class="faq-a">
+                <p>
+                  A billable call is one that meets the payout rules you are paid
+                  under, such as a minimum call length or a buffer the caller has
+                  to pass. Ask your buyer or check your call platform's report for
+                  the count. The billable rate is billable calls ÷ calls × 100.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>How do I find break-even cost per call?</h3>
+              <div class="faq-a">
+                <p>
+                  Break-even cost per call = (revenue − tool costs) ÷ calls. It is
+                  the most you can pay per call, on ad spend alone, and still break
+                  even. Compare it with your actual cost per call, which is ad
+                  spend ÷ calls. If the actual figure is lower, the account is
+                  profitable.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Why enter payout per billable call instead of payout per call?</h3>
+              <div class="faq-a">
+                <p>
+                  Payout rules usually apply to billable calls, so billable calls
+                  × payout per billable call matches how revenue is counted. If you
+                  only know an average payout per call, enter 100% as the billable
+                  rate and that average as the payout. The math still works.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Can I share a scenario?</h3>
+              <div class="faq-a">
+                <p>
+                  Yes. The inputs go into the page address as you type. Use "Copy
+                  link to this scenario", and anyone who opens the link sees the
+                  same numbers. The math runs in your browser, there is no sign-up,
+                  and the link holds your numbers, so share it only with people
+                  who should see them.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="access" id="book">
+          <div class="access-inner">
+            <p class="index">30 minutes</p>
+            <h2>Want this without the spreadsheet?</h2>
+            <p class="lede">
+              Get these numbers as an automatic Slack report every 15-30 minutes,
+              depending on setup. ROI puts call payout from your call platform
+              next to Meta, Google, and TikTok ad spend, per ad account. We'll
+              look at your stack first. You share read-only access.
+            </p>
+            <a
+              class="btn"
+              href="https://calendly.com/danyal-jamil/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta="roi_calculator_cta_book" data-cta-type="booking" data-product="roi"
+              >Book a meeting</a
+            >
+            <p class="access-alt">
+              Or read the full product page:
+              <a href="/roi/" data-cta="roi_calculator_cta_roi" data-cta-type="product" data-product="roi">ROI</a>.
+            </p>
+          </div>
+        </section>
+      </article>
+
+    <script type="module" src="/src/roi-calculator/ui.js"></script>
+  </body>
+</html>

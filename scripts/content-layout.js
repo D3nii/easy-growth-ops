@@ -7,8 +7,9 @@
 //   - <!--@byline--> -> author byline + "Updated <date>" (git date of the page file)
 //   - <!--@guides--> -> card list of every page with a `guide` entry (for /guides/)
 //   - JSON-LD graph: Organization and WebSite (shared, from scripts/schema.js), Person (Danyal),
-//     WebPage/CollectionPage, BreadcrumbList, TechArticle/Article, plus FAQPage from [data-faq] blocks,
-//     HowTo from ol[data-howto], SoftwareApplication (ROI) when `software: true`, ItemList on the hub.
+//     WebPage/CollectionPage, BreadcrumbList, TechArticle/Article, WebApplication (free tools, `schema:
+//     "WebApplication"`), plus FAQPage from [data-faq] blocks, HowTo from ol[data-howto],
+//     SoftwareApplication (ROI) when `software: true`, ItemList on the hub.
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parse } from "node-html-parser";
@@ -177,6 +178,23 @@ function jsonLd(page, root, trail) {
     });
   }
 
+  if (page.schema === "WebApplication") {
+    graph.push({
+      "@type": "WebApplication",
+      "@id": `${url}#app`,
+      name: page.h1,
+      url,
+      description: page.description,
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Any (web browser)",
+      isAccessibleForFree: true,
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      creator: { "@id": `${SITE_URL}/#org` },
+      publisher: { "@id": `${SITE_URL}/#org` },
+      mainEntityOfPage: { "@id": `${url}#page` },
+    });
+  }
+
   const faq = faqNodes(root);
   if (faq.length) graph.push({ "@type": "FAQPage", "@id": `${url}#faq`, mainEntity: faq });
 
@@ -230,7 +248,7 @@ export function renderContentPage(root, page, sourceHtml) {
     title: esc(page.title),
     description: esc(page.description),
     path: page.path,
-    og_type: page.schema === "CollectionPage" ? "website" : "article",
+    og_type: page.schema === "CollectionPage" || page.schema === "WebApplication" ? "website" : "article",
     og_image: page.ogImage,
     og_image_alt: esc(page.ogImageAlt),
     name: page.name,
