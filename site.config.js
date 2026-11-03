@@ -30,7 +30,7 @@ export const GA4_MEASUREMENT_ID = "";
  */
 export const CONTACT_EMAIL = "hello@geteasygrowthops.co";
 
-/** Every booking / trial CTA opens this Calendly page. */
+/** Every booking CTA opens this Calendly page. */
 export const BOOK_URL = "https://calendly.com/danyal-jamil/30min";
 
 /**
@@ -110,7 +110,7 @@ export const PAGES = [
     llms: {
       section: "Products",
       title: "Drops: winning ads in Slack",
-      summary: "Yesterday's winning Meta, Google, and TikTok ads in a Slack thread each morning. $79/mo after a 14-day free trial.",
+      summary: "Yesterday's winning Meta, Google, and TikTok ads in a Slack thread each morning. $79/mo.",
     },
   },
   {
