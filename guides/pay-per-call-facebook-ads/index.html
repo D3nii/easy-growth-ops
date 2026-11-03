@@ -11,9 +11,12 @@
   create a call ad, view call ad metrics, call add-ons) and Meta's call ads
   Marketing API doc. Re-verify all of them before publishing or editing.
 
+  Confirmed by Danyal on PR #29 (3 November 2026):
+  - ROI reads only Meta's ad spend, not Meta's call metrics (calls placed, 20-second or 60-second calls).
+  - ROI works in any time zone, not just US Eastern.
+  - ROAS naming stays as is, and the labelled worked example is approved.
+
   Left out on purpose. Do not add these back without written confirmation:
-  - Any claim that ROI reads Meta call metrics (calls placed, 20-second or 60-second calls). The page says only that ROI reads Meta spend.
-  - Any claim that ROI aligns all call platforms in US Eastern time. The page only says what the Ringba + Facebook page says.
   - Any reporting-level claim (ad account or campaign level).
   - Offers, pricing, and spend totals.
   - Customer names, quotes, results, and other stats, including Meta's experiment figures.
@@ -210,8 +213,9 @@
             Net profit = call payout − Meta spend − call-platform fees.
           </p>
           <p>
-            ROI reads Meta Ads spend (plus Google and TikTok spend, if you buy
-            there) and payout from the call platform. It places payout next to
+            ROI reads only Meta’s ad spend, not Meta’s call metrics such as
+            calls placed or 60-second calls. It also reads Google and TikTok
+            spend, if you buy there, and payout from the call platform. It places payout next to
             spend and posts net profit and ROAS to Slack
             every 15-30 minutes, depending on setup. Pricing is on the <a href="/roi/">ROI page</a>.
           </p>
@@ -258,10 +262,10 @@
           <p>
             Pick one time zone for the whole report. Check the zone each report
             uses: the ad account time zone in Meta, and the report zone in your
-            call platform. Then pull both sides for the same window. On the
-            <a href="/integrations/ringba-facebook-ads-profit-report/">Ringba and Meta profit page</a>,
-            ROI lines up Meta spend and Ringba calls in US Eastern time. Convert
-            the other side to the zone you picked.
+            call platform. Then pull both sides for the same window. ROI works
+            in any time zone, so it can line up Meta spend and call payout in
+            the zone you report in. For a Ringba setup, see the
+            <a href="/integrations/ringba-facebook-ads-profit-report/">Ringba and Meta profit page</a>.
           </p>
         </section>
 
@@ -282,7 +286,8 @@
               it has.
             </li>
             <li>
-              <strong>ROI in Slack.</strong> ROI reads spend and payout, works out
+              <strong>ROI in Slack.</strong> ROI reads Meta’s ad spend (not its
+              call metrics) and payout from your call platform, works out
               net profit and ROAS, and posts them to Slack. We read spend and
               payouts. We never bid. You can revoke access.
             </li>
