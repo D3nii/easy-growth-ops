@@ -330,6 +330,34 @@ export const PAGES = [
     },
   },
   {
+    name: "pay-per-call-facebook-ads",
+    path: "/guides/pay-per-call-facebook-ads/",
+    file: "guides/pay-per-call-facebook-ads/index.html",
+    changefreq: "monthly",
+    priority: "0.7",
+    layout: "content",
+    schema: "Article",
+    published: "2026-11-02",
+    title: "Pay Per Call Facebook Ads: Meta Calls vs Real Profit",
+    h1: "Pay-Per-Call Facebook Ads: Run Meta Call Campaigns and Know Your Real Profit",
+    description:
+      "Meta's 60-second calls are not your payout. Set up pay-per-call Facebook call ads, then join Meta spend with call payout for real net profit.",
+    breadcrumb: "Pay-per-call Facebook ads",
+    ogImage: "pay-per-call-facebook-ads",
+    ogImageAlt: "Pay-per-call Facebook ads: Meta call ads, then Meta spend joined to call payout for net profit.",
+    guide: {
+      section: "Integrations",
+      summary:
+        "Meta call ads vs call add-ons, the setup choices that shape the data, what Meta's call metrics count, and how to join Meta spend with call payout for net profit.",
+    },
+    llms: {
+      section: "Guides",
+      title: "Pay-per-call Facebook ads",
+      summary:
+        "How to set up pay-per-call Meta call ads, what Meta's call metrics count (Meta pages checked 2 Nov 2026), why the buyer's billable count differs, and how to join Meta spend with call payout for net profit.",
+    },
+  },
+  {
     name: "managed-media-buying",
     path: "/managed-media-buying/",
     file: "managed-media-buying/index.html",

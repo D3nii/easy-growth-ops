@@ -1,0 +1,429 @@
+<!doctype html>
+<!--
+  Content page. <head>, nav, breadcrumbs, footer, byline, and JSON-LD come from
+  layouts/content.html (scripts/content-layout.js). Metadata is the
+  "pay-per-call-facebook-ads" entry in site.config.js.
+  FAQPage and HowTo JSON-LD are built from [data-faq] and ol[data-howto] below.
+  Every number in the worked example is an example, not data.
+  Keep product mentions under ~10% of the page.
+
+  Verified 2 November 2026 against Meta's help pages (objectives and placements,
+  create a call ad, view call ad metrics, call add-ons) and Meta's call ads
+  Marketing API doc. Re-verify all of them before publishing or editing.
+
+  Confirmed by Danyal on PR #29 (3 November 2026):
+  - ROI reads only Meta's ad spend, not Meta's call metrics (calls placed, 20-second or 60-second calls).
+  - ROI works in any time zone, not just US Eastern.
+  - ROAS naming stays as is, and the labelled worked example is approved.
+
+  Left out on purpose. Do not add these back without written confirmation:
+  - Any reporting-level claim (ad account or campaign level).
+  - Offers, pricing, and spend totals.
+  - Customer names, quotes, results, and other stats, including Meta's experiment figures.
+  - Search volume, keyword difficulty, and ranking data.
+  - Targeting of the Ringba + Facebook profit report term, final expense, or ACA terms. ACA is linked as context only.
+  - Tactics for hitting or avoiding a buyer's billable minimum. The page describes the rule only.
+  - Any Meta, Ringba, CallGrid, TrackDrive, Retreaver, or Phonexa partnership or endorsement.
+  - Competitor comparisons.
+-->
+<html lang="en">
+  <body>
+      <article class="article">
+        <header class="page-hero content-hero">
+          <p class="kicker">
+            <span>Guides</span>
+            <span class="dot" aria-hidden="true"></span>
+            <span>Pay-per-call Facebook ads</span>
+          </p>
+          <h1>Pay-Per-Call Facebook Ads: Run Meta Call Campaigns and Know Your Real Profit</h1>
+          <p class="lede answer">
+            Meta call ads send people to a phone call. Meta reports calls placed,
+            20-second calls, and 60-second calls. Those are not your payout. Your buyer pays on its own billable rules inside the
+            call platform, such as a minimum call length. To see profit, join
+            Meta spend with call payout for the same window, then subtract
+            call-platform fees: net profit = call payout − Meta spend −
+            call-platform fees.
+          </p>
+          <!--@byline-->
+        </header>
+
+        <section class="key-facts" aria-labelledby="key-facts">
+          <h2 id="key-facts" class="visually-hidden">Key facts</h2>
+          <ul>
+            <li>A call ad and a call add-on are different products. Check which one you are building.</li>
+            <li>Meta’s 60-second calls are a Meta count. They are not your billable calls.</li>
+            <li>Net profit subtracts Meta spend and call-platform fees. ROAS subtracts only ad spend.</li>
+          </ul>
+        </section>
+
+        <section id="short-answer">
+          <h2>The short answer</h2>
+          <p>
+            Build a Meta call ad with Calls as the conversion location. Use a
+            phone number from the same country as your audience. Schedule the
+            ads for the hours your buyer answers. Then pull Meta spend and call
+            payout for the same dates and time zone, and subtract call-platform
+            fees. What is left is the profit the campaign made.
+          </p>
+        </section>
+
+        <section id="ad-types">
+          <h2>Call ads vs call add-ons</h2>
+          <h3>Call ads: choose Calls as the conversion location</h3>
+          <p>
+            A call ad sends people straight to a phone call. Call ads can run
+            with Awareness, Traffic, Engagement, Leads, or Sales. Awareness
+            optimizes for the performance goal you select. Traffic, Engagement,
+            Leads, and Sales optimize for 60-second calls
+            (<a href="https://www.facebook.com/business/help/4107704079279896" target="_blank" rel="noopener noreferrer">Meta: supported objectives for call ads</a>).
+            With Traffic, Engagement, Leads, or Sales, you pick Calls as the
+            conversion location in the ad set.
+          </p>
+          <h3>Call add-ons: what they optimize for</h3>
+          <p>
+            A call add-on works differently. It sends people to your website
+            first. A Call now button then opens in the in-app browser. Meta’s
+            add-on page says: “Call add-ons optimize for website conversion
+            events only.” You can choose “Website and calls” as the conversion
+            location to optimize for both
+            (<a href="https://www.facebook.com/business/help/753973205286415" target="_blank" rel="noopener noreferrer">Meta: create a call add-on</a>).
+          </p>
+          <p>
+            Meta’s objectives page lists a different goal for each objective.
+            For call add-ons, Traffic optimizes for link clicks, and Leads
+            optimizes for leads and 15-second calls. Check the performance goal
+            in your ad set before you launch.
+          </p>
+        </section>
+
+        <section id="setup">
+          <h2>Setup basics that shape the data</h2>
+          <h3>Objective: Traffic or Engagement optimize for 60-second calls</h3>
+          <p>
+            With Calls as the conversion location, the Traffic, Engagement,
+            Leads, and Sales objectives optimize for 60-second calls. That is a Meta rule, not your
+            buyer’s rule. If your buyer pays on a different call length, the
+            Meta number will not match your payout. That gap is normal. The
+            profit join below is what closes it.
+          </p>
+          <h3>Number in the same country as the audience</h3>
+          <p>
+            The phone number in the call-to-action must come from the same
+            country as the target audience. The audience must be 18 or older.
+            Meta’s Marketing API doc states both rules
+            (<a href="https://developers.facebook.com/docs/marketing-api/call-ads/" target="_blank" rel="noopener noreferrer">Meta for Developers: call ads</a>).
+          </p>
+          <h3>Schedule: hours and days matched to buyer hours</h3>
+          <p>
+            You can run call ads on specific hours and days. Meta recommends
+            running call ads only during business hours. Match the schedule to
+            the hours your buyer answers.
+          </p>
+          <p>
+            If you run regulated offers such as ACA, read our
+            <a href="/verticals/aca-pay-per-call/">ACA pay-per-call page</a>
+            first. Those verticals have their own ad rules.
+          </p>
+        </section>
+
+        <section id="setup-steps">
+          <h2>Set up a Meta call ad</h2>
+          <p>
+            These steps follow Meta’s
+            <a href="https://www.facebook.com/business/help/604687010451937" target="_blank" rel="noopener noreferrer">create a call ad</a>
+            help page. Menu names can change, so check your own Ads Manager.
+          </p>
+          <ol id="howto" data-howto="Set up a Meta call ad for pay-per-call">
+            <li>
+              <strong>Pick Traffic or Engagement</strong> as the objective. Leads
+              and Sales also work for call ads.
+            </li>
+            <li>
+              <strong>Set Calls as the conversion location</strong> in the ad
+              set’s Conversion section.
+            </li>
+            <li>
+              <strong>Choose a Lifetime or Daily budget.</strong> Schedules need
+              one of these.
+            </li>
+            <li>
+              <strong>Open Show more settings,</strong> then check “Set a
+              schedule for ads.” Set the hours and days your buyer answers.
+            </li>
+            <li>
+              <strong>Add a phone number from the audience’s country</strong>
+              to the call-to-action. Keep the audience at 18 or older.
+            </li>
+            <li>
+              <strong>Optional:</strong> turn on “Receive callback requests via
+              Messenger” if you want people to request a callback.
+            </li>
+          </ol>
+        </section>
+
+        <section id="metrics">
+          <h2>What Meta reports, and what it doesn’t</h2>
+          <h3>Calls placed, 20-second calls, 60-second calls</h3>
+          <p>
+            Meta says call ad metrics are “partially derived through modeling,
+            rather than a straight count.” Here is what each column means
+            (<a href="https://www.facebook.com/business/help/237108475737601" target="_blank" rel="noopener noreferrer">Meta: view metrics for call ads</a>):
+          </p>
+          <ul>
+            <li><strong>Calls placed.</strong> Times a call was made to your business by selecting an ad.</li>
+            <li><strong>20-second calls.</strong> Calls placed that connected and lasted at least 20 seconds.</li>
+            <li><strong>60-second calls.</strong> Calls placed that connected and lasted at least 60 seconds.</li>
+            <li><strong>Callback requests submitted.</strong> Requests people sent through the callback option.</li>
+          </ul>
+          <p>
+            To see the columns in Ads Manager, open Customize columns, then
+            Engagement, then Calling.
+          </p>
+          <h3>Why metrics differ by account</h3>
+          <p>
+            Meta says some of these metrics are not available for campaigns
+            created before 20 June 2025 outside the US, Australia, Brazil,
+            Canada, Mexico, and Israel. So two accounts can show different call
+            metrics, depending on country and on when the campaign was created.
+          </p>
+        </section>
+
+        <section id="billable">
+          <h2>Your payout follows the buyer’s billable rules</h2>
+          <p>
+            Meta counts calls. Your buyer pays on its own billable rules, and
+            those rules live in the call platform’s payout settings. A common
+            rule is a minimum call length.
+          </p>
+          <p>
+            Your profit comes from the buyer’s count. Copy the billable rule
+            from the buyer’s terms into your sheet, next to the payout it
+            affects, so the number is never a guess.
+          </p>
+        </section>
+
+        <section id="profit-join">
+          <h2>The profit join: spend, payout, fees, one window</h2>
+          <p>
+            Profit needs three numbers for one window: Meta spend, call payout,
+            and call-platform fees. Pull each one for the same dates and the
+            same time zone. Then subtract:
+          </p>
+          <p class="formula">
+            Net profit = call payout − Meta spend − call-platform fees.
+          </p>
+          <p>
+            ROI reads only Meta’s ad spend, not Meta’s call metrics such as
+            calls placed or 60-second calls. It also reads Google and TikTok
+            spend, if you buy there, and payout from the call platform. It places payout next to
+            spend and posts net profit and ROAS to Slack
+            every 15-30 minutes, depending on setup. Pricing is on the <a href="/roi/">ROI page</a>.
+          </p>
+          <p>
+            <a href="/tools/pay-per-call-roi-calculator/" data-cta="ppc_facebook_roi_calculator" data-cta-type="product" data-product="roi">Try the free pay-per-call ROI calculator.</a>
+          </p>
+
+          <h3>Worked example (example numbers)</h3>
+          <p>
+            These are example numbers to show the math, not real data. ROAS
+            uses the definition from the
+            <a href="/guides/pay-per-call-profit-formula/">profit formula guide</a>:
+            ROAS = (revenue − ad spend) ÷ ad spend, with revenue = call payout.
+          </p>
+          <div class="compare-wrap">
+            <table class="compare-table">
+              <caption class="visually-hidden">Worked example with example numbers, not real data</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Line</th>
+                  <th scope="col">Example value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Meta spend, window</th><td>$500</td></tr>
+                <tr><th scope="row">Meta 60-second calls</th><td>60</td></tr>
+                <tr><th scope="row">Buyer billable calls (example rule: 90 seconds)</th><td>40</td></tr>
+                <tr><th scope="row">Payout per billable call</th><td>$15</td></tr>
+                <tr><th scope="row">Call payout</th><td>40 × $15 = $600</td></tr>
+                <tr><th scope="row">Call-platform fees</th><td>$30</td></tr>
+                <tr><th scope="row">Net profit</th><td>$600 − $500 − $30 = $70</td></tr>
+                <tr><th scope="row">ROAS = (revenue − ad spend) ÷ ad spend</th><td>($600 − $500) ÷ $500 = 20%</td></tr>
+                <tr><th scope="row">Meta cost per 60-second call</th><td>$500 ÷ 60 = $8.33 (looks cheap)</td></tr>
+                <tr><th scope="row">Cost per billable call</th><td>$500 ÷ 40 = $12.50 (the number that matters)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            ROAS ignores fees. The example shows $100 above ad spend, but net
+            profit is $70 after the $30 in fees.
+          </p>
+
+          <h3>Time zone and window alignment</h3>
+          <p>
+            Pick one time zone for the whole report. Check the zone each report
+            uses: the ad account time zone in Meta, and the report zone in your
+            call platform. Then pull both sides for the same window. ROI works
+            in any time zone, so it can line up Meta spend and call payout in
+            the zone you report in. For a Ringba setup, see the
+            <a href="/integrations/ringba-facebook-ads-profit-report/">Ringba and Meta profit page</a>.
+          </p>
+        </section>
+
+        <section id="build">
+          <h2>Three ways to build the report</h2>
+          <ul>
+            <li>
+              <strong>Spreadsheet by hand.</strong> Export Meta spend by day,
+              copy payout and fees from your call platform, and use the formulas
+              in the profit formula guide. It works for a small account.
+            </li>
+            <li>
+              <strong>DIY API build.</strong> Pull Meta spend from the Marketing
+              API and payout from your call platform’s API, then join both on
+              date and time zone. If you build the campaign through the Marketing
+              API, the ad set uses destination_type PHONE_CALL and
+              optimization_goal QUALITY_CALL. You own the code and every failure
+              it has.
+            </li>
+            <li>
+              <strong>ROI in Slack.</strong> ROI reads Meta’s ad spend (not its
+              call metrics) and payout from your call platform, works out
+              net profit and ROAS, and posts them to Slack. We read spend and
+              payouts. We never bid. You can revoke access.
+            </li>
+          </ul>
+          <p>
+            For how the five methods compare, see the
+            <a href="/guides/pay-per-call-profit-tracking/">pay-per-call profit tracking guide</a>.
+          </p>
+        </section>
+
+        <section class="faq" id="faq" data-faq>
+          <h2>FAQ</h2>
+          <ul class="faq-list">
+            <li class="faq-item">
+              <h3>What is the difference between a Meta call ad and a call add-on?</h3>
+              <div class="faq-a">
+                <p>
+                  A call ad sends people straight to a phone call. A call add-on
+                  sends people to your website first. Meta says add-ons optimize
+                  for website conversion events only, unless you choose “Website
+                  and calls.”
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Which objective and conversion location should I pick?</h3>
+              <div class="faq-a">
+                <p>
+                  For a call ad, pick Traffic or Engagement, and select Calls as
+                  the conversion location in the ad set. Leads and Sales also
+                  work. Traffic, Engagement, Leads, and Sales optimize for
+                  60-second calls.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Does the phone number have to be in the same country as the audience?</h3>
+              <div class="faq-a">
+                <p>
+                  Yes. Meta’s Marketing API doc says the phone number in the
+                  call-to-action must be from the same country as the target
+                  audience. The audience must be 18 or older.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Can I run call ads only at certain hours and days?</h3>
+              <div class="faq-a">
+                <p>
+                  Yes. Use a Lifetime or Daily budget, open Show more settings,
+                  and check “Set a schedule for ads.” Meta recommends running
+                  call ads only during business hours. Match the schedule to your
+                  buyer’s hours.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>What do calls placed, 20-second calls, and 60-second calls mean?</h3>
+              <div class="faq-a">
+                <p>
+                  Calls placed is the number of calls made to your business from
+                  an ad. 20-second and 60-second calls are calls placed that
+                  connected and lasted at least that long. Meta says these are
+                  partly modeled, not a straight count.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Why might my account not show these call metrics?</h3>
+              <div class="faq-a">
+                <p>
+                  Meta says some call metrics are not available for campaigns
+                  created before 20 June 2025, outside the US, Australia, Brazil,
+                  Canada, Mexico, and Israel. Two accounts can show different
+                  metrics for the same kind of campaign.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Is Meta’s 60-second call my payout?</h3>
+              <div class="faq-a">
+                <p>
+                  No. Meta counts calls. Your buyer pays on its own billable rules,
+                  such as a minimum call length, inside the call platform. Use the
+                  buyer’s billable count to check what a call paid.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>How do I see profit for Meta call campaigns?</h3>
+              <div class="faq-a">
+                <p>
+                  Join Meta spend with call payout for the same window and time
+                  zone, then subtract call-platform fees: net profit = call payout
+                  − Meta spend − call-platform fees.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="sources" id="sources">
+          <h2>Sources</h2>
+          <p>Meta pages checked 2 November 2026. Re-check before relying on them.</p>
+          <ul>
+            <li><a href="https://www.facebook.com/business/help/4107704079279896" target="_blank" rel="noopener noreferrer">Meta Business Help: Supported objectives and placement options for call ads and call add-ons</a></li>
+            <li><a href="https://www.facebook.com/business/help/604687010451937" target="_blank" rel="noopener noreferrer">Meta Business Help: Create a call ad from Meta Ads Manager</a></li>
+            <li><a href="https://www.facebook.com/business/help/237108475737601" target="_blank" rel="noopener noreferrer">Meta Business Help: View metrics for call ads in Meta Ads Manager</a></li>
+            <li><a href="https://www.facebook.com/business/help/753973205286415" target="_blank" rel="noopener noreferrer">Meta Business Help: Create a call add-on from Meta Ads Manager</a></li>
+            <li><a href="https://developers.facebook.com/docs/marketing-api/call-ads/" target="_blank" rel="noopener noreferrer">Meta for Developers: Call ads (Marketing API)</a></li>
+          </ul>
+          <p class="source-note">Easy Growth Ops is not affiliated with Meta, Ringba, CallGrid, TrackDrive, Retreaver, or Phonexa.</p>
+        </section>
+
+        <section class="access" id="book">
+          <div class="access-inner">
+            <p class="index">30 minutes</p>
+            <h2>Book a meeting.</h2>
+            <p class="lede">
+              We’ll look at your stack. You share read-only access. First Slack
+              update the same week.
+            </p>
+            <a
+              class="btn"
+              href="https://calendly.com/danyal-jamil/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta="ppc_facebook_closing_book" data-cta-type="booking" data-product="roi"
+              >Book a meeting</a
+            >
+            <p class="access-alt">
+              Or read the full product page:
+              <a href="/roi/" data-cta="ppc_facebook_closing_roi" data-cta-type="product" data-product="roi">ROI</a>.
+            </p>
+          </div>
+        </section>
+      </article>
+  </body>
+</html>
