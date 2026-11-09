@@ -1,0 +1,500 @@
+<!doctype html>
+<!--
+  Content page. <head>, nav, breadcrumbs, footer, byline, and JSON-LD come from
+  layouts/content.html (scripts/content-layout.js). Metadata is the
+  "redtrack-pricing-pay-per-call" entry in site.config.js.
+  FAQPage JSON-LD is built from [data-faq] below. Schema is Article only.
+  No Product, Offer, or AggregateOffer schema for RedTrack plans, and no ROI SoftwareApplication.
+
+  RedTrack prices checked 9 November 2026 against https://www.redtrack.io/pricing/.
+  Annual prices shown on that page are Black Friday promo annuals as of 9 Nov 2026, with no end date shown.
+  Re-check the live page before editing or publishing.
+
+  Needs Danyal's sign-off before merge: this page compares prices.
+  ROI's own price is linked to /roi/ and is not stated here.
+  The worked example is a hypothetical buyer, not RedTrack or EGO data.
+-->
+<html lang="en">
+  <body>
+      <article class="article">
+        <header class="page-hero content-hero">
+          <p class="kicker">
+            <span>Compare</span>
+            <span class="dot" aria-hidden="true"></span>
+            <span>RedTrack pricing</span>
+          </p>
+          <h1>RedTrack Pricing for Pay-Per-Call Buyers: What Each Plan Costs and What It Doesn’t&nbsp;Show</h1>
+          <p class="lede answer">
+            RedTrack’s affiliate and lead-gen plans run from $169 a month (Solo,
+            monthly billing) to $999 (Enterprise). Annual billing is $118 to $699
+            a month. Prices are per RedTrack’s pricing page, 9 Nov 2026. The price
+            covers tracking, not your call economics: call-platform fees and
+            payout reconciliation sit outside it, so profit per call still needs
+            your call platform’s data.
+          </p>
+          <!--@byline-->
+        </header>
+
+        <p class="source-note">Prices checked Nov 9, 2026. Source: RedTrack pricing page, <a href="https://www.redtrack.io/pricing/" target="_blank" rel="noopener noreferrer">https://www.redtrack.io/pricing/</a>.</p>
+
+        <section class="key-facts" aria-labelledby="key-facts">
+          <h2 id="key-facts" class="visually-hidden">Key facts</h2>
+          <ul>
+            <li>Monthly list prices as of 9 Nov 2026: Solo $169, Team $399, Enterprise $999. Custom is quoted on contact.</li>
+            <li>Annual prices on the page are Black Friday promo prices, about 30% below monthly. No end date is shown.</li>
+            <li>Faster ad-spend sync is a paid add-on priced by monthly ad spend. The page gives two different sets of add-on figures, and this page states both.</li>
+            <li>Events are RedTrack’s usage unit. The price doesn’t show call payout, call-platform fees, or profit per ad account.</li>
+          </ul>
+        </section>
+
+        <section id="short-answer">
+          <h2>The short answer</h2>
+          <p>
+            RedTrack’s price is a tracker price: event volume, seats, and how
+            often ad spend syncs. Every paid plan lists Stop Rules, CAPI, MCP and
+            API access, and day parting, plus a 14-day free trial with all
+            add-ons unlocked (RedTrack’s listings, 9 Nov 2026). Annual prices on
+            the page are Black Friday promo prices (about 30% below monthly),
+            with no end date shown.
+          </p>
+          <p>
+            What the price doesn’t show is what a call paid, what the call
+            platform kept, or what an ad account made after spend and fees.
+            Match your event volume, team size, and sync speed to a plan, then
+            compare that total against what your calls actually pay.
+          </p>
+        </section>
+
+        <section id="plans">
+          <h2>RedTrack plans and list prices</h2>
+          <p>
+            RedTrack’s pricing page lists affiliate plans (Solo, Team,
+            Enterprise, and Custom) and ecommerce plans (Relay, Brand, and
+            Agency). The tables below show the figures we checked on 9 Nov 2026.
+            Annual totals are the page’s billed-yearly figures. Each one is $4
+            higher than 12 times the monthly annual price (for example, Solo
+            shows $118 a month, which is $1,416 a year, but the page lists
+            $1,420).
+          </p>
+          <div class="compare-wrap">
+            <table class="compare-table">
+              <caption>Affiliate plans, as listed on RedTrack’s pricing page, 9 Nov 2026</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Plan</th>
+                  <th scope="col">Monthly</th>
+                  <th scope="col">Annual, billed yearly</th>
+                  <th scope="col">Events per month</th>
+                  <th scope="col">Users</th>
+                  <th scope="col">Ad spend sync</th>
+                  <th scope="col">Ad accounts</th>
+                  <th scope="col">Data kept</th>
+                  <th scope="col">Overage per 1K events</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Solo</th>
+                  <td>$169</td>
+                  <td>$118/mo ($1,420/yr)</td>
+                  <td>5M</td>
+                  <td>1</td>
+                  <td>Every 60 min</td>
+                  <td>5 per platform</td>
+                  <td>12 months</td>
+                  <td>$0.04</td>
+                </tr>
+                <tr>
+                  <th scope="row">Team</th>
+                  <td>$399</td>
+                  <td>$279/mo ($3,352/yr)</td>
+                  <td>20M</td>
+                  <td>5 (+$29/mo for more)</td>
+                  <td>Every 30 min</td>
+                  <td>Unlimited</td>
+                  <td>24 months</td>
+                  <td>$0.035</td>
+                </tr>
+                <tr>
+                  <th scope="row">Enterprise</th>
+                  <td>$999</td>
+                  <td>$699/mo ($8,392/yr)</td>
+                  <td>75M</td>
+                  <td>15</td>
+                  <td>Every 30 min</td>
+                  <td>Unlimited</td>
+                  <td>36 months</td>
+                  <td>$0.025</td>
+                </tr>
+                <tr>
+                  <th scope="row">Custom</th>
+                  <td>Contact</td>
+                  <td>Contact</td>
+                  <td>100M+</td>
+                  <td>25+</td>
+                  <td>Not in the figures checked</td>
+                  <td>Not in the figures checked</td>
+                  <td>Not in the figures checked</td>
+                  <td>Not in the figures checked</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="compare-wrap">
+            <table class="compare-table">
+              <caption>Ecommerce plans, as listed on RedTrack’s pricing page, 9 Nov 2026</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Plan</th>
+                  <th scope="col">Monthly</th>
+                  <th scope="col">Annual, billed yearly</th>
+                  <th scope="col">Stores</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Relay</th>
+                  <td>$0</td>
+                  <td>Not applicable</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <th scope="row">Brand</th>
+                  <td>$99</td>
+                  <td>$69/mo ($832/yr)</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <th scope="row">Agency</th>
+                  <td>$599</td>
+                  <td>$419/mo ($5,032/yr)</td>
+                  <td>Unlimited</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="source-note">Prices checked Nov 9, 2026. RedTrack pricing page, <a href="https://www.redtrack.io/pricing/" target="_blank" rel="noopener noreferrer">https://www.redtrack.io/pricing/</a>. Prices and limits change; check the live page before you buy.</p>
+          <p>
+            Enterprise adds Scale Rules and Ads Manager edit mode. Custom is for
+            100M or more events a month and 25 or more users, quoted on contact.
+            Relay is listed at $0 with one store, UTM last-click attribution, and
+            no ad-level spend sync. That conflicts with the same page’s statement
+            that every paid plan includes ad-level spend sync. Whether Relay
+            counts as a paid plan is not clear from what we checked, so confirm
+            it on the live page before you pick it.
+          </p>
+        </section>
+
+        <section id="monthly-vs-annual">
+          <h2>Monthly vs annual billing</h2>
+          <p>
+            As of 9 Nov 2026, RedTrack’s annual prices are Black Friday promo
+            prices, about 30% below monthly (Solo $118 vs $169, Team $279 vs
+            $399, Enterprise $699 vs $999). No promo end date is shown. The page
+            also claims holiday pricing “up to 63% off” with no end date; treat
+            that as a vendor claim. Terms listed either way: 14-day free trial
+            with all add-ons unlocked, monthly or annual billing, no 12-month
+            commitment, and a migration credit of up to 4 months off an annual
+            plan.
+          </p>
+        </section>
+
+        <section id="sync-add-ons">
+          <h2>Faster ad-spend sync costs extra</h2>
+          <p>
+            RedTrack prices its faster sync add-ons by monthly ad spend. The
+            pricing page gives two sets of figures for the same add-ons, and they
+            don’t match. We state both and don’t reconcile them, because the
+            page doesn’t say which one applies. The first set comes from the
+            add-on card for the $0–150K a month tier. The second comes from the
+            page’s compare table.
+          </p>
+          <div class="compare-wrap">
+            <table class="compare-table">
+              <caption>Sync add-on figures on RedTrack’s pricing page, 9 Nov 2026</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Sync speed</th>
+                  <th scope="col">Add-on card, $0–150K tier</th>
+                  <th scope="col">Compare table</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Every 30 min</th>
+                  <td>$41/mo ($490/yr)</td>
+                  <td>From $49/mo · $490/yr</td>
+                </tr>
+                <tr>
+                  <th scope="row">Every 15 min</th>
+                  <td>$83/mo ($990/yr)</td>
+                  <td>Not in the figures checked</td>
+                </tr>
+                <tr>
+                  <th scope="row">Every 5 min</th>
+                  <td>$166/mo</td>
+                  <td>From $199/mo · $1,990/yr</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Higher spend tiers ($150K+) are on the live page. Check your spend
+            level there before you budget for a faster sync.
+          </p>
+        </section>
+
+        <section id="which-plan">
+          <h2>Which plan fits your volume</h2>
+          <h3>Events and users</h3>
+          <p>
+            Events are RedTrack’s usage unit. Its compare table counts clicks,
+            conversions, and postbacks. Whether a phone call counts as an event
+            is not confirmed, so this page doesn’t map call volume to a plan. If
+            you buy on calls, check how your call volume lands in RedTrack’s
+            event count before you choose a plan from the table above.
+          </p>
+          <h3>Going over your event limit</h3>
+          <p>
+            Per RedTrack’s pricing FAQ (9 Nov 2026): nothing switches off.
+            Overage is charged per 1,000 events (Solo $0.04, Team $0.035,
+            Enterprise $0.025). If you stay above your allowance, RedTrack moves
+            you to a matching plan next billing period. Confirm overage billing
+            and which plan you land on after a sustained spike before you budget
+            for one.
+          </p>
+          <h3>Ad accounts and data retention</h3>
+          <p>
+            Solo keeps 12 months of data and caps ad accounts at 5 per ad
+            platform. Team keeps 24 months with unlimited ad accounts per
+            platform. Enterprise keeps 36 months with unlimited ad accounts per
+            platform. Extra Team and Enterprise seats are listed at $29 a month
+            each.
+          </p>
+        </section>
+
+        <section id="worked-example">
+          <h2>Worked example: hypothetical buyer, not RedTrack or EGO data</h2>
+          <p>
+            Take a hypothetical buyer on Solo, billed annually, who records 6
+            million events in one month. Solo includes 5 million. The extra 1
+            million events at $0.04 per 1,000 come to $40. Added to the $118 a
+            month annual price, the total is $158 a month. This is one way to add
+            overage by hand from the published rates. It is not presented as
+            RedTrack’s automatic billing, and we haven’t confirmed how RedTrack
+            bills overage.
+          </p>
+          <div class="compare-wrap">
+            <table class="compare-table">
+              <caption>Hypothetical buyer, not RedTrack or EGO data</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Line</th>
+                  <th scope="col">Hypothetical buyer, not RedTrack or EGO data</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Plan</th>
+                  <td>Solo, annual billing at the promo price: $118 a month</td>
+                </tr>
+                <tr>
+                  <th scope="row">Events in the month</th>
+                  <td>6,000,000 (5,000,000 included)</td>
+                </tr>
+                <tr>
+                  <th scope="row">Overage</th>
+                  <td>1,000,000 events at $0.04 per 1,000 = $40</td>
+                </tr>
+                <tr>
+                  <th scope="row">Total by hand</th>
+                  <td>$158 a month</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            The example uses the Black Friday annual price. The page gives no end
+            date for it, so the total can change. The example also assumes the
+            buyer’s calls count as events, which we haven’t confirmed.
+          </p>
+          <h3>Call side for the same hypothetical month</h3>
+          <p>
+            The plan price is the easy number. The call payout is the number the
+            RedTrack pricing page can’t show you. The figures below are labelled
+            hypothetical. They are not RedTrack data and not Easy Growth Ops
+            results.
+          </p>
+          <div class="compare-wrap">
+            <table class="compare-table">
+              <caption>Hypothetical call side, not RedTrack or EGO data</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Line</th>
+                  <th scope="col">Hypothetical value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Meta spend</th>
+                  <td>$6,000</td>
+                </tr>
+                <tr>
+                  <th scope="row">Call payout</th>
+                  <td>$7,500</td>
+                </tr>
+                <tr>
+                  <th scope="row">Call-platform fees</th>
+                  <td>$300</td>
+                </tr>
+                <tr>
+                  <th scope="row">Net profit (EGO formula)</th>
+                  <td>$7,500 − $6,000 − $300 = $1,200</td>
+                </tr>
+                <tr>
+                  <th scope="row">One way to count the tool</th>
+                  <td>$1,200 − $158 plan cost = $1,042 (not an EGO formula)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Net profit follows the
+            <a href="/guides/pay-per-call-profit-formula/">pay-per-call profit formula</a>
+            (payout − Meta spend − fees; Google and TikTok are zero here).
+            Subtracting the tracker plan cost is one way to count the tool, not
+            part of Easy Growth Ops’ published profit formula.
+          </p>
+        </section>
+
+        <section id="what-it-leaves-out">
+          <h2>What the price leaves out for call buyers</h2>
+          <p>
+            RedTrack’s price covers the tracker: events, users, sync, and
+            features. It doesn’t cover the call side of pay-per-call. Three things
+            sit outside a plan price:
+          </p>
+          <ul>
+            <li><strong>Call payout.</strong> What the call platform pays for each billable call.</li>
+            <li><strong>Call-platform fees.</strong> The call platform’s own fees, such as Ringba’s or CallGrid’s.</li>
+            <li><strong>Profit per ad account.</strong> Payout minus ad spend minus fees, for the same time window.</li>
+          </ul>
+          <p>
+            A tracker’s price and an account’s profit answer different questions.
+            Some buyers need one, some need both. The claims that RedTrack ties
+            Ringba and Retreaver calls to the click and sends call conversions
+            back through CAPI come from our
+            <a href="/compare/redtrack-alternative-pay-per-call/">tracker comparison for pay-per-call</a>
+            (as of Oct 2026). They are not from RedTrack’s pricing page.
+          </p>
+          <p>
+            ROI is priced on its own product page, at <a href="/roi/">/roi/</a>.
+            For the profit side, start with the
+            <a href="/guides/pay-per-call-profit-formula/">pay-per-call profit formula guide</a>,
+            then run your own numbers in the
+            <a href="/tools/pay-per-call-roi-calculator/">free pay-per-call ROI calculator</a>.
+          </p>
+          <p>
+            For tracker vs profit-view framing (not plan prices), see the
+            <a href="/compare/redtrack-alternative-pay-per-call/">tracker comparison for pay-per-call</a>.
+          </p>
+        </section>
+
+        <section class="faq" id="faq" data-faq>
+          <h2>FAQ</h2>
+          <ul class="faq-list">
+            <li class="faq-item">
+              <h3>How much does RedTrack cost per month?</h3>
+              <div class="faq-a">
+                <p>
+                  Solo is $169 monthly or $118 annual; Team is $399 or $279;
+                  Enterprise is $999 or $699. Annual prices are shown per month.
+                  As of 9 Nov 2026, the Black Friday 30% off applies to annual
+                  plans and add-ons during the promo. The page shows no end date.
+                  Ecommerce plans are $0 (Relay), $99 (Brand), and $599 (Agency)
+                  on monthly billing.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Does RedTrack’s price include call payout?</h3>
+              <div class="faq-a">
+                <p>
+                  No. The pricing page doesn’t mention calls, Ringba, call payout,
+                  or call-platform fees. Those sit outside the plan price.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Can RedTrack track pay-per-call calls?</h3>
+              <div class="faq-a">
+                <p>
+                  Yes, with a caveat. Per Easy Growth Ops’
+                  <a href="/compare/redtrack-alternative-pay-per-call/">tracker comparison for pay-per-call</a>
+                  (as of Oct 2026), RedTrack ties Ringba and Retreaver calls to the
+                  click and sends call conversions back through CAPI. That claim
+                  isn’t on RedTrack’s pricing page; re-check it on RedTrack’s docs
+                  before you rely on it.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>What happens if I go over my event limit?</h3>
+              <div class="faq-a">
+                <p>
+                  Nothing switches off. Overage is charged per 1,000 events (Solo
+                  $0.04, Team $0.035, Enterprise $0.025). If you stay above your
+                  limit, you move to a matching plan the next billing period, per
+                  RedTrack’s pricing FAQ checked 9 Nov 2026.
+                </p>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3>Is there a free trial, and does the Black Friday price hold on renewal?</h3>
+              <div class="faq-a">
+                <p>
+                  Yes on both, as RedTrack lists them on 9 Nov 2026. There’s a
+                  14-day free trial with all add-ons unlocked, and no 12-month
+                  commitment. The banner says “You keep the Black Friday price
+                  when you renew.” Confirm that wording on the live page before
+                  you buy.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="sources" id="sources">
+          <h2>Sources</h2>
+          <p>RedTrack pricing checked 9 November 2026. Prices and features change; re-check before relying on them.</p>
+          <ul>
+            <li><a href="https://www.redtrack.io/pricing/" target="_blank" rel="noopener noreferrer">RedTrack: Plans &amp; Pricing (checked 9 Nov 2026)</a></li>
+            <li><a href="/compare/redtrack-alternative-pay-per-call/">Easy Growth Ops: Tracker comparison for pay-per-call</a></li>
+            <li><a href="/roi/">Easy Growth Ops: ROI</a></li>
+            <li><a href="/guides/pay-per-call-profit-formula/">Easy Growth Ops: Pay-per-call profit formula guide</a></li>
+            <li><a href="/tools/pay-per-call-roi-calculator/">Easy Growth Ops: Pay-per-call ROI calculator</a></li>
+          </ul>
+          <p class="source-note">Easy Growth Ops is not affiliated with RedTrack.</p>
+        </section>
+
+        <section class="access" id="book">
+          <div class="access-inner">
+            <p class="index">30 minutes</p>
+            <h2>Book a meeting.</h2>
+            <p class="lede">
+              We’ll look at your stack. You share read-only access. First Slack
+              update the same week.
+            </p>
+            <a
+              class="btn"
+              href="https://calendly.com/danyal-jamil/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta="redtrack_pricing_closing_book" data-cta-type="booking" data-product="roi"
+              >Book a meeting</a
+            >
+          </div>
+        </section>
+      </article>
+  </body>
+</html>

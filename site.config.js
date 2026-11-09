@@ -197,7 +197,7 @@ export const PAGES = [
     schema: "Article",
     software: true,
     published: "2026-10-08",
-    lastmod: "2026-10-26",
+    lastmod: "2026-11-09",
     title: "RedTrack Alternative for Pay-Per-Call Buyers (2026) | ROI",
     h1: "RedTrack Alternative for Pay-Per-Call: When You Need Profit in Slack, Not Another Tracker",
     description:
@@ -215,6 +215,35 @@ export const PAGES = [
       title: "RedTrack alternative for pay-per-call",
       summary:
         "ROI vs RedTrack for pay-per-call buyers: click-ID attribution and CAPI (RedTrack) vs a read-only Slack P&L per ad account (ROI), with RedTrack spend-sync tiers and prices as of Oct 2026.",
+    },
+  },
+  {
+    name: "redtrack-pricing-pay-per-call",
+    path: "/compare/redtrack-pricing-pay-per-call/",
+    file: "compare/redtrack-pricing-pay-per-call/index.html",
+    changefreq: "monthly",
+    priority: "0.7",
+    layout: "content",
+    schema: "Article",
+    software: false,
+    published: "2026-11-09",
+    title: "RedTrack Pricing for Pay-Per-Call: Plans and Call Costs",
+    h1: "RedTrack Pricing for Pay-Per-Call Buyers: What Each Plan Costs and What It Doesn't Show",
+    description:
+      "RedTrack plans by events and users, monthly vs annual, plus what the price leaves out for call buyers: payout, call-platform fees, and true profit.",
+    breadcrumb: "RedTrack pricing",
+    ogImage: "redtrack-pricing-pay-per-call",
+    ogImageAlt: "RedTrack pricing for pay-per-call buyers: plan costs by events and users, and what the price leaves out.",
+    guide: {
+      section: "Comparisons",
+      summary:
+        "RedTrack plan costs by events and users, monthly vs annual, sync add-ons, and what the price leaves out for call buyers: payout, call-platform fees, and profit.",
+    },
+    llms: {
+      section: "Guides",
+      title: "RedTrack pricing for pay-per-call",
+      summary:
+        "RedTrack plan prices and limits by events and users, monthly and annual, sync add-ons, and what the price leaves out for call buyers. Prices checked 9 Nov 2026 (RedTrack pricing page). Annual prices shown are Black Friday promo prices, about 30% below monthly, with no end date shown.",
     },
   },
   {
